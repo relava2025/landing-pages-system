@@ -1,0 +1,17 @@
+Coloque aqui, com ESTES nomes exatos, as imagens do cliente:
+
+  logo.png            -> logo principal (header/footer)
+  logo-monograma.png  -> logo/monograma menor
+  metodologia.jpg     -> foto da doutora na seção "Metodologia"
+  autoridade.jpg      -> foto da doutora na seção "Autoridade / Conheça a Dra."
+  antes.png           -> imagem do slider do topo (ANTES)
+  depois.png          -> imagem do slider do topo (DEPOIS)
+
+  IMG_0155.JPEG / IMG_0156.JPEG / IMG_1815.JPEG / IMG_6536.JPEG
+                      -> casos da galeria de resultados
+
+Também crie estas pastas ao lado de "images" (com as fotos do cliente):
+  casos/    -> demais casos de antes/depois
+  espaço/   -> fotos da recepção/clínica (clinica.jpeg, clinica(1).jpeg, ...)
+
+Dica: mantendo os nomes, é só trocar os arquivos que a LP já monta sozinha.

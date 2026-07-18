@@ -1,0 +1,10 @@
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Kit compactado (não precisa versionar)
+*.zip
+
+# Temporários
+*.tmp
+*.log

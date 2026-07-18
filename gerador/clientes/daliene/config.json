@@ -1,0 +1,17 @@
+{
+  "NOME": "Dra. Daliene Electo",
+  "NOME_CURTO": "Dra. Daliene",
+  "WHATSAPP": "554989001311",
+  "BIO": "A Dra. Daliene Electo atua com harmonização facial e odontologia, unindo técnica, sensibilidade estética e planejamento individual para entregar resultados naturais e sofisticados, sempre respeitando a identidade de cada paciente.",
+  "LOCAL_DESC": "A Dra. Daliene Electo atende em Chapecó (SC), em um espaço pensado para oferecer conforto, privacidade e uma experiência premium desde a chegada.",
+  "DEPOIMENTOS": [
+    { "texto": "Profissional excepcional! Atendimento humanizado, resultado natural e um cuidado que faz toda a diferença. Recomendo de olhos fechados.", "autor": "Sirlene Ferreira" },
+    { "texto": "Fiquei encantada com o resultado, ficou ainda melhor do que eu esperava. Me senti muito acolhida do início ao fim.", "autor": "Cliente satisfeita" },
+    { "texto": "Atendimento maravilhoso e resultado super natural. Voltarei com certeza!", "autor": "Cliente satisfeita" }
+  ],
+  "FAQ": [
+    { "pergunta": "O resultado fica natural?", "resposta": "Sim. A proposta da {{NOME_CURTO}} é realçar a sua beleza sem descaracterizar seus traços." },
+    { "pergunta": "Como sei qual procedimento é ideal para mim?", "resposta": "A indicação é feita após uma avaliação individual, considerando seu rosto, sua queixa e seu objetivo." },
+    { "pergunta": "Posso tirar dúvidas antes de agendar?", "resposta": "Sim. A equipe pode te orientar pelo WhatsApp antes do agendamento." }
+  ]
+}
