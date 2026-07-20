@@ -7,15 +7,15 @@ Gera uma LP por cliente, cada uma em um diretório do seu domínio:
 ```
 (raiz do repositório) = o que vai pro GitHub Pages
 ├── CNAME                     -> lp.gruposystemdigital.com.br
-├── daliene/                  -> LP GERADA (index.html + imagens)
-├── fraciele/                 -> LP GERADA
-└── gerador/                  -> NÃO aparece no site, é a "fábrica"
-    ├── template.html         -> o modelo com campos {{NOME}}, {{WHATSAPP}}...
-    ├── build.py              -> gera a pasta do cliente
-    └── clientes/
-        └── daliene/
-            ├── config.json   -> textos/dados do cliente
-            └── assets/       -> imagens do cliente
+├── editor.html              -> EDITOR VISUAL (lp.gruposystemdigital.com.br/editor.html)
+├── fraciele/                 -> LP publicada (index.html)
+└── gerador/                  -> a "fábrica" (código-fonte do gerador)
+    ├── template.html         -> modelo da LP (tokens {{NOME}}, {{WHATSAPP}}...)
+    ├── _editor_shell.html    -> interface do editor
+    ├── build_editor.py       -> monta o editor.html (template + interface)
+    ├── publish.py            -> instala uma LP exportada em /<slug>/
+    ├── build.py              -> gerador antigo por linha de comando
+    └── clientes/daliene/     -> exemplo (config.json + assets)
 ```
 
 ## Configuração (uma vez só)
@@ -26,35 +26,39 @@ Gera uma LP por cliente, cada uma em um diretório do seu domínio:
    `lp`  →  `SEU-USUARIO.github.io`
 5. Aguarde o certificado HTTPS ficar verde (alguns minutos).
 
-## Criar uma LP nova (o dia a dia)
-1. Duplique a pasta `gerador/clientes/daliene` e renomeie para o slug do cliente
-   (ex.: `gerador/clientes/fraciele`).
-2. Edite o `config.json` com os dados dele (nome, WhatsApp, bio, local).
-3. Coloque as imagens em `assets/images/` (veja os nomes no arquivo
-   `_COLOQUE-AS-IMAGENS-AQUI.txt`).
-4. Rode:
+## Editor visual (jeito principal — tipo WordPress)
+Abra **`editor.html`** no navegador (ou pelo site: `lp.gruposystemdigital.com.br/editor.html`).
+- Formulário à esquerda, preview da LP ao vivo à direita.
+- Seções: Identidade, **Design (cores/fontes/temas)**, Contato (com **Meta Pixel**),
+  Localização, Textos, Imagens, Casos, Depoimentos, FAQ e Espaço.
+- Botões:
+  - **Exportar index.html** → baixa `<slug>.html` (arquivo único, imagens embutidas, pixel incluso).
+  - **Salvar projeto** → baixa `<slug>.json` (reeditável — reabra depois em "Abrir projeto").
+
+O **Slug** (seção Identidade) define a URL final: `lp.gruposystemdigital.com.br/<slug>`.
+
+## Publicar uma LP
+1. No editor, preencha o **Slug** e clique **Exportar index.html** → gera `fraciele.html`.
+2. Rode o publicador (instala em `/fraciele/index.html`):
    ```
-   python gerador/build.py fraciele
+   python gerador/publish.py caminho/para/fraciele.html
    ```
-   Isso cria a pasta `/fraciele/` na raiz, pronta.
-5. Publique:
+3. Suba:
    ```
-   git add .
-   git commit -m "LP fraciele"
-   git push
+   git add . && git commit -m "LP fraciele" && git push
    ```
    No ar em ~1 min: `lp.gruposystemdigital.com.br/fraciele`
 
-## Campos do config.json
-- `NOME`        -> nome completo (ex.: "Dra. Daliene Electo")
-- `NOME_CURTO`  -> nome curto (ex.: "Dra. Daliene")
-- `WHATSAPP`    -> só números, com DDI (ex.: "554989001311")
-- `BIO`         -> parágrafo da seção "Conheça a Dra."
-- `LOCAL_DESC`  -> parágrafo da seção "Local de atuação"
-- `DEPOIMENTOS` -> lista de avaliações: cada item tem `texto` e `autor`
-                  (o gerador duplica a lista sozinho p/ o scroll do mobile)
-- `FAQ`         -> lista de perguntas: cada item tem `pergunta` e `resposta`
-                  (pode usar {{NOME_CURTO}} dentro do texto que ele resolve)
+## Manutenção do editor
+O `editor.html` é gerado a partir de `gerador/_editor_shell.html` (interface) +
+`gerador/template.html` (o modelo da LP, embutido em base64). Se mudar qualquer um:
+```
+python gerador/build_editor.py
+```
 
-Agora o `config.json` cobre TUDO que muda por cliente: nome, WhatsApp, bio,
-local, depoimentos e FAQ. Só as imagens ficam de fora (vão na pasta assets).
+## Tokens do template (referência)
+`{{NOME}}`, `{{NOME_CURTO}}`, `{{WHATSAPP}}`, `{{INSTAGRAM}}`, `{{ESPECIALIDADE}}`,
+`{{CIDADE_UF}}`, `{{ENDERECO}}`, `{{BIO}}`, `{{LOCAL_DESC}}`, `{{MAPS_LINK}}`, `{{MAPS_EMBED}}`
++ marcadores de lista `<!--DEPOIMENTOS-->`, `<!--FAQ-->`, `<!--CASOS-->`, `<!--ESPACO-->`.
+O editor preenche tudo isso automaticamente. O antigo `gerador/build.py` (via `config.json`)
+continua para o fluxo por linha de comando, mas o editor é o caminho recomendado.

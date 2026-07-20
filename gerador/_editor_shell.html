@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerador de LP — System Digital</title>
+<style>
+  :root{
+    --gold:#C8A96A; --gold-d:#b0904f; --brown:#3A2C27; --nude:#E8D7CA;
+    --bg:#f4f2ef; --panel:#ffffff; --line:#e4e0da; --txt:#2c2622; --muted:#8a8178;
+    --danger:#c0563f; --ok:#3f8f5b; --radius:10px;
+    --font:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--font);color:var(--txt);background:var(--bg);height:100vh;overflow:hidden}
+  .app{display:grid;grid-template-columns:minmax(360px,460px) 1fr;height:100vh}
+  /* ---- FORM (left) ---- */
+  .form{overflow-y:auto;background:var(--panel);border-right:1px solid var(--line);padding:0 0 80px}
+  .brand{position:sticky;top:0;z-index:5;background:var(--brown);color:#fff;padding:16px 20px;display:flex;align-items:center;gap:12px}
+  .brand h1{font-size:15px;margin:0;font-weight:600;letter-spacing:.3px}
+  .brand small{display:block;color:var(--gold);font-weight:400;font-size:11px;margin-top:2px}
+  .brand .dot{width:34px;height:34px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;color:var(--brown);font-weight:800}
+  details.sec{border-bottom:1px solid var(--line)}
+  details.sec>summary{cursor:pointer;list-style:none;padding:14px 20px;font-weight:600;font-size:13.5px;display:flex;align-items:center;justify-content:space-between;user-select:none}
+  details.sec>summary::-webkit-details-marker{display:none}
+  details.sec>summary .chev{transition:.2s;color:var(--muted)}
+  details.sec[open]>summary .chev{transform:rotate(90deg)}
+  details.sec>summary .num{background:var(--nude);color:var(--brown);font-size:11px;border-radius:20px;padding:1px 9px;margin-left:auto;margin-right:8px}
+  .sec-body{padding:4px 20px 18px}
+  label.f{display:block;margin:12px 0 4px;font-size:12px;color:var(--muted);font-weight:600}
+  input[type=text],input[type=tel],textarea{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;font-size:13px;font-family:inherit;background:#fbfaf8;color:var(--txt)}
+  input:focus,textarea:focus{outline:none;border-color:var(--gold);background:#fff}
+  textarea{resize:vertical;min-height:64px;line-height:1.45}
+  .hint{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.4}
+  /* image drop */
+  .imgrow{display:flex;align-items:center;gap:10px;margin-top:8px}
+  .thumb{width:52px;height:52px;border-radius:8px;border:1px solid var(--line);object-fit:cover;background:#f0ede8 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="%23c7bfb4"><path d="M4 4h16v16H4z" fill="none"/><circle cx="9" cy="9" r="2"/><path d="M21 19l-6-7-4 5-3-3-4 5z"/></svg>') center/22px no-repeat;flex:none}
+  .up{flex:1}
+  .up b{font-size:12px;display:block}
+  .filebtn{display:inline-block;font-size:12px;color:var(--brown);background:var(--nude);padding:5px 10px;border-radius:6px;cursor:pointer;margin-top:3px}
+  .filebtn:hover{background:var(--gold);color:#fff}
+  input[type=file]{display:none}
+  /* dynamic cards */
+  .item{border:1px solid var(--line);border-radius:9px;padding:10px 11px;margin-top:10px;background:#fbfaf8;position:relative}
+  .item .rm{position:absolute;top:8px;right:8px;border:none;background:none;color:var(--muted);cursor:pointer;font-size:16px;line-height:1}
+  .item .rm:hover{color:var(--danger)}
+  .item .idx{font-size:11px;color:var(--gold-d);font-weight:700;margin-bottom:2px}
+  .addbtn{margin-top:11px;width:100%;padding:9px;border:1px dashed var(--gold);background:transparent;color:var(--gold-d);border-radius:8px;cursor:pointer;font-weight:600;font-size:12.5px}
+  .addbtn:hover{background:#faf5ea}
+  /* design */
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+  .chips button{border:1px solid var(--line);background:#fbfaf8;border-radius:20px;padding:5px 11px;font-size:11.5px;cursor:pointer;color:var(--txt);display:flex;align-items:center;gap:6px}
+  .chips button:hover{border-color:var(--gold)}
+  .chips button.on{border-color:var(--gold);background:#faf5ea;font-weight:600}
+  .chips .sw{width:12px;height:12px;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.1)}
+  .colors{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;margin-top:4px}
+  .cpick{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--muted)}
+  .cpick input[type=color]{width:32px;height:30px;border:1px solid var(--line);border-radius:6px;background:none;cursor:pointer;padding:2px;flex:none}
+  select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:13px;background:#fbfaf8;font-family:inherit;color:var(--txt);margin-top:2px}
+  select:focus{outline:none;border-color:var(--gold)}
+  /* ---- PREVIEW (right) ---- */
+  .preview{display:flex;flex-direction:column;height:100vh;background:#ded9d2}
+  .toolbar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--panel);border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .btn{border:none;border-radius:8px;padding:8px 13px;font-size:12.5px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+  .btn-primary{background:var(--gold);color:#fff}
+  .btn-primary:hover{background:var(--gold-d)}
+  .btn-ghost{background:#f0ede8;color:var(--brown)}
+  .btn-ghost:hover{background:var(--nude)}
+  .spacer{flex:1}
+  .devs{display:flex;gap:4px;background:#f0ede8;border-radius:8px;padding:3px}
+  .devs button{border:none;background:none;padding:5px 9px;border-radius:6px;font-size:11.5px;cursor:pointer;color:var(--muted);font-weight:600}
+  .devs button.on{background:#fff;color:var(--brown);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+  .frame-wrap{flex:1;overflow:auto;display:flex;justify-content:center;padding:18px}
+  #frame{border:none;background:#fff;box-shadow:0 6px 30px rgba(0,0,0,.14);border-radius:6px;width:100%;height:100%;transition:width .2s}
+  .toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--brown);color:#fff;padding:10px 18px;border-radius:30px;font-size:13px;opacity:0;pointer-events:none;transition:.3s;z-index:50}
+  .toast.show{opacity:1}
+  .warn{background:#fdf6e3;color:#8a6d1f;font-size:11.5px;padding:6px 10px;border-radius:6px;margin-top:8px;border:1px solid #eaddb0;display:none}
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- ================= FORM ================= -->
+  <form class="form" id="form" autocomplete="off" onsubmit="return false">
+    <div class="brand">
+      <div class="dot">SD</div>
+      <div><h1>Gerador de Landing Pages<small>System Digital · edite e exporte</small></h1></div>
+    </div>
+
+    <details class="sec" open>
+      <summary><span class="chev">&#9656;</span> Identidade <span class="num">1</span></summary>
+      <div class="sec-body">
+        <label class="f">Nome completo</label>
+        <input type="text" data-f="NOME" placeholder="Dra. Fulana de Tal">
+        <label class="f">Nome curto (aparece no menu e textos)</label>
+        <input type="text" data-f="NOME_CURTO" placeholder="Dra. Fulana">
+        <label class="f">Slug (nome da pasta / URL)</label>
+        <input type="text" data-f="SLUG" placeholder="fulana">
+        <div class="hint">Vira o endereço: lp.gruposystemdigital.com.br/<b><span id="slugEcho">slug</span></b></div>
+      </div>
+    </details>
+
+    <details class="sec">
+      <summary><span class="chev">&#9656;</span> 🎨 Design — cores &amp; fontes</summary>
+      <div class="sec-body">
+        <label class="f">Temas prontos</label>
+        <div class="chips" id="themeChips"></div>
+        <label class="f">Cores (clique para ajustar)</label>
+        <div class="colors" id="colorGrid"></div>
+        <label class="f">Combinação de fontes</label>
+        <select id="fontPair"></select>
+        <label class="f">Cantos dos elementos</label>
+        <select id="radiusSel">
+          <option value="12px">Arredondado (padrão)</option>
+          <option value="6px">Suave</option>
+          <option value="0px">Reto</option>
+        </select>
+      </div>
+    </details>
+
+    <details class="sec">
+      <summary><span class="chev">&#9656;</span> Contato &amp; redes <span class="num">2</span></summary>
+      <div class="sec-body">
+        <label class="f">WhatsApp (só números, com DDI 55)</label>
+        <input type="tel" data-f="WHATSAPP" placeholder="5549991234567">
+        <div class="hint">Ex.: 55 + DDD + número. Aparece em todos os botões.</div>
+        <label class="f">Instagram (@ ou link)</label>
+        <input type="text" data-f="INSTAGRAM" placeholder="@drafulana">
+        <label class="f">Especialidade (rodapé)</label>
+        <input type="text" data-f="ESPECIALIDADE" placeholder="Embelezamento facial natural">
+        <label class="f">Meta Pixel ID (Facebook / Instagram)</label>
+        <input type="text" data-f="META_PIXEL" placeholder="1234567890123456">
+        <div class="hint">Só o número do ID. Instala o Pixel + PageView e dispara o evento <b>Contact</b> nos cliques do WhatsApp. O código entra só no arquivo exportado — não no preview. Deixe vazio se o cliente não tiver pixel.</div>
+      </div>
+    </details>
+
+    <details class="sec">
+      <summary><span class="chev">&#9656;</span> Localização <span class="num">3</span></summary>
+      <div class="sec-body">
+        <label class="f">Cidade — UF</label>
+        <input type="text" data-f="CIDADE_UF" placeholder="Chapecó — SC">
+        <label class="f">Endereço (rua, número, complemento, bairro)</label>
+        <input type="text" data-f="ENDERECO" placeholder="Rua Exemplo, 123 - Sala 4 - Centro">
+        <div class="hint">O mapa e o botão "Ver rota" são gerados automaticamente a partir do endereço + cidade.</div>
+      </div>
+    </details>
+
+    <details class="sec">
+      <summary><span class="chev">&#9656;</span> Textos (bio &amp; local) <span class="num">4</span></summary>
+      <div class="sec-body">
+        <label class="f">Bio — seção "Conheça a Dra."</label>
+        <textarea data-f="BIO" placeholder="Parágrafo apresentando a profissional..."></textarea>
+        <label class="f">Descrição do local de atuação</label>
+        <textarea data-f="LOCAL_DESC" placeholder="Parágrafo sobre o espaço/atendimento..."></textarea>
+      </div>
+    </details>
+
+    <details class="sec">
+      <summary><span class="chev">&#9656;</span> Imagens principais <span class="num">6</span></summary>
+      <div class="sec-body" id="imgSlots"></div>
+    </details>
+
+    <details class="sec">
+      <summary><span class="chev">&#9656;</span> Casos (galeria de resultados) <span class="num" id="nCasos">0</span></summary>
+      <div class="sec-body">
+        <div class="hint">Cada caso: uma foto + uma legenda. Os 4 primeiros aparecem; o resto fica atrás do botão "Ver mais casos".</div>
+        <div id="casosList"></div>
+        <button type="button" class="addbtn" data-add="casos">+ Adicionar caso</button>
+      </div>
+    </details>
+
+    <details class="sec">
+      <summary><span class="chev">&#9656;</span> Depoimentos <span class="num" id="nDep">0</span></summary>
+      <div class="sec-body">
+        <div id="depList"></div>
+        <button type="button" class="addbtn" data-add="dep">+ Adicionar depoimento</button>
+      </div>
+    </details>
+
+    <details class="sec">
+      <summary><span class="chev">&#9656;</span> Dúvidas frequentes (FAQ) <span class="num" id="nFaq">0</span></summary>
+      <div class="sec-body">
+        <div id="faqList"></div>
+        <button type="button" class="addbtn" data-add="faq">+ Adicionar pergunta</button>
+      </div>
+    </details>
+
+    <details class="sec">
+      <summary><span class="chev">&#9656;</span> Espaço / clínica (fotos) <span class="num" id="nEsp">0</span></summary>
+      <div class="sec-body">
+        <div class="hint">Fotos da recepção/clínica que passam no carrossel.</div>
+        <div id="espList"></div>
+        <button type="button" class="addbtn" data-add="esp">+ Adicionar foto do espaço</button>
+      </div>
+    </details>
+  </form>
+
+  <!-- ================= PREVIEW ================= -->
+  <div class="preview">
+    <div class="toolbar">
+      <button class="btn btn-primary" id="btnExport">⬇ Exportar index.html</button>
+      <button class="btn btn-ghost" id="btnSave">💾 Salvar projeto</button>
+      <label class="btn btn-ghost" style="margin:0">📂 Abrir projeto<input type="file" id="loadInput" accept="application/json"></label>
+      <button class="btn btn-ghost" id="btnOpen">↗ Abrir em nova aba</button>
+      <div class="spacer"></div>
+      <div class="devs" title="Visualização">
+        <button data-w="100%" class="on">🖥 Desktop</button>
+        <button data-w="390px">📱 Mobile</button>
+      </div>
+    </div>
+    <div class="frame-wrap"><iframe id="frame"></iframe></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script id="tpl" type="text/plain">__TEMPLATE_B64__</script>
+<script>
+"use strict";
+/* ---------- template (base64 -> utf8) ---------- */
+const TEMPLATE = (function(){
+  const b64 = document.getElementById('tpl').textContent.trim();
+  const bin = atob(b64);
+  const bytes = Uint8Array.from(bin, c=>c.charCodeAt(0));
+  return new TextDecoder('utf-8').decode(bytes);
+})();
+
+/* ---------- state ---------- */
+const IMG_SLOTS = [
+  ['logo','Logo (cabeçalho)','images/logo.png'],
+  ['logo-monograma','Monograma (rodapé)','images/logo-monograma.png'],
+  ['metodologia','Foto — Metodologia','images/metodologia.jpg'],
+  ['autoridade','Foto — Conheça a Dra.','images/autoridade.jpg'],
+  ['antes','Slider — ANTES','images/antes.png'],
+  ['depois','Slider — DEPOIS','images/depois.png'],
+];
+const state = {
+  f:{NOME:'',NOME_CURTO:'',SLUG:'',WHATSAPP:'',INSTAGRAM:'',ESPECIALIDADE:'',META_PIXEL:'',CIDADE_UF:'',ENDERECO:'',BIO:'',LOCAL_DESC:''},
+  images:{}, casos:[], dep:[], faq:[], esp:[],
+  design:{gold:'#C8A96A',brown:'#3A2C27',nude:'#E8D7CA',mnude:'#B88F76',offwhite:'#FAF8F5',lightgray:'#F5F3F0',fontPair:'montserrat',radius:'12px'}
+};
+
+/* paletas prontas */
+const COLOR_FIELDS=[['gold','Destaque (botões)'],['brown','Escura (títulos)'],['nude','Nude (seções)'],['mnude','Nude médio'],['offwhite','Fundo claro'],['lightgray','Fundo alt.']];
+const THEMES={
+  ambar:{label:'Âmbar & Marrom',gold:'#C8A96A',brown:'#3A2C27',nude:'#E8D7CA',mnude:'#B88F76',offwhite:'#FAF8F5',lightgray:'#F5F3F0'},
+  verde:{label:'Verde & Grafite',gold:'#9CBB3B',brown:'#20282A',nude:'#DBE7CC',mnude:'#7E9E57',offwhite:'#F6FAF2',lightgray:'#EDF2E7'},
+  rose:{label:'Rosé & Vinho',gold:'#C68AA0',brown:'#3A2530',nude:'#EED9DF',mnude:'#B87E92',offwhite:'#FBF6F7',lightgray:'#F5EEF0'},
+  petroleo:{label:'Azul Petróleo',gold:'#4E8C97',brown:'#1F3A40',nude:'#DCE6E5',mnude:'#6FA0A6',offwhite:'#F5FAFA',lightgray:'#EDF3F3'},
+  preto:{label:'Preto & Dourado',gold:'#C8A96A',brown:'#0E0E0E',nude:'#E8DFD2',mnude:'#9A7258',offwhite:'#FBFAF8',lightgray:'#F1EDE7'}
+};
+const FONT_PAIRS={
+  montserrat:{label:'Montserrat + Playfair (padrão)',head:"'Montserrat', sans-serif",body:"'Montserrat', sans-serif",emph:"'Playfair Display', serif",link:''},
+  poppins:{label:'Poppins + Cormorant',head:"'Poppins', sans-serif",body:"'Poppins', sans-serif",emph:"'Cormorant Garamond', serif",link:'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Poppins:wght@300;400;500;600&display=swap'},
+  inter:{label:'Inter + Lora',head:"'Inter', sans-serif",body:"'Inter', sans-serif",emph:"'Lora', serif",link:'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,500;1,500&display=swap'},
+  raleway:{label:'Raleway + Cormorant',head:"'Raleway', sans-serif",body:"'Raleway', sans-serif",emph:"'Cormorant Garamond', serif",link:'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Raleway:wght@300;400;500;600&display=swap'},
+  jost:{label:'Jost + Playfair',head:"'Jost', sans-serif",body:"'Jost', sans-serif",emph:"'Playfair Display', serif",link:'https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap'}
+};
+function themeStyle(){
+  const d=state.design, fp=FONT_PAIRS[d.fontPair]||FONT_PAIRS.montserrat;
+  const css=':root{'
+    +'--color-pastel-gold:'+d.gold+';--color-sophisticated-brown:'+d.brown+';'
+    +'--color-light-nude:'+d.nude+';--color-medium-nude:'+d.mnude+';'
+    +'--color-off-white:'+d.offwhite+';--color-light-gray:'+d.lightgray+';'
+    +'--font-heading:'+fp.head+';--font-body:'+fp.body+';--font-emphasis:'+fp.emph+';'
+    +'--border-radius:'+d.radius+';}';
+  return (fp.link?'<link href="'+fp.link+'" rel="stylesheet">':'')+'<style id="lp-theme">'+css+'</style>';
+}
+
+/* placeholder cinza pra imagem faltando */
+function ph(txt){
+  const s='<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"><rect width="600" height="400" fill="#e9e4dd"/><text x="50%" y="50%" fill="#b3a998" font-family="sans-serif" font-size="26" text-anchor="middle" dominant-baseline="middle">'+txt+'</text></svg>';
+  return 'data:image/svg+xml;utf8,'+encodeURIComponent(s);
+}
+
+/* ---------- helpers ---------- */
+const esc = s => (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const enc = s => encodeURIComponent(s||'');
+function waLink(txt){
+  const n=(state.f.WHATSAPP||'').replace(/\D/g,'');
+  return 'https://wa.me/'+n+'?text='+enc(txt);
+}
+function instaHref(v){
+  v=(v||'').trim();
+  if(!v) return '#';
+  if(/^https?:\/\//i.test(v)) return v;
+  return 'https://instagram.com/'+v.replace(/^@/,'');
+}
+function mapsQuery(){ return enc((state.f.ENDERECO||'')+', '+(state.f.CIDADE_UF||'')); }
+
+/* ---------- render LP html ---------- */
+function buildHTML(forExport){
+  let h = TEMPLATE;
+
+  // depoimentos (2x para o loop do marquee)
+  const depCards = state.dep.map(d=>(
+    '                    <div class="card testimonial-card">\n'+
+    '                        <div class="stars">'+'<i class="ph-fill ph-star"></i>'.repeat(5)+'</div>\n'+
+    '                        <p class="testimonial-text">"'+esc(d.texto)+'"</p>\n'+
+    '                        <p class="testimonial-author">- '+esc(d.autor)+'</p>\n'+
+    '                    </div>')).join('\n');
+  h = h.replace('<!--DEPOIMENTOS-->', depCards+'\n'+depCards);
+
+  // faq
+  const faqItems = state.faq.map(f=>(
+    '                <div class="faq-item">\n'+
+    '                    <button class="faq-question"><span>'+esc(f.pergunta)+'</span>'+
+    '<i class="ph-bold ph-caret-down"></i></button>\n'+
+    '                    <div class="faq-answer"><p>'+esc(f.resposta)+'</p></div>\n'+
+    '                </div>')).join('\n');
+  h = h.replace('<!--FAQ-->', faqItems);
+
+  // casos (galeria) — 4 visiveis, resto hidden-result
+  const casos = state.casos.map((c,i)=>{
+    const hidden = i>3 ? ' hidden-result' : '';
+    const img = c.img || ph('caso '+(i+1));
+    const leg = c.legenda||'';
+    return (
+    '                <div class="result-card'+hidden+'">\n'+
+    '                    <img src="'+img+'" alt="'+esc(leg)+'" class="result-img" loading="lazy" decoding="async">\n'+
+    '                    <p class="result-caption">'+esc(leg)+'</p>\n'+
+    '                    <a href="'+waLink('Olá, gostei do resultado de '+leg+'. Esse é meu caso!')+'" target="_blank" class="btn-minimalist">Esse é meu caso <i class="ph-bold ph-arrow-right"></i></a>\n'+
+    '                </div>');
+  }).join('\n');
+  h = h.replace('<!--CASOS-->', casos);
+
+  // espaco — cada foto 3x pro scroll continuo
+  const one = state.esp.map((e,i)=>(
+    '                <img src="'+(e.img||ph('espaço '+(i+1)))+'" class="clinic-card" loading="lazy" decoding="async" alt="Espaço">')).join('\n');
+  h = h.replace('<!--ESPACO-->', one+'\n'+one+'\n'+one);
+
+  // imagens fixas
+  IMG_SLOTS.forEach(([key,,path])=>{
+    const v = state.images[key] || ph(key);
+    h = h.split(path).join(v);
+  });
+
+  // tokens derivados
+  const map = {
+    NOME: esc(state.f.NOME), NOME_CURTO: esc(state.f.NOME_CURTO),
+    WHATSAPP: (state.f.WHATSAPP||'').replace(/\D/g,''),
+    BIO: esc(state.f.BIO), LOCAL_DESC: esc(state.f.LOCAL_DESC),
+    CIDADE_UF: esc(state.f.CIDADE_UF), ENDERECO: esc(state.f.ENDERECO),
+    ESPECIALIDADE: esc(state.f.ESPECIALIDADE),
+    INSTAGRAM: instaHref(state.f.INSTAGRAM),
+    MAPS_LINK: 'https://maps.google.com/?q='+mapsQuery(),
+    MAPS_EMBED: 'https://maps.google.com/maps?q='+mapsQuery()+'&output=embed'
+  };
+  for(const k in map){ h = h.split('{{'+k+'}}').join(map[k]); }
+
+  // tema (cores + fontes) — aplica no preview e no export
+  h = h.replace('</head>', themeStyle()+'\n</head>');
+
+  // Meta Pixel — só na exportação (nunca no preview, pra não registrar PageViews falsos)
+  const pid = (state.f.META_PIXEL||'').replace(/\D/g,'');
+  if(forExport && pid){
+    const px =
+'<!-- Meta Pixel Code -->\n'+
+'<script>\n'+
+"!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');\n"+
+"fbq('init','"+pid+"');fbq('track','PageView');\n"+
+"document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('a[href*=\"wa.me\"],a[href*=\"api.whatsapp\"]').forEach(function(a){a.addEventListener('click',function(){try{fbq('track','Contact');}catch(e){}});});});\n"+
+'<\/script>\n'+
+'<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id='+pid+'&ev=PageView&noscript=1"/><\/noscript>\n'+
+'<!-- End Meta Pixel Code -->\n';
+    h = h.replace('</head>', px+'</head>');
+  }
+  return h;
+}
+
+/* ---------- preview (debounced) ---------- */
+let t=null;
+function refresh(){ clearTimeout(t); t=setTimeout(()=>{ document.getElementById('frame').srcdoc = buildHTML(false); }, 250); }
+
+/* ---------- dynamic lists rendering ---------- */
+function fileToData(file, cb){ const r=new FileReader(); r.onload=()=>cb(r.result); r.readAsDataURL(file); }
+
+function renderImgSlots(){
+  const wrap=document.getElementById('imgSlots'); wrap.innerHTML='';
+  IMG_SLOTS.forEach(([key,label])=>{
+    const row=document.createElement('div'); row.className='imgrow';
+    row.innerHTML='<img class="thumb" '+(state.images[key]?'src="'+state.images[key]+'"':'')+'>'+
+      '<div class="up"><b>'+label+'</b><label class="filebtn">Escolher imagem<input type="file" accept="image/*"></label></div>';
+    row.querySelector('input').addEventListener('change',e=>{
+      const file=e.target.files[0]; if(!file)return;
+      fileToData(file,d=>{ state.images[key]=d; row.querySelector('.thumb').src=d; refresh(); });
+    });
+    wrap.appendChild(row);
+  });
+}
+
+function renderDesign(){
+  // chips de tema
+  const ch=document.getElementById('themeChips'); ch.innerHTML='';
+  for(const key in THEMES){
+    const th=THEMES[key];
+    const b=document.createElement('button'); b.type='button';
+    b.innerHTML='<span class="sw" style="background:'+th.gold+'"></span>'+th.label;
+    b.onclick=()=>{ ['gold','brown','nude','mnude','offwhite','lightgray'].forEach(k=>state.design[k]=th[k]); renderDesign(); refresh(); };
+    ch.appendChild(b);
+  }
+  // grade de cores
+  const cg=document.getElementById('colorGrid'); cg.innerHTML='';
+  COLOR_FIELDS.forEach(([k,lbl])=>{
+    const w=document.createElement('label'); w.className='cpick';
+    w.innerHTML='<input type="color" value="'+state.design[k]+'">'+lbl;
+    w.querySelector('input').addEventListener('input',e=>{ state.design[k]=e.target.value; refresh(); });
+    cg.appendChild(w);
+  });
+  // fontes
+  const fs=document.getElementById('fontPair'); fs.innerHTML='';
+  for(const key in FONT_PAIRS){ const o=document.createElement('option'); o.value=key; o.textContent=FONT_PAIRS[key].label; fs.appendChild(o); }
+  fs.value=state.design.fontPair;
+  fs.onchange=e=>{ state.design.fontPair=e.target.value; refresh(); };
+  // cantos
+  const rs=document.getElementById('radiusSel'); rs.value=state.design.radius;
+  rs.onchange=e=>{ state.design.radius=e.target.value; refresh(); };
+}
+
+function counters(){
+  document.getElementById('nCasos').textContent=state.casos.length;
+  document.getElementById('nDep').textContent=state.dep.length;
+  document.getElementById('nFaq').textContent=state.faq.length;
+  document.getElementById('nEsp').textContent=state.esp.length;
+}
+
+function renderCasos(){
+  const L=document.getElementById('casosList'); L.innerHTML='';
+  state.casos.forEach((c,i)=>{
+    const d=document.createElement('div'); d.className='item';
+    d.innerHTML='<button class="rm" title="remover">&times;</button>'+
+      '<div class="idx">Caso '+(i+1)+(i>3?' (oculto até "ver mais")':'')+'</div>'+
+      '<div class="imgrow"><img class="thumb" '+(c.img?'src="'+c.img+'"':'')+'>'+
+      '<div class="up"><label class="filebtn">Foto do caso<input type="file" accept="image/*"></label></div></div>'+
+      '<label class="f">Legenda</label><input type="text" value="'+(c.legenda||'').replace(/"/g,'&quot;')+'" placeholder="Ex.: Contorno facial">';
+    d.querySelector('.rm').onclick=()=>{state.casos.splice(i,1);renderCasos();counters();refresh();};
+    d.querySelector('input[type=file]').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;fileToData(f,dd=>{c.img=dd;d.querySelector('.thumb').src=dd;refresh();});});
+    d.querySelector('input[type=text]').addEventListener('input',e=>{c.legenda=e.target.value;refresh();});
+    L.appendChild(d);
+  });
+}
+function renderDep(){
+  const L=document.getElementById('depList'); L.innerHTML='';
+  state.dep.forEach((c,i)=>{
+    const d=document.createElement('div'); d.className='item';
+    d.innerHTML='<button class="rm">&times;</button><div class="idx">Depoimento '+(i+1)+'</div>'+
+      '<label class="f">Texto</label><textarea placeholder="O que a paciente disse...">'+esc(c.texto)+'</textarea>'+
+      '<label class="f">Autor</label><input type="text" value="'+(c.autor||'').replace(/"/g,'&quot;')+'" placeholder="Nome da paciente">';
+    d.querySelector('.rm').onclick=()=>{state.dep.splice(i,1);renderDep();counters();refresh();};
+    d.querySelector('textarea').addEventListener('input',e=>{c.texto=e.target.value;refresh();});
+    d.querySelector('input').addEventListener('input',e=>{c.autor=e.target.value;refresh();});
+    L.appendChild(d);
+  });
+}
+function renderFaq(){
+  const L=document.getElementById('faqList'); L.innerHTML='';
+  state.faq.forEach((c,i)=>{
+    const d=document.createElement('div'); d.className='item';
+    d.innerHTML='<button class="rm">&times;</button><div class="idx">Pergunta '+(i+1)+'</div>'+
+      '<label class="f">Pergunta</label><input type="text" value="'+(c.pergunta||'').replace(/"/g,'&quot;')+'">'+
+      '<label class="f">Resposta</label><textarea>'+esc(c.resposta)+'</textarea>';
+    d.querySelector('.rm').onclick=()=>{state.faq.splice(i,1);renderFaq();counters();refresh();};
+    d.querySelector('input').addEventListener('input',e=>{c.pergunta=e.target.value;refresh();});
+    d.querySelector('textarea').addEventListener('input',e=>{c.resposta=e.target.value;refresh();});
+    L.appendChild(d);
+  });
+}
+function renderEsp(){
+  const L=document.getElementById('espList'); L.innerHTML='';
+  state.esp.forEach((c,i)=>{
+    const d=document.createElement('div'); d.className='item';
+    d.innerHTML='<button class="rm">&times;</button><div class="idx">Foto '+(i+1)+'</div>'+
+      '<div class="imgrow"><img class="thumb" '+(c.img?'src="'+c.img+'"':'')+'>'+
+      '<div class="up"><label class="filebtn">Escolher foto<input type="file" accept="image/*"></label></div></div>';
+    d.querySelector('.rm').onclick=()=>{state.esp.splice(i,1);renderEsp();counters();refresh();};
+    d.querySelector('input[type=file]').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;fileToData(f,dd=>{c.img=dd;d.querySelector('.thumb').src=dd;refresh();});});
+    L.appendChild(d);
+  });
+}
+
+/* ---------- add buttons ---------- */
+document.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>{
+  const k=b.dataset.add;
+  if(k==='casos'){state.casos.push({img:'',legenda:''});renderCasos();}
+  if(k==='dep'){state.dep.push({texto:'',autor:''});renderDep();}
+  if(k==='faq'){state.faq.push({pergunta:'',resposta:''});renderFaq();}
+  if(k==='esp'){state.esp.push({img:''});renderEsp();}
+  counters(); refresh();
+});
+
+/* ---------- text field binding ---------- */
+document.querySelectorAll('[data-f]').forEach(inp=>{
+  inp.addEventListener('input',e=>{
+    state.f[inp.dataset.f]=e.target.value;
+    if(inp.dataset.f==='SLUG') document.getElementById('slugEcho').textContent=e.target.value||'slug';
+    refresh();
+  });
+});
+
+/* ---------- toolbar ---------- */
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
+function download(name,content,type){
+  const blob=new Blob([content],{type:type}); const u=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=u; a.download=name; a.click(); URL.revokeObjectURL(u);
+}
+function slugify(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,''); }
+document.getElementById('btnExport').onclick=()=>{
+  const slug=slugify(state.f.SLUG);
+  if(!slug){ alert('Preencha o campo "Slug" (seção Identidade) — ele define a URL: lp.gruposystemdigital.com.br/SLUG'); return; }
+  const missing=IMG_SLOTS.filter(([k])=>!state.images[k]).map(([,l])=>l);
+  if(missing.length && !confirm('Faltam imagens: '+missing.join(', ')+'.\nExportar mesmo assim? (elas ficarão como cinza)')) return;
+  download(slug+'.html', buildHTML(true), 'text/html');
+  toast('Exportado: '+slug+'.html  →  publica em /'+slug);
+};
+document.getElementById('btnSave').onclick=()=>{
+  const name=(state.f.SLUG||'projeto')+'.json';
+  download(name, JSON.stringify(state,null,1), 'application/json');
+  toast('Projeto salvo ('+name+')');
+};
+document.getElementById('loadInput').addEventListener('change',e=>{
+  const f=e.target.files[0]; if(!f)return;
+  const r=new FileReader();
+  r.onload=()=>{ try{
+    const o=JSON.parse(r.result);
+    Object.assign(state.f,o.f||{}); state.images=o.images||{};
+    state.casos=o.casos||[]; state.dep=o.dep||[]; state.faq=o.faq||[]; state.esp=o.esp||[];
+    if(o.design) Object.assign(state.design,o.design);
+    hydrate(); toast('Projeto carregado');
+  }catch(err){ alert('Arquivo inválido: '+err.message); } };
+  r.readAsText(f);
+});
+document.getElementById('btnOpen').onclick=()=>{
+  const w=window.open(); w.document.open(); w.document.write(buildHTML(true)); w.document.close();
+};
+document.querySelectorAll('.devs button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.devs button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); document.getElementById('frame').style.width=b.dataset.w;
+});
+
+/* ---------- hydrate form from state ---------- */
+function hydrate(){
+  document.querySelectorAll('[data-f]').forEach(inp=>{ inp.value=state.f[inp.dataset.f]||''; });
+  document.getElementById('slugEcho').textContent=state.f.SLUG||'slug';
+  renderDesign(); renderImgSlots(); renderCasos(); renderDep(); renderFaq(); renderEsp(); counters(); refresh();
+}
+
+/* ---------- seed (exemplo daliene, editável) ---------- */
+function seed(){
+  state.f={NOME:'Dra. Daliene Electo',NOME_CURTO:'Dra. Daliene',SLUG:'daliene',
+    WHATSAPP:'554989001311',INSTAGRAM:'@dra.daliene',ESPECIALIDADE:'Embelezamento facial natural',META_PIXEL:'',
+    CIDADE_UF:'Chapecó — SC',ENDERECO:'Rua Exemplo, 123 - Sala 4 - Centro',
+    BIO:'A Dra. Daliene Electo atua com harmonização facial e odontologia, unindo técnica, sensibilidade estética e planejamento individual para entregar resultados naturais e sofisticados.',
+    LOCAL_DESC:'A Dra. Daliene Electo atende em Chapecó (SC), em um espaço pensado para oferecer conforto, privacidade e uma experiência premium desde a chegada.'};
+  state.images={};
+  state.casos=[{img:'',legenda:'Contorno facial'},{img:'',legenda:'Harmonia para homens'},{img:'',legenda:'Rejuvenescimento sutil'},{img:'',legenda:'Lábios naturais'}];
+  state.dep=[{texto:'Profissional excepcional! Atendimento humanizado e resultado natural.',autor:'Sirlene Ferreira'},{texto:'Fiquei encantada, ficou melhor do que eu esperava.',autor:'Cliente satisfeita'}];
+  state.faq=[{pergunta:'O resultado fica natural?',resposta:'Sim. A proposta é realçar a sua beleza sem descaracterizar seus traços.'},{pergunta:'Como sei qual procedimento é ideal?',resposta:'A indicação é feita após uma avaliação individual.'}];
+  state.esp=[{img:''},{img:''},{img:''}];
+  hydrate();
+}
+seed();
+</script>
+</body>
+</html>
