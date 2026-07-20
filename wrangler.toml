@@ -1,0 +1,6 @@
+name = "landing-pages-system"
+compatibility_date = "2024-11-01"
+
+# Site estático: serve os arquivos da raiz (editor.html, /<cliente>/index.html, etc.)
+[assets]
+directory = "."
