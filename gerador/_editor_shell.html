@@ -74,6 +74,7 @@
   #frame{border:none;background:#fff;box-shadow:0 6px 30px rgba(0,0,0,.14);border-radius:6px;width:100%;height:100%;transition:width .2s}
   .toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--brown);color:#fff;padding:10px 18px;border-radius:30px;font-size:13px;opacity:0;pointer-events:none;transition:.3s;z-index:50}
   .toast.show{opacity:1}
+  .tgrp{margin-top:16px;font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--gold-d);border-top:1px solid var(--line);padding-top:12px}
   .warn{background:#fdf6e3;color:#8a6d1f;font-size:11.5px;padding:6px 10px;border-radius:6px;margin-top:8px;border:1px solid #eaddb0;display:none}
 </style>
 </head>
@@ -127,6 +128,9 @@
         <input type="text" data-f="INSTAGRAM" placeholder="@drafulana">
         <label class="f">Especialidade (rodapé)</label>
         <input type="text" data-f="ESPECIALIDADE" placeholder="Embelezamento facial natural">
+        <label class="f">Mensagem automática do WhatsApp</label>
+        <input type="text" data-f="WA_MSG" placeholder="Olá, vim pelo site e gostaria de saber mais.">
+        <div class="hint">É o texto já preenchido quando a pessoa clica em qualquer botão de WhatsApp.</div>
         <label class="f">Meta Pixel ID (Facebook / Instagram)</label>
         <input type="text" data-f="META_PIXEL" placeholder="1234567890123456">
         <div class="hint">Só o número do ID. Instala o Pixel + PageView e dispara o evento <b>Contact</b> nos cliques do WhatsApp. O código entra só no arquivo exportado — não no preview. Deixe vazio se o cliente não tiver pixel.</div>
@@ -151,6 +155,15 @@
         <textarea data-f="BIO" placeholder="Parágrafo apresentando a profissional..."></textarea>
         <label class="f">Descrição do local de atuação</label>
         <textarea data-f="LOCAL_DESC" placeholder="Parágrafo sobre o espaço/atendimento..."></textarea>
+      </div>
+    </details>
+
+    <details class="sec">
+      <summary><span class="chev">&#9656;</span> ✍️ Textos das seções <span class="num">5</span></summary>
+      <div class="sec-body">
+        <div class="hint">Todos os títulos, botões e frases fixas da página. Use <b>*asteriscos*</b> para deixar um trecho em <i>itálico serifado</i> (ex.: <code>Realce sua beleza, mantendo a *essência*.</code>). Deixe em branco para usar o texto padrão.</div>
+        <button type="button" class="addbtn" id="btnResetTextos" style="border-style:solid">↺ Restaurar todos os textos padrão</button>
+        <div id="textosPanel"></div>
       </div>
     </details>
 
@@ -233,7 +246,8 @@ const IMG_SLOTS = [
   ['depois','Slider — DEPOIS','images/depois.png'],
 ];
 const state = {
-  f:{NOME:'',NOME_CURTO:'',SLUG:'',WHATSAPP:'',INSTAGRAM:'',ESPECIALIDADE:'',META_PIXEL:'',CIDADE_UF:'',ENDERECO:'',BIO:'',LOCAL_DESC:''},
+  f:{NOME:'',NOME_CURTO:'',SLUG:'',WHATSAPP:'',INSTAGRAM:'',ESPECIALIDADE:'',META_PIXEL:'',CIDADE_UF:'',ENDERECO:'',BIO:'',LOCAL_DESC:'',WA_MSG:''},
+  t:{},
   images:{}, casos:[], dep:[], faq:[], esp:[],
   design:{gold:'#C8A96A',brown:'#3A2C27',nude:'#E8D7CA',mnude:'#B88F76',offwhite:'#FAF8F5',lightgray:'#F5F3F0',fontPair:'montserrat',radius:'12px'}
 };
@@ -263,6 +277,103 @@ function themeStyle(){
     +'--font-heading:'+fp.head+';--font-body:'+fp.body+';--font-emphasis:'+fp.emph+';'
     +'--border-radius:'+d.radius+';}';
   return (fp.link?'<link href="'+fp.link+'" rel="stylesheet">':'')+'<style id="lp-theme">'+css+'</style>';
+}
+
+
+/* ---------- textos editaveis das secoes ---------- */
+/* [token, rotulo, padrao, 'ta' = textarea] */
+const TEXT_GROUPS=[
+ ['Menu &amp; topo',[
+  ['T_NAV1','Menu 1','Método'],
+  ['T_NAV2','Menu 2','Resultados'],
+  ['T_NAV3','Menu 3','Experiência'],
+  ['T_NAV4','Menu 4','Dúvidas'],
+  ['T_NAV_BTN','Botão do menu','Agendar consulta'],
+ ]],
+ ['1. Hero (primeira dobra)',[
+  ['T_HERO_TAG','Tarja acima do título','Embelezamento Facial Personalizado'],
+  ['T_HERO_TITLE','Título principal','Fique mais bonita sem parecer que fez *harmonização*.','ta'],
+  ['T_HERO_DESC','Descrição','Protocolos personalizados de embelezamento facial para valorizar seus traços, melhorar a harmonia do rosto e realçar sua beleza com naturalidade.','ta'],
+  ['T_HERO_BTN1','Botão principal','Quero agendar uma consulta'],
+  ['T_HERO_BTN2','Botão secundário','Ver resultados reais'],
+  ['T_HERO_B1','Selo 1','Resultado natural'],
+  ['T_HERO_B2','Selo 2','Avaliação individual'],
+  ['T_HERO_B3','Selo 3','Atendimento humanizado'],
+  ['T_SLIDER_ANTES','Rótulo antes','ANTES'],
+  ['T_SLIDER_DEPOIS','Rótulo depois','DEPOIS'],
+  ['T_SLIDER_INFO','Instrução do slider','Arraste para ver o antes e depois do caso'],
+ ]],
+ ['2. Metodologia',[
+  ['T_MET_TAG','Tarja','Beleza Imperceptível'],
+  ['T_MET_TITLE','Título','Realce sua beleza, mantendo a *essência*.','ta'],
+  ['T_MET_DESC','Descrição','Para mulheres que buscam naturalidade. Avaliamos suas proporções para criar um planejamento único, entregando resultados elegantes e sem exageros.','ta'],
+  ['T_PIL1_T','Pilar 1 — título','Avaliação Personalizada'],
+  ['T_PIL1_D','Pilar 1 — texto','Análise do seu perfil e proporções faciais.'],
+  ['T_PIL2_T','Pilar 2 — título','Planejamento Único'],
+  ['T_PIL2_D','Pilar 2 — texto','Protocolo definido de forma individual para você.'],
+  ['T_PIL3_T','Pilar 3 — título','Execução Estratégica'],
+  ['T_PIL3_D','Pilar 3 — texto','Procedimentos com foco em sutileza e harmonia.'],
+  ['T_PIL4_T','Pilar 4 — título','Elegância Natural'],
+  ['T_PIL4_D','Pilar 4 — texto','Mais bonita, sem parecer que fez procedimentos.'],
+  ['T_MET_BTN','Botão','Quero agendar uma consulta'],
+ ]],
+ ['3. Resultados',[
+  ['T_RES_TITLE','Título','Resultados naturais em *pacientes reais*','ta'],
+  ['T_RES_SUB','Subtítulo','Transformações planejadas para valorizar a beleza individual de cada paciente, respeitando seus traços e sua naturalidade.','ta'],
+  ['T_CASO_BTN','Botão em cada caso','Esse é meu caso'],
+  ['T_RES_DISC','Aviso legal','Os resultados podem variar de acordo com cada paciente, avaliação individual e protocolo indicado.','ta'],
+  ['T_RES_MORE','Botão "ver mais"','Ver mais casos'],
+  ['T_RES_BTN','Botão principal','Quero um resultado natural assim'],
+ ]],
+ ['4. Autoridade (Conheça a Dra.)',[
+  ['T_AUT_TITLE','Título','Conheça a *{{NOME}}*','ta'],
+  ['T_AUT_I1','Item 1','Atendimento individualizado'],
+  ['T_AUT_I2','Item 2','Foco em naturalidade'],
+  ['T_AUT_I3','Item 3','Visão estética refinada'],
+  ['T_AUT_I4','Item 4','Experiência completa'],
+  ['T_AUT_BTN','Botão','Agendar consulta'],
+ ]],
+ ['5. Depoimentos',[
+  ['T_DEP_TITLE','Título','O que as pacientes dizem depois da *experiência*','ta'],
+  ['T_DEP_SUB','Subtítulo','Mais do que resultados visíveis, a experiência com a {{NOME_CURTO}} é marcada por segurança, acolhimento e cuidado em cada detalhe.','ta'],
+  ['T_DEP_BTN','Botão','Quero viver essa experiência'],
+ ]],
+ ['6. Dúvidas frequentes',[
+  ['T_FAQ_TITLE','Título','Dúvidas Frequentes'],
+  ['T_FAQ_BTN','Botão','Quero agendar uma consulta'],
+ ]],
+ ['7. Experiência / espaço',[
+  ['T_EXP_TITLE','Título','Uma experiência pensada para você se sentir *segura* do início ao fim','ta'],
+  ['T_EXP_SUB','Subtítulo','Um ambiente premium pensado para oferecer conforto, privacidade e total acolhimento em cada etapa do seu atendimento.','ta'],
+  ['T_EXP_I1','Item 1','Recepção humanizada'],
+  ['T_EXP_I2','Item 2','Ambiente climatizado'],
+  ['T_EXP_I3','Item 3','Café premium'],
+  ['T_EXP_I4','Item 4','Privacidade total'],
+  ['T_EXP_BTN','Botão','Quero agendar uma consulta'],
+ ]],
+ ['8. Localização',[
+  ['T_LOC_TITLE','Título','Atendimento em *{{CIDADE_UF}}*','ta'],
+  ['T_LOC_MAPS','Botão do mapa','Ver rota no Google Maps'],
+  ['T_LOC_BTN','Botão principal','Agendar consulta'],
+ ]],
+ ['Rodapé &amp; WhatsApp',[
+  ['T_FOOT_LINKS','Título da coluna de links','Links Rápidos'],
+  ['T_FOOT_LOCAL','Link — localização','Localização'],
+  ['T_FOOT_CONTATO','Título da coluna de contato','Contato'],
+  ['T_FOOT_WA','Link — WhatsApp','WhatsApp'],
+  ['T_FOOT_IG','Link — Instagram','Instagram'],
+  ['T_FOOT_DISC','Aviso legal','Aviso: Os resultados podem variar de acordo com cada paciente e avaliação individual.','ta'],
+  ['T_FOOT_COPY','Copyright','© 2026 {{NOME}}. Todos os direitos reservados.'],
+  ['T_WPP','Balão do botão flutuante','Falar com especialista'],
+ ]]
+];
+const TXT_DEF={};
+TEXT_GROUPS.forEach(g=>g[1].forEach(it=>TXT_DEF[it[0]]=it[2]));
+/* *trecho* -> italico serifado */
+function emph(s){ return (s||'').replace(/\*([^*]+)\*/g,'<span class="serif-italic">$1</span>'); }
+function txt(k){
+  const v=(state.t[k]!==undefined && state.t[k]!=='') ? state.t[k] : (TXT_DEF[k]||'');
+  return emph(esc(v));
 }
 
 /* placeholder cinza pra imagem faltando */
@@ -317,7 +428,7 @@ function buildHTML(forExport){
     '                <div class="result-card'+hidden+'">\n'+
     '                    <img src="'+img+'" alt="'+esc(leg)+'" class="result-img" loading="lazy" decoding="async">\n'+
     '                    <p class="result-caption">'+esc(leg)+'</p>\n'+
-    '                    <a href="'+waLink('Olá, gostei do resultado de '+leg+'. Esse é meu caso!')+'" target="_blank" class="btn-minimalist">Esse é meu caso <i class="ph-bold ph-arrow-right"></i></a>\n'+
+    '                    <a href="'+waLink('Olá, gostei do resultado de '+leg+'. Esse é meu caso!')+'" target="_blank" class="btn-minimalist">'+txt('T_CASO_BTN')+' <i class="ph-bold ph-arrow-right"></i></a>\n'+
     '                </div>');
   }).join('\n');
   h = h.replace('<!--CASOS-->', casos);
@@ -333,8 +444,12 @@ function buildHTML(forExport){
     h = h.split(path).join(v);
   });
 
+  // textos editaveis das secoes (antes dos tokens derivados)
+  for(const k in TXT_DEF){ h = h.split('{{'+k+'}}').join(txt(k)); }
+
   // tokens derivados
   const map = {
+    WA_MSG: enc(state.f.WA_MSG || 'Olá, vim pelo site e gostaria de saber mais.'),
     NOME: esc(state.f.NOME), NOME_CURTO: esc(state.f.NOME_CURTO),
     WHATSAPP: (state.f.WHATSAPP||'').replace(/\D/g,''),
     BIO: esc(state.f.BIO), LOCAL_DESC: esc(state.f.LOCAL_DESC),
@@ -386,6 +501,25 @@ function renderImgSlots(){
     wrap.appendChild(row);
   });
 }
+
+function renderTextos(){
+  const P=document.getElementById('textosPanel'); P.innerHTML='';
+  TEXT_GROUPS.forEach(([titulo,items])=>{
+    const g=document.createElement('div'); g.className='tgrp'; g.innerHTML=titulo; P.appendChild(g);
+    items.forEach(([k,label,def,tipo])=>{
+      const l=document.createElement('label'); l.className='f'; l.textContent=label; P.appendChild(l);
+      const el=document.createElement(tipo==='ta'?'textarea':'input');
+      if(tipo!=='ta') el.type='text';
+      el.placeholder=def; el.value=state.t[k]||'';
+      el.addEventListener('input',e=>{ state.t[k]=e.target.value; refresh(); });
+      P.appendChild(el);
+    });
+  });
+}
+document.getElementById('btnResetTextos').onclick=()=>{
+  if(!confirm('Restaurar TODOS os textos das seções para o padrão?')) return;
+  state.t={}; renderTextos(); refresh(); toast('Textos restaurados');
+};
 
 function renderDesign(){
   // chips de tema
@@ -520,7 +654,7 @@ document.getElementById('loadInput').addEventListener('change',e=>{
   const r=new FileReader();
   r.onload=()=>{ try{
     const o=JSON.parse(r.result);
-    Object.assign(state.f,o.f||{}); state.images=o.images||{};
+    Object.assign(state.f,o.f||{}); state.t=o.t||{}; state.images=o.images||{};
     state.casos=o.casos||[]; state.dep=o.dep||[]; state.faq=o.faq||[]; state.esp=o.esp||[];
     if(o.design) Object.assign(state.design,o.design);
     hydrate(); toast('Projeto carregado');
@@ -539,16 +673,17 @@ document.querySelectorAll('.devs button').forEach(b=>b.onclick=()=>{
 function hydrate(){
   document.querySelectorAll('[data-f]').forEach(inp=>{ inp.value=state.f[inp.dataset.f]||''; });
   document.getElementById('slugEcho').textContent=state.f.SLUG||'slug';
-  renderDesign(); renderImgSlots(); renderCasos(); renderDep(); renderFaq(); renderEsp(); counters(); refresh();
+  renderTextos(); renderDesign(); renderImgSlots(); renderCasos(); renderDep(); renderFaq(); renderEsp(); counters(); refresh();
 }
 
 /* ---------- seed (exemplo daliene, editável) ---------- */
 function seed(){
   state.f={NOME:'Dra. Daliene Electo',NOME_CURTO:'Dra. Daliene',SLUG:'daliene',
-    WHATSAPP:'554989001311',INSTAGRAM:'@dra.daliene',ESPECIALIDADE:'Embelezamento facial natural',META_PIXEL:'',
+    WHATSAPP:'554989001311',INSTAGRAM:'@dra.daliene',ESPECIALIDADE:'Embelezamento facial natural',META_PIXEL:'',WA_MSG:'Olá, vim pelo site e gostaria de saber mais.',
     CIDADE_UF:'Chapecó — SC',ENDERECO:'Rua Exemplo, 123 - Sala 4 - Centro',
     BIO:'A Dra. Daliene Electo atua com harmonização facial e odontologia, unindo técnica, sensibilidade estética e planejamento individual para entregar resultados naturais e sofisticados.',
     LOCAL_DESC:'A Dra. Daliene Electo atende em Chapecó (SC), em um espaço pensado para oferecer conforto, privacidade e uma experiência premium desde a chegada.'};
+  state.t={};
   state.images={};
   state.casos=[{img:'',legenda:'Contorno facial'},{img:'',legenda:'Harmonia para homens'},{img:'',legenda:'Rejuvenescimento sutil'},{img:'',legenda:'Lábios naturais'}];
   state.dep=[{texto:'Profissional excepcional! Atendimento humanizado e resultado natural.',autor:'Sirlene Ferreira'},{texto:'Fiquei encantada, ficou melhor do que eu esperava.',autor:'Cliente satisfeita'}];

@@ -8,3 +8,5 @@ Thumbs.db
 # Temporários
 *.tmp
 *.log
+
+*.bak

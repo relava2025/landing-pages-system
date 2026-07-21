@@ -29,8 +29,12 @@ Gera uma LP por cliente, cada uma em um diretório do seu domínio:
 ## Editor visual (jeito principal — tipo WordPress)
 Abra **`editor.html`** no navegador (ou pelo site: `lp.gruposystemdigital.com.br/editor.html`).
 - Formulário à esquerda, preview da LP ao vivo à direita.
-- Seções: Identidade, **Design (cores/fontes/temas)**, Contato (com **Meta Pixel**),
-  Localização, Textos, Imagens, Casos, Depoimentos, FAQ e Espaço.
+- Seções: Identidade, **Design (cores/fontes/temas)**, Contato (com **Meta Pixel** e
+  mensagem do WhatsApp), Localização, Textos (bio & local), **✍️ Textos das seções
+  (63 campos: todos os títulos, botões, selos, itens e avisos da página)**,
+  Imagens, Casos, Depoimentos, FAQ e Espaço.
+- Em "Textos das seções", `*asteriscos*` viram itálico serifado, e os campos aceitam
+  `{{NOME}}`, `{{NOME_CURTO}}` e `{{CIDADE_UF}}`. Campo vazio = texto padrão.
 - Botões:
   - **Exportar index.html** → baixa `<slug>.html` (arquivo único, imagens embutidas, pixel incluso).
   - **Salvar projeto** → baixa `<slug>.json` (reeditável — reabra depois em "Abrir projeto").
@@ -57,8 +61,10 @@ python gerador/build_editor.py
 ```
 
 ## Tokens do template (referência)
-`{{NOME}}`, `{{NOME_CURTO}}`, `{{WHATSAPP}}`, `{{INSTAGRAM}}`, `{{ESPECIALIDADE}}`,
+`{{NOME}}`, `{{NOME_CURTO}}`, `{{WHATSAPP}}`, `{{WA_MSG}}`, `{{INSTAGRAM}}`, `{{ESPECIALIDADE}}`,
 `{{CIDADE_UF}}`, `{{ENDERECO}}`, `{{BIO}}`, `{{LOCAL_DESC}}`, `{{MAPS_LINK}}`, `{{MAPS_EMBED}}`
++ 63 tokens de texto `{{T_*}}` (ex.: `{{T_HERO_TITLE}}`, `{{T_MET_TAG}}`, `{{T_FOOT_COPY}}`),
+definidos em `TEXT_GROUPS` dentro de `_editor_shell.html`
 + marcadores de lista `<!--DEPOIMENTOS-->`, `<!--FAQ-->`, `<!--CASOS-->`, `<!--ESPACO-->`.
 O editor preenche tudo isso automaticamente. O antigo `gerador/build.py` (via `config.json`)
 continua para o fluxo por linha de comando, mas o editor é o caminho recomendado.
