@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Recebemos seus dados — System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+
+<script>
+/* ═══════════════════════════════════════════════
+   CONFIGURAÇÃO — só isso muda de cliente pra cliente
+   ═══════════════════════════════════════════════ */
+const CONFIG = {
+  whatsapp: "5511947510685",
+  mensagem: "Oi! Acabei de preencher o formulário.",
+  segundos: 3,
+  pixelId:  ""   // opcional: ID do Pixel para disparar Lead + Contact
+};
+</script>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F4F1EF;
+  --ink:#1E1B1A;
+  --soft:#6C6663;
+  --linha:#DFD9D5;
+  --zap:#0E7A3C;
+  --zap-hover:#0B6431;
+}
+html,body{height:100%}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Karla",system-ui,sans-serif;
+  font-size:17px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  display:flex;align-items:center;justify-content:center;
+  padding:32px 22px;text-align:center;
+}
+.wrap{width:100%;max-width:380px}
+
+.check{
+  width:56px;height:56px;border-radius:50%;
+  border:1.5px solid var(--zap);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 24px;
+}
+.check svg{width:26px;height:26px;stroke:var(--zap);stroke-width:2.2;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:30;stroke-dashoffset:30;
+  animation:risca .45s ease .2s forwards}
+@keyframes risca{to{stroke-dashoffset:0}}
+
+h1{font-size:26px;font-weight:700;line-height:1.2;letter-spacing:-.01em;margin-bottom:12px}
+.lead{color:var(--soft);font-size:16px;margin-bottom:28px}
+
+.cta{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;background:var(--zap);color:#fff;text-decoration:none;
+  font-weight:700;font-size:17px;padding:19px 20px;border-radius:6px;
+  transition:background .18s ease,transform .1s ease;
+}
+.cta:hover{background:var(--zap-hover)}
+.cta:active{transform:translateY(1px)}
+.cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.cta svg{width:21px;height:21px;flex-shrink:0;fill:currentColor}
+
+.contador{margin-top:14px;font-size:13px;color:var(--soft)}
+.barra{height:2px;background:var(--linha);border-radius:2px;margin-top:10px;overflow:hidden}
+.barra span{display:block;height:100%;width:100%;background:var(--soft);
+  transform-origin:left;animation:esvazia linear forwards}
+@keyframes esvazia{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+
+.aviso{margin-top:26px;padding-top:20px;border-top:1px solid var(--linha);
+  font-size:13px;color:var(--soft);line-height:1.5}
+
+.wrap>*{animation:sobe .5s cubic-bezier(.2,.7,.3,1) both}
+.wrap>*:nth-child(2){animation-delay:.06s}
+.wrap>*:nth-child(3){animation-delay:.12s}
+.wrap>*:nth-child(4){animation-delay:.18s}
+.wrap>*:nth-child(5){animation-delay:.24s}
+@keyframes sobe{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .check svg{stroke-dashoffset:0}
+  .barra span{transform:scaleX(0)}
+}
+</style>
+</head>
+<body>
+
+<main class="wrap">
+
+  <div class="check">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="4 12.5 9.5 18 20 6.5"/></svg>
+  </div>
+
+  <h1>Recebemos seus dados</h1>
+
+  <p class="lead">Estamos te levando para o WhatsApp para continuar o atendimento por lá.</p>
+
+  <div>
+    <a class="cta" id="botao" href="#">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5 4.5.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2"/></svg>
+      Abrir o WhatsApp
+    </a>
+    <p class="contador" id="contador" aria-live="polite"></p>
+    <div class="barra" aria-hidden="true"><span id="barra"></span></div>
+  </div>
+
+  <p class="aviso">Se o WhatsApp não abrir sozinho, toque no botão acima.</p>
+
+</main>
+
+<script>
+(function(){
+  var link = "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(CONFIG.mensagem);
+  var botao = document.getElementById("botao");
+  botao.href = link;
+
+  if (CONFIG.pixelId) {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+    (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', CONFIG.pixelId);
+    fbq('track', 'PageView');
+    fbq('track', 'Lead');
+    botao.addEventListener('click', function(){ fbq('track','Contact'); });
+  }
+
+  var restante = CONFIG.segundos;
+  var contador = document.getElementById("contador");
+  document.getElementById("barra").style.animationDuration = CONFIG.segundos + "s";
+
+  function pinta(){
+    contador.textContent = restante > 0 ? "Abrindo em " + restante + "s" : "Abrindo…";
+  }
+  pinta();
+
+  var t = setInterval(function(){
+    restante--; pinta();
+    if (restante <= 0){ clearInterval(t); window.location.href = link; }
+  }, 1000);
+
+  botao.addEventListener("click", function(){ clearInterval(t); });
+})();
+</script>
+
+</body>
+</html>
