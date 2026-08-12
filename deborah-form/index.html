@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Diagnóstico Estratégico — Cirurgiões da Face | System Digital</title>
+<meta name="description" content="R$ 940.241,84 em 30 dias com 47 consultas cirúrgicas. A engenharia comercial por trás do Instituto Déborah Caribé. Solicite seu Diagnóstico Estratégico.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050505; --bg-2:#0A0A0A; --surf:#101010; --surf-2:#151515;
+  --gold:#C9A45C; --gold-lt:#E8CE92; --gold-dk:#8A6B2E;
+  --white:#FFFFFF; --txt:#B7B4AE; --txt-2:#7E7B76;
+  --line:rgba(201,164,92,.30); --hair:rgba(255,255,255,.09);
+  --paper:#F7F6F3;
+  --f:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --m:"IBM Plex Mono",ui-monospace,monospace;
+  --pad:clamp(20px,5.5vw,56px); --maxw:1280px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;max-width:100%;overflow-x:hidden;overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--f);font-size:17px;font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;max-width:100%;overflow-x:hidden;overflow-x:clip}
+.hgrid>*,.kpis .w>*,.proof>*,.vs>*,.fp>*,.cases>*,.duo>*,.two>*,.stp>*,.calc-in>*,.cbar>*,.gap-row>*,.grid2>*,.opts>*,.mdl-foot>*{min-width:0}
+img{max-width:100%;display:block;height:auto}
+h1,h2,h3{font-family:var(--f);color:var(--white);margin:0;font-weight:800;letter-spacing:-.03em;line-height:1.04}
+h1{font-size:clamp(36px,6.2vw,74px)}
+h2{font-size:clamp(30px,4.6vw,54px);line-height:1.06}
+h3{font-size:clamp(20px,2.3vw,26px);letter-spacing:-.02em;line-height:1.2}
+p{margin:0 0 1.1em}
+b,strong{font-weight:700;color:#DFDCD6}
+.gd{color:var(--gold)}
+.w{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+.nrw{max-width:820px}
+.sec{padding:clamp(70px,9vw,140px) 0;position:relative}
+.sec--alt{background:var(--bg-2)}
+.eyebrow{display:block;font-family:var(--m);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+.lead{font-size:clamp(17.5px,1.9vw,20px);color:#CFCCC6;font-weight:400}
+.mut{color:var(--txt)}
+.num{font-family:var(--m);font-variant-numeric:tabular-nums}
+.hl{background:linear-gradient(180deg,transparent 62%,rgba(201,164,92,.22) 62%)}
+
+/* ---------- botões ---------- */
+.btn{display:inline-flex;align-items:center;gap:16px;background:var(--gold);color:#0A0A0A;font-family:var(--f);font-weight:800;font-size:clamp(15px,1.7vw,18px);letter-spacing:.02em;text-transform:uppercase;padding:22px 30px;border:0;border-radius:4px;text-decoration:none;cursor:pointer;transition:background .22s,transform .22s,box-shadow .22s;box-shadow:0 14px 40px rgba(201,164,92,.18);line-height:1.15;text-align:left}
+.btn:hover{background:var(--gold-lt);transform:translateY(-2px);box-shadow:0 18px 50px rgba(201,164,92,.3)}
+.btn:focus-visible{outline:2px solid var(--white);outline-offset:3px}
+.btn .ic{display:grid;place-items:center;width:34px;height:34px;border:1.5px solid rgba(10,10,10,.35);border-radius:4px;font-size:16px;flex:none;transition:transform .22s}
+.btn:hover .ic{transform:translateX(4px)}
+.btn--w{width:100%;justify-content:center}
+.under{display:block;font-family:var(--f);font-weight:700;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-top:18px}
+.fine{font-size:13px;color:var(--txt-2);margin-top:14px;line-height:1.5}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:clamp(70px,9vh,96px) 0 clamp(36px,5vh,60px);overflow:hidden;background:var(--bg)}
+.glow{position:absolute;border-radius:50%;pointer-events:none;filter:blur(60px)}
+.glow--1{right:-6%;top:6%;width:64vw;height:64vw;max-width:900px;max-height:900px;background:radial-gradient(circle,rgba(201,164,92,.20) 0%,rgba(201,164,92,.05) 42%,transparent 68%)}
+.glow--2{left:-14%;bottom:-18%;width:48vw;height:48vw;background:radial-gradient(circle,rgba(255,255,255,.05) 0%,transparent 66%)}
+.arcs{position:absolute;right:-4%;top:0;height:100%;width:58%;pointer-events:none;opacity:.32}
+.hero .w{position:relative;z-index:2;width:100%}
+.hgrid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(28px,4vw,64px);align-items:center}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:clamp(20px,3vh,36px)}
+.brand .mk{width:38px;height:38px;border:1.5px solid var(--gold);border-radius:6px;display:grid;place-items:center;font-weight:800;color:var(--gold);font-size:15px;letter-spacing:-.04em}
+.brand .tx{font-weight:800;letter-spacing:-.02em;color:var(--white);font-size:17px;line-height:1.1}
+.brand .tx span{display:block;font-family:var(--m);font-size:9px;letter-spacing:.24em;color:var(--txt-2);font-weight:400;margin-top:3px}
+.hero h1{max-width:15ch;font-size:clamp(30px,4.5vw,56px);line-height:1.03}
+.hero .lead{max-width:48ch;font-size:clamp(15.5px,1.5vw,17.5px);margin:clamp(16px,2.2vh,26px) 0 0}
+.hero .say{color:var(--gold);font-weight:700;max-width:44ch}
+.hcta{margin-top:clamp(20px,2.8vh,34px)}
+
+/* figura flutuante */
+.hfig{position:relative;display:flex;justify-content:center;align-items:flex-end;min-height:min(62vh,540px)}
+.hfig img.subj{position:relative;z-index:2;width:auto;max-width:min(34vw,430px);max-height:min(78vh,700px);filter:drop-shadow(-18px 30px 55px rgba(0,0,0,.9));animation:drift 10s ease-in-out infinite}
+@keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hname{position:absolute;left:0;bottom:12%;z-index:4;max-width:46%;padding-top:14px;border-top:1px solid var(--line)}
+.hname .n{font-weight:800;color:var(--white);font-size:clamp(16px,1.9vw,20px);letter-spacing:-.02em}
+.hname .r{display:block;font-family:var(--m);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:7px}
+
+/* ---------- faixa de números ---------- */
+.kpis{border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);background:var(--bg-2)}
+.kpis .w{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;padding-left:0;padding-right:0;background:var(--hair)}
+.kpi{background:var(--bg-2);padding:clamp(24px,3vw,34px) clamp(18px,2.4vw,30px)}
+.kpi .v{font-weight:800;font-size:clamp(20px,2.9vw,32px);color:var(--white);letter-spacing:-.03em;line-height:1}
+.kpi--gd .v{color:var(--gold)}
+.kpi .k{display:block;font-family:var(--m);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--txt-2);margin-top:12px;line-height:1.6}
+
+/* ---------- prova ---------- */
+.proof{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,4.5vw,64px);align-items:center;margin-top:clamp(34px,4vw,48px)}
+.frame{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#fff;box-shadow:0 26px 70px rgba(0,0,0,.7)}
+.cap{font-size:13px;color:var(--txt-2);margin-top:14px;line-height:1.55}
+.rows{display:grid}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:17px 0;border-bottom:1px solid var(--hair)}
+.row:first-child{border-top:1px solid var(--hair)}
+.row .k{font-size:15px;color:var(--txt)}
+.row .v{font-family:var(--m);font-size:clamp(16px,2vw,20px);color:#E6E3DD;white-space:nowrap}
+.row--hi{border-bottom:1px solid var(--line)}
+.row--hi .k{color:var(--white);font-weight:700}
+.row--hi .v{color:var(--gold);font-size:clamp(20px,2.7vw,27px);font-family:var(--f);font-weight:800;letter-spacing:-.03em}
+
+/* ---------- comparativo ---------- */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.6vw,26px);margin-top:clamp(34px,4vw,48px)}
+.vs-c{border:1px solid var(--hair);border-radius:6px;padding:clamp(22px,3vw,32px);background:var(--surf)}
+.vs-c.win{border-color:var(--line);background:linear-gradient(180deg,rgba(201,164,92,.09),rgba(201,164,92,.02))}
+.vs-t{font-family:var(--m);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--txt-2);margin-bottom:20px;display:block}
+.vs-c.win .vs-t{color:var(--gold)}
+.vs-l{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--hair);font-size:15px}
+.vs-l b{font-family:var(--m);font-weight:500;color:#E6E3DD}
+.vs-o{margin-top:20px;font-weight:800;font-size:clamp(22px,3.2vw,30px);color:var(--white);letter-spacing:-.03em}
+.vs-c.win .vs-o{color:var(--gold)}
+.vs-n{font-size:13.5px;color:var(--txt-2);margin-top:10px}
+
+/* ---------- FACE ---------- */
+.fnav{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:clamp(30px,4vw,44px);border-top:1px solid var(--hair)}
+.fb{background:none;border:0;border-top:2px solid transparent;margin-top:-1px;padding:24px 6px 18px;cursor:pointer;text-align:left;color:var(--txt-2);font-family:var(--f);transition:color .2s,border-color .2s}
+.fb .l{display:block;font-size:clamp(36px,6.5vw,62px);font-weight:800;line-height:.9;letter-spacing:-.05em;opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s,color .3s}
+.fb.seen .l{opacity:1;transform:none}
+.fb .t{display:block;font-family:var(--m);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;margin-top:12px;line-height:1.5}
+.fb:hover{color:#9C9994}
+.fb[aria-selected="true"]{border-top-color:var(--gold);color:var(--gold)}
+.fb[aria-selected="true"] .l{color:var(--gold)}
+.fb:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.fp{display:none;padding-top:clamp(26px,3.4vw,40px)}
+.fp.on{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(22px,4vw,54px);animation:fade .4s ease}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.ul{list-style:none;margin:0;padding:0;display:grid;gap:15px}
+.ul li{padding-left:24px;position:relative;font-size:16px}
+.ul li::before{content:"";position:absolute;left:0;top:11px;width:10px;height:2px;background:var(--gold);border-radius:2px}
+.ul b{color:var(--white);font-weight:700}
+.out{border-left:2px solid var(--gold);padding-left:20px;margin-top:24px;color:#DFDCD6;font-size:15.5px}
+.out span{display:block;font-family:var(--m);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+
+/* ---------- cases ---------- */
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hair);border:1px solid var(--hair);border-radius:6px;overflow:hidden;margin-top:clamp(30px,4vw,44px)}
+.case{background:var(--bg);padding:clamp(22px,2.8vw,30px);transition:background .3s}
+.case:hover{background:var(--surf)}
+.case .n{font-weight:800;color:var(--white);font-size:19px;letter-spacing:-.02em}
+.case .s{display:block;font-family:var(--m);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--txt-2);margin:8px 0 20px}
+.case .mv{display:flex;align-items:baseline;gap:10px;font-weight:800;letter-spacing:-.03em}
+.case .mv .a{color:var(--txt-2);font-size:17px}
+.case .mv .b{color:var(--gold);font-size:clamp(22px,2.6vw,26px)}
+.case .bar{height:3px;background:rgba(255,255,255,.08);margin-top:16px;border-radius:2px;overflow:hidden}
+.case .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,rgba(201,164,92,.35),var(--gold));transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+.case.seen .bar i{width:var(--p,70%)}
+.case .o{font-size:13.5px;color:var(--txt-2);margin-top:14px;line-height:1.5}
+
+/* ---------- dupla ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,32px);margin-top:clamp(30px,4vw,44px)}
+.who{border:1px solid var(--hair);border-radius:6px;padding:clamp(24px,3vw,34px);background:var(--surf)}
+.who .r{display:block;font-family:var(--m);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.who .m{display:block;font-weight:800;color:var(--gold);font-size:clamp(17px,2.1vw,21px);letter-spacing:-.02em;margin:12px 0 16px}
+.who p{margin:0;font-size:15.8px}
+
+/* ---------- filtro ---------- */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.6vw,28px);margin-top:clamp(30px,4vw,44px)}
+.cl{padding:clamp(24px,3vw,34px);border-radius:6px}
+.cl--y{background:var(--surf);border:1px solid var(--line)}
+.cl--n{background:rgba(255,255,255,.02);border:1px solid var(--hair)}
+.cl-h{font-family:var(--m);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;padding-bottom:16px;margin-bottom:22px;border-bottom:1px solid var(--hair)}
+.cl--y .cl-h{color:var(--gold)}
+.cl--n .cl-h{color:var(--txt-2)}
+.cl ul{list-style:none;margin:0;padding:0;display:grid;gap:15px}
+.cl li{padding-left:27px;position:relative;font-size:15.6px;line-height:1.55}
+.cl--n li{color:var(--txt-2)}
+.cl li::before{position:absolute;left:0;top:0;font-family:var(--m);font-size:13px}
+.cl--y li::before{content:"✓";color:var(--gold)}
+.cl--n li::before{content:"✕";color:rgba(255,255,255,.25)}
+.cl b{color:var(--white)}
+.cl--n b{color:#9C9994}
+
+/* ---------- etapas ---------- */
+.stp{display:grid;grid-template-columns:120px 1fr;gap:clamp(16px,3vw,36px);padding:30px 0;border-top:1px solid var(--hair)}
+.stp:last-of-type{border-bottom:1px solid var(--hair)}
+.stp .n{font-family:var(--m);font-size:11.5px;letter-spacing:.18em;color:var(--gold);padding-top:7px}
+.stp p{margin:10px 0 0;font-size:16.2px}
+.note{margin-top:34px;border-left:2px solid var(--gold);background:rgba(201,164,92,.07);padding:22px 26px;border-radius:0 6px 6px 0;font-size:16.2px}
+.note b{color:var(--white)}
+
+/* ---------- faq ---------- */
+.faq{margin-top:clamp(26px,3.4vw,38px);border-top:1px solid var(--hair)}
+details{border-bottom:1px solid var(--hair)}
+summary{cursor:pointer;list-style:none;padding:24px 44px 24px 0;position:relative;font-weight:700;font-size:clamp(17px,1.9vw,20px);color:var(--white);letter-spacing:-.02em}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:4px;top:22px;color:var(--gold);font-size:22px;font-weight:400}
+details[open] summary::after{content:"−"}
+details p{padding-bottom:26px;margin:0;max-width:70ch;font-size:16.2px}
+summary:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* ---------- form ---------- */
+.ahead{text-align:center;max-width:60ch;margin:0 auto clamp(32px,4vw,46px)}
+.tagline{display:inline-block;font-family:var(--m);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line);background:rgba(201,164,92,.08);padding:10px 16px;border-radius:3px;margin-bottom:24px}
+label .op{font-weight:400;color:#7A7A7A;font-size:13px}
+.alert.on{display:block}
+
+/* ---------- fechamento ---------- */
+.end{text-align:center}
+.end .nrw{margin:0 auto}
+.end .kick{font-weight:800;color:var(--white);font-size:clamp(24px,3.6vw,40px);letter-spacing:-.03em;line-height:1.12;margin:30px 0}
+footer{border-top:1px solid var(--hair);padding:40px 0 130px;font-size:12.5px;color:var(--txt-2);background:var(--bg)}
+footer .w{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+footer a{color:#8E8B86;text-decoration:none}
+footer a:hover{color:var(--gold)}
+.legal{max-width:72ch;margin-top:14px;line-height:1.6;font-size:11.5px;color:#5E5B57}
+
+/* visor do extrato em tela cheia */
+.frame{position:relative;cursor:zoom-in}
+.zoom{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.96);overflow:auto;-webkit-overflow-scrolling:touch;padding:64px 16px 32px;text-align:center}
+.zoom img{width:min(1200px,240vw);max-width:none;margin:0 auto;border-radius:4px}
+.zoom-x{position:fixed;top:16px;right:16px;width:44px;height:44px;border-radius:50%;border:1px solid var(--hair);background:rgba(255,255,255,.08);color:var(--white);font-size:20px;cursor:pointer;z-index:2}
+.zoom-hint{position:fixed;left:0;right:0;top:26px;font-family:var(--m);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--txt-2);pointer-events:none}
+
+/* ---------- calculadora ---------- */
+.calc{margin-top:clamp(24px,3vw,34px);border:1px solid var(--line);border-radius:8px;padding:clamp(24px,3.4vw,40px);background:linear-gradient(180deg,rgba(201,164,92,.07),rgba(201,164,92,.015))}
+.calc h3{margin:6px 0 8px}
+.calc-sub{font-size:15px;color:var(--txt-2);margin:0 0 26px;max-width:60ch}
+.calc-in{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.calc-in label{display:block;font-size:13.5px;font-weight:700;color:#DFDCD6;margin-bottom:9px}
+.calc-in input{width:100%;font-family:var(--m);font-size:clamp(18px,2.4vw,22px);color:var(--white);background:#0B0B0B;border:1px solid var(--hair);border-radius:6px;padding:16px 18px;transition:border-color .2s,box-shadow .2s}
+.calc-in input::placeholder{color:#4A4845}
+.calc-in input:focus{outline:0;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,164,92,.16)}
+.calc-out{margin-top:30px;padding-top:28px;border-top:1px solid var(--line)}
+.calc-lbl{display:block;font-family:var(--m);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.calc-big{font-weight:800;font-size:clamp(34px,6vw,60px);color:var(--white);letter-spacing:-.04em;line-height:1.05;margin-top:10px}
+.calc-bars{margin-top:26px;display:grid;gap:16px}
+.cbar{display:grid;grid-template-columns:130px 1fr auto;gap:14px;align-items:center}
+.cb-k{font-size:13px;color:var(--txt-2)}
+.cb-t{height:10px;background:rgba(255,255,255,.06);border-radius:6px;overflow:hidden}
+.cb-t i{display:block;height:100%;width:0;border-radius:6px;background:#4E4B47;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.cbar.hi .cb-t i{background:linear-gradient(90deg,rgba(201,164,92,.5),var(--gold))}
+.cb-v{font-family:var(--m);font-size:14px;color:#DFDCD6;white-space:nowrap}
+.cbar.hi .cb-v{color:var(--gold)}
+.gap{margin-top:28px;border-top:1px solid var(--hair)}
+.gap-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid var(--hair);font-size:15px;color:var(--txt)}
+.gap-row b{font-family:var(--m);font-size:clamp(16px,2vw,19px);color:#E6E3DD;white-space:nowrap}
+.gap-row.hi b{color:var(--gold);font-family:var(--f);font-weight:800;letter-spacing:-.03em;font-size:clamp(18px,2.4vw,23px)}
+.calc-note{font-size:13.5px;color:var(--txt-2);margin:20px 0 0;line-height:1.6;max-width:70ch}
+.calc-cta{margin-top:26px}
+@media (max-width:660px){.calc-in{grid-template-columns:1fr}.cbar{grid-template-columns:1fr;gap:7px}.cb-v{text-align:right}}
+
+/* ---------- modal de aplicação ---------- */
+.mdl{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:clamp(0px,3vw,28px)}
+.mdl[hidden]{display:none}
+.mdl-bg{position:absolute;inset:0;background:rgba(0,0,0,.86);backdrop-filter:blur(6px)}
+.mdl-box{position:relative;z-index:1;width:100%;max-width:760px;max-height:94vh;display:flex;flex-direction:column;background:#0C0C0C;border:1px solid rgba(255,255,255,.10);border-radius:22px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.9);animation:pop .3s cubic-bezier(.2,.8,.2,1)}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.99)}to{opacity:1;transform:none}}
+.mdl-x{position:absolute;right:18px;top:18px;z-index:3;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.06);color:#B7B4AE;font-size:22px;line-height:1;cursor:pointer;transition:background .2s,color .2s}
+.mdl-x:hover{background:rgba(255,255,255,.12);color:#fff}
+.mdl-head{padding:clamp(26px,3.4vw,34px) clamp(22px,3.4vw,38px) 20px;border-bottom:1px solid rgba(255,255,255,.08);background:transparent}
+.prog{height:4px;background:rgba(255,255,255,.09);border-radius:4px;overflow:hidden;margin-top:6px}
+.prog i{display:block;height:100%;width:25%;border-radius:4px;background:var(--gold);transition:width .45s cubic-bezier(.2,.8,.2,1)}
+.stepnav{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;list-style:none;margin:22px 0 0;padding:0}
+.stepnav li{display:flex;align-items:center;gap:11px;font-size:15px;color:#6E6B67;min-width:0;transition:color .25s}
+.stepnav li span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.stepnav .n{flex:none;width:30px;height:30px;border-radius:50%;background:#1B1B1B;color:#7E7B76;display:grid;place-items:center;font-weight:700;font-size:13.5px;transition:background .25s,color .25s}
+.stepnav li.on{color:var(--white);font-weight:700}
+.stepnav li.on .n{background:var(--gold);color:#0A0A0A}
+.stepnav li.ok{color:#8E8B86}
+.stepnav li.ok .n{background:rgba(201,164,92,.22);color:var(--gold)}
+.mdl-meta{display:flex;justify-content:space-between;gap:12px;margin-top:18px;font-size:14px;color:#6E6B67}
+.mdl-body{padding:clamp(24px,3.4vw,38px);overflow-y:auto;flex:1}
+.fstep{display:none}
+.fstep.on{display:block;animation:pop .3s ease}
+.stp-eyebrow{display:block;font-weight:800;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.fstep h3{margin-bottom:12px;font-size:clamp(24px,3.2vw,34px);letter-spacing:-.03em;line-height:1.12}
+.stp-sub{font-size:16.5px;color:#8E8B86;margin:0 0 30px;max-width:62ch;line-height:1.5}
+.q{margin-bottom:28px}
+.q:last-child{margin-bottom:0}
+.q-t,.q label{display:block;font-size:15.5px;font-weight:700;color:#E6E3DD;margin-bottom:6px;line-height:1.42}
+.q-h{font-size:13.5px;color:var(--txt-2);margin:0 0 12px}
+.q .op{font-weight:400;color:var(--txt-2);font-size:13px}
+.q.bad .q-t,.q.bad label{color:#E08B72}
+.q.bad .opts{outline:1px solid rgba(224,139,114,.45);outline-offset:8px;border-radius:6px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.opts.one{grid-template-columns:1fr}
+.opt{position:relative;display:block;cursor:pointer}
+.opt input{position:absolute;opacity:0;width:0;height:0}
+.opt span{display:flex;align-items:center;gap:15px;border:1px solid rgba(255,255,255,.13);border-radius:14px;padding:21px 22px;font-size:16.5px;font-weight:600;color:#DFDCD6;background:transparent;transition:border-color .2s,background .2s,color .2s;min-height:66px}
+.opt span::before{content:"";flex:none;width:21px;height:21px;border-radius:50%;border:1.5px solid #55524E;transition:border-color .2s,background .2s,box-shadow .2s}
+.opt:hover span{border-color:rgba(201,164,92,.5);color:var(--white)}
+.opt:hover span::before{border-color:var(--gold)}
+.opt input:focus-visible+span{outline:2px solid var(--gold);outline-offset:3px}
+.opt input:checked+span{border-color:var(--gold);background:rgba(201,164,92,.10);color:var(--white)}
+.opt input:checked+span::before{border-color:var(--gold);background:var(--gold);box-shadow:inset 0 0 0 4.5px #0C0C0C}
+.opt span em{display:block;font-style:normal;font-weight:400;font-size:13.5px;color:#8E8B86;margin-top:4px;line-height:1.35}
+.opt input:checked+span em{color:var(--gold)}
+.mdl input[type=text],.mdl input[type=email],.mdl input[type=tel],.mdl input[type=number],.mdl textarea{
+  width:100%;font-family:var(--f);font-size:16px;color:var(--white);background:#0F0F0F;border:1px solid var(--hair);border-radius:6px;padding:15px 16px;transition:border-color .2s,box-shadow .2s}
+.mdl textarea{min-height:104px;resize:vertical;line-height:1.55}
+.mdl input::placeholder,.mdl textarea::placeholder{color:#4A4845}
+.mdl input:focus,.mdl textarea:focus{outline:0;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,164,92,.16)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid2 label{margin-top:0}
+.tip{display:none;margin-top:14px;padding:14px 16px;border-left:2px solid var(--gold);background:rgba(201,164,92,.09);color:var(--txt);font-size:14px;line-height:1.55;border-radius:0 6px 6px 0}
+.tip.on{display:block;animation:pop .28s ease}
+.alert{display:none;margin-top:20px;padding:14px 16px;border-radius:6px;background:rgba(224,139,114,.1);border:1px solid rgba(224,139,114,.35);color:#E08B72;font-size:14.5px}
+.alert.on{display:block}
+.mdl-foot{display:flex;align-items:center;gap:14px;padding:20px clamp(22px,3.4vw,38px) 24px;background:transparent;flex-wrap:wrap}
+.mdl-foot .btn{margin-left:auto;padding:19px 34px;font-size:15px;border-radius:999px;box-shadow:0 12px 34px rgba(201,164,92,.2)}
+.mdl-foot .btn .ic{width:auto;height:auto;border:0;font-size:17px}
+.bk{background:none;border:0;color:#8E8B86;font-family:var(--f);font-size:16px;font-weight:600;cursor:pointer;padding:10px 4px}
+.bk:hover{color:var(--white)}
+.secure{display:flex;align-items:center;gap:10px;font-size:14.5px;color:#8E8B86;line-height:1.3;margin-top:30px}
+.secure svg{flex:none;color:var(--gold)}
+.done{text-align:center;padding:30px 0}
+.done h3{color:var(--white);margin-bottom:12px}
+.done p{color:var(--txt);max-width:46ch;margin:0 auto}
+.done .mk{width:58px;height:58px;border-radius:50%;border:1.5px solid var(--gold);color:var(--gold);display:grid;place-items:center;margin:0 auto 22px;font-size:24px}
+@media (max-width:660px){
+  .mdl{padding:0}
+  .mdl-box{max-width:none;max-height:100vh;height:100vh;border:0;border-radius:0}
+  .opts{grid-template-columns:1fr}
+  .grid2{grid-template-columns:1fr}
+  .stepnav li span:last-child{display:none}
+  .stepnav{grid-template-columns:repeat(4,auto);justify-content:start;gap:12px}
+  .mdl-foot .btn{flex:1;min-width:150px}
+}
+
+/* barra fixa com entrada suave */
+/* barra fixa de ação — todas as telas */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:70;padding:12px var(--pad) calc(12px + env(safe-area-inset-bottom));background:rgba(5,5,5,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);transform:translateY(115%);transition:transform .35s cubic-bezier(.2,.8,.2,1);box-shadow:0 -18px 50px rgba(0,0,0,.6)}
+.bar.up{transform:none}
+.bar-in{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:20px}
+.bar-tx{flex:1;min-width:0;line-height:1.35}
+.bar-tx .t{display:block;font-weight:800;color:var(--white);font-size:15.5px;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-tx .s{display:block;font-family:var(--m);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-top:5px}
+.bar .btn{padding:16px 26px;font-size:14px;flex:none}
+.bar .btn .ic{width:28px;height:28px;font-size:14px}
+@media (max-width:660px){
+  .bar-tx{display:none}
+  .bar .btn{width:100%;justify-content:space-between;flex:1}
+}
+
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv,.fb .l{opacity:1;transform:none;transition:none}.hfig img.subj{animation:none}.fp.on{animation:none}.case .bar i{transition:none}}
+
+/* telas de pouca altura: tudo cabe na primeira dobra */
+@media (min-width:1001px) and (max-height:860px){
+  .hero{padding:76px 0 32px}
+  .hero h1{font-size:clamp(28px,3.5vw,44px)}
+  .hero .lead{font-size:16px;margin-top:14px}
+  .hero .lead:last-of-type{display:none}
+  .brand{margin-bottom:18px}
+  .hcta{margin-top:20px}
+  .btn{padding:18px 26px}
+  .hero .fine{margin-top:10px}
+}
+
+@media (max-width:1000px){
+  .hgrid,.proof,.vs,.duo,.two{grid-template-columns:1fr}
+  .fp.on{grid-template-columns:1fr;gap:20px}
+  .cases{grid-template-columns:1fr 1fr}
+  .hero{min-height:0;padding-top:64px}
+  .hgrid{gap:24px}
+  .hfig{min-height:0;margin-top:22px;order:2}
+  .hname{position:static;max-width:none;text-align:center;border-top:0;padding-top:0;margin-bottom:10px}
+  .hfig img.subj{max-width:min(330px,64%);max-height:none}
+  .kpis .w{grid-template-columns:1fr 1fr}
+}
+@media (max-width:660px){
+  body{font-size:16.5px}
+  .cap::before{content:"Toque na imagem para ampliar. ";color:var(--gold)}
+  .cases{grid-template-columns:1fr}
+  .stp{grid-template-columns:1fr;gap:4px}
+  .stp .n{padding-top:0}
+  .hcta .btn{width:100%;justify-content:space-between}
+  .fnav{gap:4px}
+  .fb{padding:18px 4px 14px}
+}
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1691062848788552');
+fbq('track', 'PageView');
+</script>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<noscript><img height="1" width="1" style="display:none" alt=""
+src="https://www.facebook.com/tr?id=1691062848788552&ev=PageView&noscript=1"/></noscript>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="glow glow--1"></div>
+  <div class="glow glow--2"></div>
+  <svg class="arcs" viewBox="0 0 600 900" fill="none" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+    <g stroke="url(#g1)" stroke-width="1" fill="none">
+      <path d="M600 120 L420 120 Q380 120 360 150 L250 320 Q235 345 200 345 L-40 345"/>
+      <path d="M600 210 L455 210 Q420 210 402 238 L292 408 Q276 434 242 434 L-40 434"/>
+      <path d="M600 300 L490 300 Q455 300 437 328 L330 496 Q314 522 280 522 L-40 522"/>
+      <path d="M600 690 L430 690 Q396 690 378 662 L280 512"/>
+    </g>
+    <defs>
+      <linearGradient id="g1" x1="600" y1="0" x2="0" y2="900" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#C9A45C" stop-opacity=".65"/>
+        <stop offset="1" stop-color="#C9A45C" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <div class="w">
+    <div class="hgrid">
+      <div>
+        <div class="brand">
+          <div class="mk">SD</div>
+          <div class="tx">System Digital<span>Estruturação comercial médica</span></div>
+        </div>
+
+        <h1>R$ 940 mil em 30 dias com <span class="gd">47 consultas</span> cirúrgicas.</h1>
+
+        <p class="lead">Este é o fechamento de julho do Instituto Déborah Caribé. Não veio de mais anúncio, mais volume ou mais horas de consultório.</p>
+        <p class="lead say">Veio da engenharia comercial que faz cada consulta valer R$ 20.005 em vez de R$ 900.</p>
+        <p class="lead">Se você já opera com agenda cheia e o faturamento não sai do lugar, o gargalo não está na captação — está no que acontece depois que o paciente senta na sua frente.</p>
+
+        <div class="hcta">
+          <a class="btn" href="#aplicar" data-open>Solicitar meu diagnóstico <span class="ic">→</span></a>
+          <span class="under">Aplicação confidencial · Vagas por região</span>
+          <p class="fine">Analisamos região, agenda e viabilidade antes de liberar a sessão. Nem todo perfil é aprovado.</p>
+        </div>
+      </div>
+
+      <figure class="hfig rv">
+        <figcaption class="hname">
+          <div class="n">Dra. Déborah Caribé</div>
+          <span class="r">Instituto Déborah Caribé · Jul 2026</span>
+        </figcaption>
+        <img class="subj" width="700" height="1212" fetchpriority="high" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Dra. Déborah Caribé, cirurgiã da face">
+      </figure>
+    </div>
+  </div>
+</header>
+
+<!-- ============ KPIs ============ -->
+<div class="kpis">
+  <div class="w">
+    <div class="kpi"><div class="v num">R$ 940.241,84</div><span class="k">Vendido no mês</span></div>
+    <div class="kpi"><div class="v num">R$ 498.256,22</div><span class="k">Entrada em caixa</span></div>
+    <div class="kpi"><div class="v num">47</div><span class="k">Consultas cirúrgicas</span></div>
+    <div class="kpi kpi--gd"><div class="v num">R$ 20.005,14</div><span class="k">Gerado por consulta</span></div>
+  </div>
+</div>
+
+<!-- ============ A CONTA ============ -->
+<section class="sec">
+  <div class="w">
+    <div class="nrw">
+      <span class="eyebrow">A conta por trás do número</span>
+      <h2 class="rv">Agora faça a mesma conta<br>com os <span class="gd">seus</span> números.</h2>
+      <p class="lead rv" style="margin-top:24px">Pegue o faturamento do mês passado e divida pelo número de consultas que você realizou. O resultado é o único indicador que expõe, em um único número, se o seu problema é captação ou conversão — e ele costuma revelar uma distância que ninguém na clínica tinha percebido.</p>
+    </div>
+
+    <div class="vs">
+      <div class="vs-c rv">
+        <span class="vs-t">Operação por volume</span>
+        <div class="vs-l"><span>Consultas no mês</span><b>20</b></div>
+        <div class="vs-l"><span>Taxa de fechamento</span><b>30%</b></div>
+        <div class="vs-l"><span>Ticket médio</span><b>R$ 3.000</b></div>
+        <div class="vs-l"><span>Faturamento</span><b>R$ 18.000</b></div>
+        <div class="vs-o">R$ 900 por consulta</div>
+        <p class="vs-n">Para chegar a R$ 100 mil neste modelo seriam necessárias cerca de 111 consultas por mês. Não existe agenda que comporte.</p>
+      </div>
+      <div class="vs-c win rv">
+        <span class="vs-t">Operação por valor</span>
+        <div class="vs-l"><span>Consultas no mês</span><b>47</b></div>
+        <div class="vs-l"><span>Taxa de fechamento</span><b>alta e medida</b></div>
+        <div class="vs-l"><span>Ticket médio</span><b>alta complexidade</b></div>
+        <div class="vs-l"><span>Vendido no mês</span><b>R$ 940.241,84</b></div>
+        <div class="vs-o">R$ 20.005 por consulta</div>
+        <p class="vs-n">Mesma cadeira, mesmo cirurgião, mesma hora de consultório. Mudou quem senta na frente dele e o que acontece durante os 50 minutos.</p>
+      </div>
+    </div>
+
+    <div class="calc rv" id="calc">
+      <span class="eyebrow" style="margin-bottom:0">Faça a sua conta agora</span>
+      <h3>O seu valor gerado por consulta</h3>
+      <p class="calc-sub">Use os números do mês passado. A conta acontece no seu navegador — nada é enviado enquanto você não aplicar.</p>
+
+      <div class="calc-in">
+        <div>
+          <label for="cFat">Faturamento do mês passado</label>
+          <input id="cFat" type="text" inputmode="numeric" autocomplete="off" placeholder="R$ 0">
+        </div>
+        <div>
+          <label for="cCon">Consultas realizadas no mês</label>
+          <input id="cCon" type="text" inputmode="numeric" autocomplete="off" placeholder="0">
+        </div>
+      </div>
+
+      <div class="calc-out" id="calcOut" hidden>
+        <span class="calc-lbl">O seu valor gerado por consulta</span>
+        <div class="calc-big" id="cVal">R$ 0,00</div>
+
+        <div class="calc-bars">
+          <div class="cbar"><span class="cb-k">Sua clínica</span><div class="cb-t"><i id="cbMine"></i></div><span class="cb-v" id="cbMineV">—</span></div>
+          <div class="cbar hi"><span class="cb-k">Operação por valor</span><div class="cb-t"><i id="cbRef"></i></div><span class="cb-v">R$ 20.005</span></div>
+        </div>
+
+        <div class="gap">
+          <div class="gap-row"><span>Mesmo volume de consultas, a R$ 20.005 cada</span><b id="cPot">—</b></div>
+          <div class="gap-row hi"><span>Diferença por mês</span><b id="cDifM">—</b></div>
+          <div class="gap-row hi"><span>Diferença em 12 meses</span><b id="cDifA">—</b></div>
+        </div>
+
+        <p class="calc-note" id="cNote"></p>
+        <div class="calc-cta"><button class="btn" type="button" id="cCta" data-open>Levar esses números para o diagnóstico <span class="ic">→</span></button></div>
+      </div>
+    </div>
+
+    <div class="proof">
+      <div class="rv">
+        <div class="frame" data-zoom><img width="900" height="569" loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Dashboard financeiro do Instituto Déborah Caribé — julho de 2026"></div>
+        <p class="cap">Extrato do sistema de gestão da clínica, fechamento de julho/2026. Nenhum dado editado.</p>
+      </div>
+      <div class="rv">
+        <span class="eyebrow">Onde o dinheiro está vazando hoje</span>
+        <h3>Não é falta de demanda. É vazamento.</h3>
+        <p class="mut" style="margin-top:16px">O lead pergunta <b>“quanto custa?”</b>, a equipe responde com o preço e o paciente some. A consulta acontece, o paciente elogia a sua avaliação e sai dizendo que <b>“vai pensar”</b> — e não volta. Você tem 20 consultas no mês e fecha 6, e ninguém na clínica sabe explicar por que os outros 14 não fecharam. E o concorrente tecnicamente inferior cobra o triplo, com fila de espera.</p>
+        <p class="mut">Nenhum desses é problema de marketing. Todos são ausência de arquitetura comercial — a camada que separa uma clínica de R$ 900 por consulta de uma clínica de R$ 20.000 por consulta.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ FACE ============ -->
+<section class="sec sec--alt">
+  <div class="w">
+    <div class="nrw">
+      <span class="eyebrow">A metodologia</span>
+      <h2 class="rv">Quatro camadas.<br>Instaladas nesta ordem.</h2>
+      <p class="lead rv" style="margin-top:22px">Não é curso de marketing médico e não é gestão de tráfego. É a instalação de uma estrutura comercial completa dentro da clínica que você já tem — na sequência em que cada camada sustenta a próxima.</p>
+    </div>
+
+    <div class="fnav" role="tablist" aria-label="Pilares da metodologia">
+      <button class="fb" role="tab" aria-selected="true" data-p="f"><span class="l">F</span><span class="t">Fontes de<br>captação</span></button>
+      <button class="fb" role="tab" aria-selected="false" data-p="a"><span class="l">A</span><span class="t">Autoridade e<br>posicionamento</span></button>
+      <button class="fb" role="tab" aria-selected="false" data-p="c"><span class="l">C</span><span class="t">Conversão e<br>precificação</span></button>
+      <button class="fb" role="tab" aria-selected="false" data-p="e"><span class="l">E</span><span class="t">Equipe e<br>entrega</span></button>
+    </div>
+
+    <div class="fp on" id="p-f" role="tabpanel">
+      <div><h3>Fontes de captação</h3><p class="mut" style="margin-top:12px">Paciente de alta complexidade não chega por um canal só — e depender de indicação é depender de sorte com atraso.</p></div>
+      <div>
+        <ul class="ul">
+          <li><b>Múltiplas fontes ativas.</b> Tráfego, social selling, indicação estruturada e reativação de base operando ao mesmo tempo, cada uma com meta própria.</li>
+          <li><b>Reativação da base parada.</b> A carteira de leads que a clínica já pagou para adquirir e nunca mais tocou — normalmente a primeira receita do processo.</li>
+          <li><b>Filtro na origem.</b> A captação é calibrada para o perfil que opera, não para o que pede desconto. Menos lead, mais consulta cirúrgica.</li>
+          <li><b>Programa de indicação com processo.</b> Deixa de ser espontâneo e passa a ter gatilho, script e acompanhamento.</li>
+        </ul>
+        <div class="out"><span>O que muda</span>A agenda para de oscilar. Você deixa de descobrir no dia 20 que o mês vai ser ruim.</div>
+      </div>
+    </div>
+
+    <div class="fp" id="p-a" role="tabpanel">
+      <div><h3>Autoridade e posicionamento</h3><p class="mut" style="margin-top:12px">Nenhum paciente Classe A paga alta complexidade a um cirurgião que se comunica como um cirurgião de R$ 3.000.</p></div>
+      <div>
+        <ul class="ul">
+          <li><b>Território técnico definido.</b> Você deixa de ser “cirurgião plástico” e passa a ser a referência inequívoca em um procedimento e um perfil de paciente.</li>
+          <li><b>Linha editorial de autoridade.</b> Perfil, conteúdo e prova visual construídos para o padrão de decisão da alta renda — que avalia por confiança, não por preço.</li>
+          <li><b>Coerência em todos os pontos de contato.</b> Recepção, site, contrato, pós-operatório, tom de voz da equipe. Um único ponto amador derruba o valor percebido da operação inteira.</li>
+          <li><b>Prova social calibrada.</b> Resultados cirúrgicos transformados em ativos que justificam preço, dentro dos limites éticos da especialidade.</li>
+        </ul>
+        <div class="out"><span>O que muda</span>O paciente chega à consulta já convencido de quem você é. A conversa deixa de ser sobre convencimento e passa a ser sobre indicação e data.</div>
+      </div>
+    </div>
+
+    <div class="fp" id="p-c" role="tabpanel">
+      <div><h3>Conversão e precificação</h3><p class="mut" style="margin-top:12px">O ponto onde está o dinheiro. E onde quase toda clínica improvisa.</p></div>
+      <div>
+        <ul class="ul">
+          <li><b>Pré-venda antes da consulta.</b> Ligação de qualificação em etapas, termômetro de prioridade, alinhamento de investimento e pactos anti-no-show. Você para de gastar 50 minutos com quem nunca teve intenção de operar.</li>
+          <li><b>Condução completa da consulta.</b> Conexão, investigação, implicação, apresentação com prova, ancoragem de valor antes do preço, pergunta de compra e fechamento com sinal na hora.</li>
+          <li><b>Engenharia de precificação.</b> Reconstrução da oferta cirúrgica em protocolo completo, escada de valor e preço definido por margem — não pelo que o colega da esquina cobra.</li>
+          <li><b>Transição de preço sem perda de base.</b> Cronograma de migração de ticket e política clara de desconto, para o preço parar de ser decidido no calor da consulta.</li>
+        </ul>
+        <div class="out"><span>O que muda</span>Taxa de fechamento medida semana a semana e ticket que sobe sem derrubar conversão — porque a oferta subiu junto.</div>
+      </div>
+    </div>
+
+    <div class="fp" id="p-e" role="tabpanel">
+      <div><h3>Equipe e entrega</h3><p class="mut" style="margin-top:12px">Se a estrutura depende de você estar presente, você não construiu um negócio. Construiu um turno.</p></div>
+      <div>
+        <ul class="ul">
+          <li><b>Time comercial treinado.</b> Secretária, SDR ou pré-vendas com script, rotina e meta — não com boa vontade.</li>
+          <li><b>Rotina de gestão instalada.</b> Daily, treinamento semanal, retrospectiva e reunião mensal de números. Performance passa a ser gerenciada, não torcida.</li>
+          <li><b>Dados e painel de funil.</b> Lead, agendamento, comparecimento, fechamento, ticket e receita em um só lugar. Você decide por dado, não por sensação.</li>
+          <li><b>Experiência de entrega premium.</b> O pós-operatório que sustenta o preço cobrado e gera a próxima indicação.</li>
+        </ul>
+        <div class="out"><span>O que muda</span>O processo existe fora da sua cabeça. A clínica opera quando você está no centro cirúrgico — ou fora do país.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CASES ============ -->
+<section class="sec">
+  <div class="w">
+    <div class="nrw">
+      <span class="eyebrow">O que aconteceu em outras clínicas</span>
+      <h2 class="rv">Seis operações.<br>A mesma camada faltando em todas.</h2>
+      <p class="lead rv" style="margin-top:22px">Faturamento mensal antes e depois da implantação da estrutura comercial. Nenhuma dessas clínicas trocou de cirurgião, de cidade ou de especialidade.</p>
+    </div>
+    <div class="cases">
+      <div class="case rv" style="--p:88%"><div class="n">Dra. Déborah Caribé</div><span class="s">Cirurgia da face</span><div class="mv"><span class="a">R$ 180k</span><span class="a">→</span><span class="b">R$ 800k</span></div><div class="zoom" id="zoom" hidden role="dialog" aria-modal="true" aria-label="Extrato ampliado">
+  <span class="zoom-hint">Arraste para percorrer o extrato</span>
+  <button class="zoom-x" type="button" data-zclose aria-label="Fechar">&times;</button>
+  <img id="zoomImg" alt="Extrato do sistema de gestão do Instituto Déborah Caribé — julho de 2026">
+</div>
+
+<div class="bar"><i></i></div><p class="o">Pico de R$ 940.241,84 vendidos em julho/2026 com 47 consultas.</p></div>
+      <div class="case rv" style="--p:78%"><div class="n">Dra. Jamila</div><span class="s">Face e alta complexidade</span><div class="mv"><span class="a">R$ 40k</span><span class="a">→</span><span class="b">R$ 260k</span></div><div class="bar"><i></i></div><p class="o">Pré-venda e ticket reestruturados antes de qualquer aumento de mídia.</p></div>
+      <div class="case rv" style="--p:74%"><div class="n">Dra. Daliene</div><span class="s">Face</span><div class="mv"><span class="a">R$ 40k</span><span class="a">→</span><span class="b">R$ 200k</span></div><div class="bar"><i></i></div><p class="o">Time de pré-vendas instalado com CRM e rotina de qualificação.</p></div>
+      <div class="case rv" style="--p:66%"><div class="n">Dr. Warlley Oliveira</div><span class="s">Face</span><div class="mv"><span class="a">R$ 70k</span><span class="a">→</span><span class="b">R$ 160k</span></div><div class="bar"><i></i></div><p class="o">Rompeu o teto sem aumentar o número de consultas na agenda.</p></div>
+      <div class="case rv" style="--p:62%"><div class="n">Dr. Arthur</div><span class="s">Face</span><div class="mv"><span class="a">R$ 7k</span><span class="a">→</span><span class="b">R$ 80k</span></div><div class="bar"><i></i></div><p class="o">Estruturação da primeira fonte de captação e da condução da consulta.</p></div>
+      <div class="case rv" style="--p:58%"><div class="n">Dra. Marjorie</div><span class="s">Face</span><div class="mv"><span class="a">R$ 40k</span><span class="a">→</span><span class="b">R$ 95k</span></div><div class="bar"><i></i></div><p class="o">Posicionamento e precificação revisados antes da escala de mídia.</p></div>
+    </div>
+    <p class="cap">Resultados individuais, obtidos com implantação e acompanhamento da estrutura. Não constituem promessa de resultado.</p>
+  </div>
+</section>
+
+<!-- ============ DUPLA ============ -->
+<section class="sec sec--alt">
+  <div class="w">
+    <div class="nrw">
+      <span class="eyebrow">Quem conduz o diagnóstico</span>
+      <h2 class="rv">Duas cadeiras: quem traz o paciente<br>e quem <span class="gd">fecha</span> o paciente.</h2>
+      <p class="lead rv" style="margin-top:22px">A maior parte das clínicas contrata uma dessas metades e descobre tarde demais que a outra era o gargalo.</p>
+    </div>
+    <div class="duo">
+      <div class="who rv">
+        <span class="r">Aquisição e posicionamento</span>
+        <h3>Matheus Lopes</h3>
+        <span class="m">+ R$ 10 milhões por ano gerados em clínicas</span>
+        <p>Responsável pela camada de demanda: fontes de captação, posicionamento de autoridade e construção da percepção de valor que sustenta o preço antes de a consulta acontecer.</p>
+      </div>
+      <div class="who rv">
+        <span class="r">Comercial e conversão</span>
+        <h3>Renan Silva</h3>
+        <span class="m">+ R$ 20 milhões gerados em operações comerciais</span>
+        <p>Responsável pela camada de fechamento: pré-venda, condução da consulta, precificação, treinamento de equipe e gestão de funil por indicadores.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FILTRO ============ -->
+<section class="sec">
+  <div class="w">
+    <div class="nrw">
+      <span class="eyebrow">Critério de entrada</span>
+      <h2 class="rv">Nem toda aplicação é aprovada.<br>Isso é <span class="gd">intencional</span>.</h2>
+      <p class="lead rv" style="margin-top:22px">A estrutura é instalada sobre demanda que já existe. Sem volume mínimo de consultas e sem disposição para mexer no preço, não há o que reestruturar — e aceitar seria desonesto com o seu tempo e com o nosso.</p>
+    </div>
+    <div class="two">
+      <div class="cl cl--y rv">
+        <div class="cl-h">Aplique se</div>
+        <ul>
+          <li>Você é <b>cirurgião da face</b> — plástico, otorrino ou bucomaxilo — e realiza procedimentos cirúrgicos com regularidade.</li>
+          <li>Fatura <b>acima de R$ 50 mil por mês</b> e quer estrutura para ultrapassar os R$ 100–200 mil com previsibilidade.</li>
+          <li>Já realiza <b>15 consultas por mês ou mais</b>. Existe demanda; o problema está no que acontece depois.</li>
+          <li>Está <b>disposto a mexer no preço</b> e a reconstruir a oferta. Este é o filtro mais importante da lista.</li>
+          <li>Tem equipe — mesmo que seja uma secretária — e aceita <b>treiná-la e cobrar processo</b>.</li>
+          <li>Trata estrutura comercial como <b>investimento com retorno medido</b>, não como despesa.</li>
+          <li>Tem <b>autonomia para decidir</b> sobre a operação e sobre o investimento.</li>
+        </ul>
+      </div>
+      <div class="cl cl--n rv">
+        <div class="cl-h">Não aplique se</div>
+        <ul>
+          <li>Você <b>está começando agora</b> ou ainda não tem fluxo consistente de consultas cirúrgicas.</li>
+          <li>Fatura <b>abaixo de R$ 50 mil/mês</b>. O seu gargalo é outro e este não é o processo certo para o seu momento.</li>
+          <li>Procura <b>consultoria gratuita</b>. O diagnóstico analisa a sua operação — não é aula nem coletânea de dicas.</li>
+          <li>Acredita que o problema é <b>o mercado, a crise ou o concorrente barato</b>. Se a responsabilidade está sempre fora, nada será executado.</li>
+          <li>Espera <b>resultado em 7 dias</b>. Reposicionamento e instalação de processo levam ciclos.</li>
+          <li>Quer <b>terceirizar tudo</b> e não participar. Quem conduz a consulta é você.</li>
+          <li>Opera em <b>volume com preço popular</b> e não pretende sair desse modelo.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIAGNÓSTICO ============ -->
+<section class="sec sec--alt">
+  <div class="w nrw">
+    <span class="eyebrow">O diagnóstico estratégico</span>
+    <h2 class="rv">Você vive de diagnóstico.<br>Este é o da sua <span class="gd">operação</span>.</h2>
+    <p class="lead rv" style="margin-top:22px">Reunião individual de aproximadamente 60 minutos, por vídeo, com um estrategista sênior. Antes dela, os números enviados na aplicação são analisados — você chega com a operação já dissecada, não com uma apresentação genérica na frente.</p>
+
+    <div style="margin-top:clamp(28px,4vw,42px)">
+      <div class="stp rv"><div class="n">Etapa 01</div><div><h3>Leitura de números</h3><p>Consultas realizadas, taxa de fechamento, ticket médio, origem dos pacientes e receita. Calculamos o seu valor gerado por consulta — o número que a maioria dos cirurgiões nunca viu.</p></div></div>
+      <div class="stp rv"><div class="n">Etapa 02</div><div><h3>Identificação do gargalo dominante</h3><p>Fonte, autoridade, conversão ou equipe: um deles trava os outros três. Apontamos qual é o seu com base nos dados, não em suposição.</p></div></div>
+      <div class="stp rv"><div class="n">Etapa 03</div><div><h3>Projeção de cenário</h3><p>Reconstruímos a sua conta com ticket e conversão corrigidos, mantendo o volume atual de consultas. Você sai sabendo quanto a operação que já existe comporta hoje — sem nenhum lead novo.</p></div></div>
+      <div class="stp rv"><div class="n">Etapa 04</div><div><h3>Rota de execução</h3><p>Prioridades, ordem de implantação e prazo de cada frente. Se fizer sentido para ambos, apresentamos como conduzimos essa implantação. Se não fizer, dizemos com a mesma clareza.</p></div></div>
+    </div>
+
+    <div class="note rv"><b>O diagnóstico tem valor por si só.</b> Você sai com a análise e com a projeção, havendo continuidade ou não. O que não existe é reunião sem preparo, sem números e sem posição.</div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec">
+  <div class="w nrw">
+    <span class="eyebrow">Antes de aplicar</span>
+    <h2 class="rv">As perguntas que sempre aparecem</h2>
+    <div class="faq rv">
+      <details><summary>Já tentei aumentar o preço e perdi pacientes.</summary><p>Você aumentou o preço mantendo a mesma oferta e a mesma condução de consulta. O paciente comparou o mesmo item mais caro e recusou — comportamento previsível. A ordem correta é fonte, autoridade, oferta reconstruída, condução e só então preço.</p></details>
+      <details><summary>Já contratei agência e não deu resultado.</summary><p>Agência entrega peça e lead. O gargalo da maioria das clínicas de face não está na entrada: está na pré-venda, na consulta e no preço. São problemas diferentes — e é por isso que a agência não resolveu o seu.</p></details>
+      <details><summary>Na minha cidade ninguém paga alta complexidade.</summary><p>Em toda praça existe paciente pagando ticket alto — provavelmente para um colega seu. A pergunta não é se ele existe. É se ele está reconhecendo você como a opção dele.</p></details>
+      <details><summary>Não tenho tempo para mais um compromisso.</summary><p>A estrutura foi desenhada para reduzir consultas improdutivas e aumentar receita por consulta. Ela devolve horas de agenda — não consome.</p></details>
+      <details><summary>Como sei que funciona no meu caso?</summary><p>Ainda não sabemos. É exatamente para isso que existem a análise prévia e o diagnóstico. Se não fizer sentido para a sua operação, dizemos na própria reunião.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APLICAÇÃO ============ -->
+<section class="sec sec--alt" id="aplicar">
+  <div class="w">
+    <div class="ahead">
+      <span class="tagline">Agenda limitada — 6 diagnósticos por mês</span>
+      <h2>A aplicação é o primeiro filtro.</h2>
+      <p class="lead" style="margin-top:20px">Cada diagnóstico exige análise prévia da operação, feita individualmente por um estrategista sênior. Por isso o número é restrito e por isso nem toda aplicação avança.</p>
+      <p class="lead">Responda com precisão: os números informados aqui são exatamente os que serão analisados antes da reunião.</p>
+      <div style="margin-top:clamp(26px,3.4vw,38px)">
+        <button class="btn" type="button" data-open>Iniciar aplicação <span class="ic">→</span></button>
+        <span class="under">4 passos · cerca de 2 minutos</span>
+        <p class="fine">Aplicações analisadas em até 48 horas úteis. Nem todo perfil é aprovado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODAL DE APLICAÇÃO ============ -->
+<div class="mdl" id="mdl" role="dialog" aria-modal="true" aria-labelledby="stpTitle" hidden>
+  <div class="mdl-bg" data-close></div>
+  <div class="mdl-box">
+    <button class="mdl-x" type="button" data-close aria-label="Fechar aplicação">&times;</button>
+
+    <header class="mdl-head">
+      <div class="prog" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1" aria-label="Progresso da aplicação"><i id="prog"></i></div>
+      <ol class="stepnav" id="stepnav">
+        <li class="on"><span class="n">1</span><span>Perfil</span></li>
+        <li><span class="n">2</span><span>Operação</span></li>
+        <li><span class="n">3</span><span>Contexto</span></li>
+        <li><span class="n">4</span><span>Contato</span></li>
+      </ol>
+      <div class="mdl-meta"><span id="stepTxt">Pergunta 1 de 7</span><span>~ 90 segundos</span></div>
+    </header>
+
+    <div class="mdl-body" id="mdlBody">
+      <form id="form" novalidate>
+
+        <!-- P1 -->
+        <section class="fstep on" data-g="0" data-auto>
+          <span class="stp-eyebrow">Perfil</span>
+          <h3 id="stpTitle">Qual é a sua especialidade principal?</h3>
+          <p class="stp-sub">A análise muda conforme o tipo de procedimento que você realiza.</p>
+          <div class="q">
+            <div class="opts">
+              <label class="opt"><input type="radio" name="especialidade" value="Cirurgia Plástica (foco facial)" data-tag="ideal" required><span>Cirurgia Plástica<em>foco facial</em></span></label>
+              <label class="opt"><input type="radio" name="especialidade" value="Cirurgia Plástica (foco corporal)" data-tag="fora"><span>Cirurgia Plástica<em>foco corporal</em></span></label>
+              <label class="opt"><input type="radio" name="especialidade" value="Otorrinolaringologia (cirurgia facial / rinoplastia)" data-tag="ideal"><span>Otorrinolaringologia<em>cirurgia facial / rinoplastia</em></span></label>
+              <label class="opt"><input type="radio" name="especialidade" value="Bucomaxilofacial (cirurgia facial)" data-tag="ideal"><span>Bucomaxilofacial<em>cirurgia facial</em></span></label>
+            </div>
+          </div>
+        </section>
+
+        <!-- P2 -->
+        <section class="fstep" data-g="1" data-auto>
+          <span class="stp-eyebrow">Operação</span>
+          <h3>Qual é o faturamento médio mensal do consultório?</h3>
+          <p class="stp-sub">Pela realidade recente, não pela meta. É este número que será analisado antes da reunião.</p>
+          <div class="q">
+            <div class="opts">
+              <label class="opt"><input type="radio" name="faturamento" value="Até R$ 20.000 / mês" data-low data-tag="fora" required><span>Até R$ 20.000</span></label>
+              <label class="opt"><input type="radio" name="faturamento" value="R$ 20.000 a R$ 50.000 / mês" data-low data-tag="baixo"><span>R$ 20.000 a R$ 50.000</span></label>
+              <label class="opt"><input type="radio" name="faturamento" value="R$ 50.000 a R$ 80.000 / mês" data-tag="ideal"><span>R$ 50.000 a R$ 80.000</span></label>
+              <label class="opt"><input type="radio" name="faturamento" value="R$ 80.000 a R$ 150.000+ / mês" data-tag="avancado"><span>R$ 80.000 a R$ 150.000+</span></label>
+            </div>
+            <div class="tip" id="tipFat">Nessa faixa o gargalo costuma ser outro. Você pode seguir com a aplicação, mas o retorno pode ser uma recusa com a indicação do próximo passo correto para o seu momento.</div>
+          </div>
+        </section>
+
+        <!-- P3 -->
+        <section class="fstep" data-g="1" data-auto>
+          <span class="stp-eyebrow">Operação</span>
+          <h3>Quantas consultas de avaliação cirúrgica você faz por mês?</h3>
+          <p class="stp-sub">Consultas realizadas, não agendadas.</p>
+          <div class="q">
+            <div class="opts">
+              <label class="opt"><input type="radio" name="consultas" value="Menos de 10 consultas" data-tag="fora" required><span>Menos de 10</span></label>
+              <label class="opt"><input type="radio" name="consultas" value="10 a 15 consultas" data-tag="baixo"><span>10 a 15</span></label>
+              <label class="opt"><input type="radio" name="consultas" value="15 a 25 consultas" data-tag="ideal"><span>15 a 25</span></label>
+              <label class="opt"><input type="radio" name="consultas" value="Mais de 25 consultas" data-tag="avancado"><span>Mais de 25</span></label>
+            </div>
+          </div>
+        </section>
+
+        <!-- P4 -->
+        <section class="fstep" data-g="1" data-auto>
+          <span class="stp-eyebrow">Operação</span>
+          <h3>Qual é o seu ticket médio por procedimento cirúrgico?</h3>
+          <p class="stp-sub">O valor que você pratica hoje, com os descontos que costuma dar.</p>
+          <div class="q">
+            <div class="opts">
+              <label class="opt"><input type="radio" name="ticket" value="Até R$ 3.000" data-tag="ideal" required><span>Até R$ 3.000</span></label>
+              <label class="opt"><input type="radio" name="ticket" value="R$ 3.000 a R$ 6.000" data-tag="ideal"><span>R$ 3.000 a R$ 6.000</span></label>
+              <label class="opt"><input type="radio" name="ticket" value="R$ 6.000 a R$ 12.000" data-tag="avancado"><span>R$ 6.000 a R$ 12.000</span></label>
+              <label class="opt"><input type="radio" name="ticket" value="Acima de R$ 12.000" data-tag="avancado"><span>Acima de R$ 12.000</span></label>
+            </div>
+          </div>
+        </section>
+
+        <!-- P5 -->
+        <section class="fstep" data-g="2" data-auto>
+          <span class="stp-eyebrow">Gargalo</span>
+          <h3>O que mais trava a sua clínica hoje?</h3>
+          <p class="stp-sub">É desta resposta que sai a análise prévia. Escolha o que mais pesa.</p>
+          <div class="q">
+            <div class="opts one">
+              <label class="opt"><input type="radio" name="gargalo" value="Aumentar o ticket sem perder pacientes para a concorrência" data-tag="preco" required><span>Aumentar o ticket sem perder pacientes para a concorrência</span></label>
+              <label class="opt"><input type="radio" name="gargalo" value="Falta de processo comercial e script de fechamento na consulta" data-tag="processo"><span>Falta de processo comercial e script de fechamento na consulta</span></label>
+              <label class="opt"><input type="radio" name="gargalo" value="Pacientes curiosos buscando apenas o menor preço" data-tag="qualificacao"><span>Pacientes “curiosos”, buscando apenas o menor preço</span></label>
+              <label class="opt"><input type="radio" name="gargalo" value="Agenda lotada com margem baixa" data-tag="margem"><span>Agenda lotada e margem baixa demais para o esforço</span></label>
+            </div>
+          </div>
+        </section>
+
+        <!-- P6 -->
+        <section class="fstep" data-g="2" data-auto>
+          <span class="stp-eyebrow">Decisão</span>
+          <h3>Se a candidatura for aprovada, você consegue começar nos próximos 7 dias?</h3>
+          <p class="stp-sub">Verba e prontidão para reestruturar o comercial. Responder “não” não elimina você — só muda o momento.</p>
+          <div class="q">
+            <div class="opts one">
+              <label class="opt"><input type="radio" name="investimento" value="Sim, tenho recursos disponíveis e quero implementar imediatamente" data-tag="quente" required><span>Sim, tenho recursos e quero implementar imediatamente</span></label>
+              <label class="opt"><input type="radio" name="investimento" value="Tenho interesse, mas preciso de análise prévia antes de decidir" data-tag="morno"><span>Tenho interesse, mas preciso analisar antes de decidir</span></label>
+              <label class="opt"><input type="radio" name="investimento" value="Não tenho verba para investir no momento" data-tag="frio"><span>Não tenho verba no momento</span></label>
+            </div>
+          </div>
+        </section>
+
+        <!-- P7 -->
+        <section class="fstep" data-g="3">
+          <span class="stp-eyebrow">Contato</span>
+          <h3>Onde falamos com você</h3>
+          <p class="stp-sub">Último passo. O retorno vem pelo WhatsApp informado aqui.</p>
+          <div class="q">
+            <div class="grid2">
+              <div><label for="nome">Nome completo</label><input id="nome" name="nome" type="text" placeholder="Dr. " autocomplete="name" required></div>
+              <div><label for="email">E-mail profissional</label><input id="email" name="email" type="email" placeholder="voce@clinica.com.br" autocomplete="email" required></div>
+              <div><label for="whatsapp">WhatsApp com DDD</label><input id="whatsapp" name="whatsapp" type="tel" inputmode="numeric" autocomplete="tel" placeholder="(00) 00000-0000" required></div>
+              <div><label for="cidade">Cidade / Estado</label><input id="cidade" name="cidade" type="text" placeholder="Salvador / BA" required></div>
+              <div><label for="instagram">Instagram profissional</label><input id="instagram" name="instagram" type="text" placeholder="@" required></div>
+            </div>
+          </div>
+        </section>
+
+        <div class="alert" id="alert">Faltam respostas neste passo. Os itens destacados precisam ser preenchidos para continuar.</div>
+      </form>
+
+      <p class="secure"><svg width="16" height="18" viewBox="0 0 13 15" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="1" y="6" width="11" height="8" rx="1.5"/><path d="M3.6 6V4a2.9 2.9 0 015.8 0v2"/></svg>Dados seguros · Análise confidencial · Sem spam</p>
+      <div class="done" id="done" hidden>
+        <div class="mk">&#10003;</div>
+        <h3>Aplicação recebida</h3>
+        <p>Os seus números entram na fila de análise agora. Se o perfil for aprovado, o time entra em contato pelo WhatsApp informado em até 48 horas úteis.</p>
+      </div>
+    </div>
+
+    <footer class="mdl-foot">
+      <button type="button" class="bk" id="back" hidden>&larr; Voltar</button>
+      <button type="button" class="btn" id="next">Continuar <span class="ic">→</span></button>
+      <button type="submit" form="form" class="btn" id="send" hidden>Enviar aplicação <span class="ic">→</span></button>
+    </footer>
+  </div>
+</div>
+
+
+<!-- ============ FECHAMENTO ============ -->
+<section class="sec end">
+  <div class="w nrw">
+    <p class="lead">Você já fez a parte mais difícil.</p>
+    <p class="mut">Anos de formação, uma técnica que entrega resultado e demanda real — coisas que a maioria dos seus colegas nunca vai ter. O que falta não é mérito. É estrutura.</p>
+    <p class="mut">E enquanto ela não existir, cada consulta da sua agenda continua valendo R$ 900 em vez dos R$ 20.000 que ela poderia valer. A diferença não fica com ninguém: ela simplesmente deixa de existir.</p>
+    <p class="kick">O diagnóstico é gratuito.<br>O tempo até você solicitá-lo, não.</p>
+    <a class="btn" href="#aplicar" data-open>Solicitar meu diagnóstico <span class="ic">→</span></a>
+    <span class="under">Vagas limitadas por região</span>
+  </div>
+</section>
+
+<footer>
+  <div class="w">
+    <div>
+      © <span id="ano"></span> System Digital — Todos os direitos reservados.
+      <div class="legal">Os resultados apresentados são individuais e foram obtidos por clínicas com implantação e acompanhamento da estrutura comercial. Não há garantia de resultado idêntico. Esta página não oferece serviço médico e não se destina a pacientes.</div>
+    </div>
+    <div><a href="#">Política de privacidade</a> · <a href="#">Termos de uso</a></div>
+  </div>
+</footer>
+
+<div class="bar" id="bar">
+  <div class="bar-in">
+    <div class="bar-tx">
+      <span class="t">Diagnóstico estratégico da sua operação</span>
+      <span class="s">Gratuito · 6 vagas neste mês</span>
+    </div>
+    <button class="btn" type="button" data-open>Iniciar aplicação <span class="ic">→</span></button>
+  </div>
+</div>
+
+<script>
+document.getElementById('ano').textContent = new Date().getFullYear();
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* eventos de conversão — funciona com GTM, Meta Pixel e GA4 se estiverem na página */
+function track(ev, extra){
+  try{
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(Object.assign({event: ev}, extra || {}));
+    if (typeof fbq === 'function') fbq('trackCustom', ev, extra || {});
+    if (typeof gtag === 'function') gtag('event', ev, extra || {});
+  }catch(e){}
+}
+
+/* parâmetros de campanha — sem isso não dá para saber qual anúncio trouxe o lead */
+const RASTREIO = (function(){
+  const p = new URLSearchParams(location.search), o = {};
+  ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'].forEach(k=>{
+    const v = p.get(k); if(v) o[k] = v;
+  });
+  o.referrer = document.referrer || 'direto';
+  return o;
+})();
+
+/* clique em qualquer CTA */
+document.querySelectorAll('a[href="#aplicar"]').forEach(a=>{
+  a.addEventListener('click',()=>track('cta_clique',{local:a.closest('section,header,div.bar')?.className||'—'}));
+});
+
+/* reveal + gatilhos de animação */
+const obs = 'IntersectionObserver' in window
+  ? new IntersectionObserver((es,o)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in','seen');o.unobserve(e.target);}})},{threshold:.14})
+  : null;
+if (obs) { document.querySelectorAll('.rv, .case').forEach(el=>obs.observe(el)); }
+else { document.querySelectorAll('.rv, .case').forEach(el=>el.classList.add('in','seen')); }
+
+/* letras F A C E entram em sequência */
+(function(){
+  const nav = document.querySelector('.fnav');
+  if(!nav) return;
+  const btns = [...nav.querySelectorAll('.fb')];
+  const show = () => btns.forEach((b,i)=>setTimeout(()=>b.classList.add('seen'), reduced?0:i*120));
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){show();o.disconnect();}},{threshold:.4});
+    io.observe(nav);
+  } else show();
+})();
+
+/* abas FACE — clique, teclado e ligação aria entre aba e painel */
+(function(){
+  const btns = [...document.querySelectorAll('.fb')];
+  function ativar(b){
+    btns.forEach(x=>{x.setAttribute('aria-selected','false');x.tabIndex=-1;});
+    b.setAttribute('aria-selected','true'); b.tabIndex = 0;
+    document.querySelectorAll('.fp').forEach(p=>p.classList.remove('on'));
+    document.getElementById('p-'+b.dataset.p).classList.add('on');
+    track('pilar_aberto',{pilar:b.dataset.p});
+  }
+  btns.forEach((b,i)=>{
+    b.id = 'tab-'+b.dataset.p;
+    b.setAttribute('aria-controls','p-'+b.dataset.p);
+    b.tabIndex = b.getAttribute('aria-selected')==='true' ? 0 : -1;
+    const pane = document.getElementById('p-'+b.dataset.p);
+    if(pane){ pane.setAttribute('aria-labelledby', b.id); pane.tabIndex = 0; }
+    b.addEventListener('click',()=>ativar(b));
+    b.addEventListener('keydown',e=>{
+      let n = null;
+      if(e.key==='ArrowRight'||e.key==='ArrowDown') n=(i+1)%btns.length;
+      if(e.key==='ArrowLeft' ||e.key==='ArrowUp')   n=(i-1+btns.length)%btns.length;
+      if(e.key==='Home') n=0;
+      if(e.key==='End')  n=btns.length-1;
+      if(n!==null){ e.preventDefault(); ativar(btns[n]); btns[n].focus(); }
+    });
+  });
+})();
+
+/* calculadora de valor por consulta */
+(function(){
+  const fatEl=document.getElementById('cFat'), conEl=document.getElementById('cCon');
+  if(!fatEl||!conEl) return;
+  const out=document.getElementById('calcOut');
+  const REF=20005.14;
+  const so=s=>s.replace(/\D/g,'');
+  const brl=n=>n.toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});
+  const brl2=n=>n.toLocaleString('pt-BR',{style:'currency',currency:'BRL',minimumFractionDigits:2,maximumFractionDigits:2});
+  let usou=false, dados=null;
+
+  fatEl.addEventListener('input',()=>{
+    const d=so(fatEl.value).slice(0,11);
+    fatEl.value = d ? 'R$ '+(+d).toLocaleString('pt-BR') : '';
+    conta();
+  });
+  conEl.addEventListener('input',()=>{ conEl.value=so(conEl.value).slice(0,4); conta(); });
+
+  function conta(){
+    const f=+so(fatEl.value)||0, c=+so(conEl.value)||0;
+    if(!f||!c){ out.hidden=true; dados=null; return; }
+    out.hidden=false;
+    const v=f/c, pot=REF*c, dif=Math.max(pot-f,0), max=Math.max(v,REF);
+    document.getElementById('cVal').textContent=brl2(v);
+    document.getElementById('cbMine').style.width=(v/max*100)+'%';
+    document.getElementById('cbRef').style.width=(REF/max*100)+'%';
+    document.getElementById('cbMineV').textContent=brl(v);
+    document.getElementById('cPot').textContent=brl(pot);
+    document.getElementById('cDifM').textContent=brl(dif);
+    document.getElementById('cDifA').textContent=brl(dif*12);
+    document.getElementById('cNote').textContent = v>=REF
+      ? 'A sua operação já está acima da referência. Nesse patamar o diagnóstico costuma tratar de previsibilidade e volume qualificado, não de ticket.'
+      : 'Projeção aritmética, com o mesmo volume de consultas e nenhum lead novo. Não é promessa de resultado — é o teto que a operação que você já tem comportaria.';
+    dados={f:f,c:c,v:Math.round(v)};
+    if(!usou){ usou=true; track('calculadora_usada'); }
+  }
+
+  document.getElementById('cCta').addEventListener('click',()=>{
+    if(!dados) return;
+    const marca=(campo,valor)=>{
+      const el=document.querySelector('input[name="'+campo+'"][value="'+valor+'"]');
+      if(el){ el.checked=true; el.dispatchEvent(new Event('change',{bubbles:true})); }
+    };
+    const f=dados.f, c=dados.c;
+    marca('faturamento',
+      f<20000 ? 'Até R$ 20.000 / mês'
+      : f<50000 ? 'R$ 20.000 a R$ 50.000 / mês'
+      : f<80000 ? 'R$ 50.000 a R$ 80.000 / mês'
+      : 'R$ 80.000 a R$ 150.000+ / mês');
+    marca('consultas',
+      c<10 ? 'Menos de 10 consultas'
+      : c<=15 ? '10 a 15 consultas'
+      : c<=25 ? '15 a 25 consultas'
+      : 'Mais de 25 consultas');
+    window.__calc = dados;
+    track('calc_levada_ao_form', dados);
+  });
+})();
+
+/* barra fixa: entra depois do hero e sai ao chegar no formulário */
+(function(){
+  const bar=document.getElementById('bar'), alvo=document.getElementById('aplicar');
+  if(!bar) return;
+  let t=false;
+  function atualiza(){
+    const passouHero = scrollY > innerHeight*0.8;
+    const noForm = alvo && alvo.getBoundingClientRect().top < innerHeight*0.8;
+    bar.classList.toggle('up', passouHero && !noForm);
+    t=false;
+  }
+  addEventListener('scroll',()=>{ if(!t){t=true;requestAnimationFrame(atualiza);} },{passive:true});
+  atualiza();
+})();
+
+/* ---------- aplicação em 4 passos ---------- */
+(function(){
+  document.documentElement.classList.add('js');
+  const mdl=document.getElementById('mdl'); if(!mdl) return;
+  const box=mdl.querySelector('.mdl-box');
+  const steps=[...mdl.querySelectorAll('.fstep')];
+  const nav=[...document.querySelectorAll('#stepnav li')];
+  const barra=mdl.querySelector('.prog'), prog=document.getElementById('prog');
+  const stepTxt=document.getElementById('stepTxt');
+  const back=document.getElementById('back'), next=document.getElementById('next'), send=document.getElementById('send');
+  const alertBox=document.getElementById('alert'), body=document.getElementById('mdlBody');
+  let i=0, anterior=null;
+
+  const grupo = n => +steps[n].dataset.g;
+  function pinta(){
+    steps.forEach((s,n)=>s.classList.toggle('on',n===i));
+    const g=grupo(i);
+    nav.forEach((l,n)=>{ l.classList.toggle('on',n===g); l.classList.toggle('ok',n<g); });
+    prog.style.width=((i+1)/steps.length*100)+'%';
+    barra.setAttribute('aria-valuemax',steps.length);
+    barra.setAttribute('aria-valuenow',i+1);
+    stepTxt.textContent='Pergunta '+(i+1)+' de '+steps.length;
+    back.hidden = i===0;
+    next.hidden = steps[i].hasAttribute('data-auto') || i===steps.length-1;
+    send.hidden = i!==steps.length-1;
+    alertBox.classList.remove('on');
+    body.scrollTop=0;
+  }
+
+  /* uma resposta já leva para a próxima pergunta */
+  let pulando=false;
+  mdl.addEventListener('change',e=>{
+    const r=e.target;
+    if(r.type!=='radio') return;
+    const passo=r.closest('.fstep');
+    if(!passo||!passo.hasAttribute('data-auto')) return;
+    if(pulando) return; pulando=true;
+    /* faixa baixa mostra um aviso — só damos tempo de ler antes de seguir */
+    const espera = r.hasAttribute('data-low') ? 1600 : (reduced?0:320);
+    setTimeout(()=>{
+      pulando=false;
+      if(i<steps.length-1 && steps[i]===passo){ track('form_passo_concluido',{passo:i+1}); i++; pinta(); }
+    }, espera);
+  });
+
+  function valida(){
+    const s=steps[i]; let ok=true, primeiro=null;
+    s.querySelectorAll('.q').forEach(q=>{
+      q.classList.remove('bad');
+      let bom=true;
+      const grupos=[...new Set([...q.querySelectorAll('input[type=radio]')].map(r=>r.name))];
+      grupos.forEach(g=>{ if(!s.querySelector('input[name="'+g+'"]:checked')) bom=false; });
+      q.querySelectorAll('input:not([type=radio]),textarea').forEach(c=>{
+        if(c.required && (!c.value.trim() || !c.checkValidity())) bom=false;
+      });
+      if(!bom){ ok=false; q.classList.add('bad'); if(!primeiro) primeiro=q; }
+    });
+    if(!ok){
+      alertBox.classList.add('on');
+      (primeiro||s).scrollIntoView({block:'center',behavior:reduced?'auto':'smooth'});
+    }
+    return ok;
+  }
+
+  /* o destaque de erro some assim que a pessoa responde */
+  mdl.addEventListener('input',e=>{ const q=e.target.closest('.q'); if(q) q.classList.remove('bad'); });
+  mdl.addEventListener('change',e=>{ const q=e.target.closest('.q'); if(q) q.classList.remove('bad'); });
+
+  next.addEventListener('click',()=>{
+    if(!valida()) return;
+    track('form_passo_concluido',{passo:i+1});
+    i++; pinta();
+  });
+  back.addEventListener('click',()=>{ if(i>0){ i--; pinta(); } });
+
+  function abrir(){
+    anterior=document.activeElement;
+    mdl.hidden=false;
+    document.body.style.overflow='hidden';
+    pinta();
+    setTimeout(()=>{
+      const t=steps[i].querySelector('h3');
+      if(t){ t.tabIndex=-1; t.focus({preventScroll:true}); }
+    },70);
+    track('form_aberto');
+    if(typeof fbq==='function') fbq('track','InitiateCheckout');
+  }
+  function fechar(){
+    mdl.hidden=true;
+    document.body.style.overflow='';
+    if(anterior) anterior.focus();
+  }
+  document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',e=>{ e.preventDefault(); abrir(); }));
+  mdl.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',fechar));
+
+  document.addEventListener('keydown',e=>{
+    if(mdl.hidden) return;
+    if(e.key==='Escape'){ fechar(); return; }
+    if(e.key!=='Tab') return;
+    const f=[...box.querySelectorAll('button,input,textarea,select,a[href]')]
+      .filter(el=>!el.hidden && el.offsetParent!==null && !el.disabled);
+    if(!f.length) return;
+    const pri=f[0], ult=f[f.length-1];
+    if(e.shiftKey && document.activeElement===pri){ e.preventDefault(); ult.focus(); }
+    else if(!e.shiftKey && document.activeElement===ult){ e.preventDefault(); pri.focus(); }
+  });
+
+  /* Enter avança em vez de enviar antes da hora */
+  mdl.addEventListener('keydown',e=>{
+    if(e.key==='Enter' && e.target.tagName!=='TEXTAREA' && i<steps.length-1){
+      e.preventDefault(); next.click();
+    }
+  });
+
+  window.__fecharForm=fechar;
+})();
+
+/* visor do extrato em tela cheia */
+(function(){
+  const alvos=[...document.querySelectorAll('[data-zoom]')], zoom=document.getElementById('zoom');
+  if(!alvos.length||!zoom) return;
+  const img=document.getElementById('zoomImg');
+  let anterior=null;
+  function abrir(orig){
+    img.src=orig.currentSrc||orig.src;
+    anterior=document.activeElement;
+    zoom.hidden=false; document.body.style.overflow='hidden';
+    zoom.querySelector('.zoom-x').focus();
+    track('extrato_ampliado');
+  }
+  function fechar(){ zoom.hidden=true; document.body.style.overflow=''; if(anterior) anterior.focus(); }
+  alvos.forEach(a=>a.addEventListener('click',()=>abrir(a.querySelector('img'))));
+  zoom.querySelectorAll('[data-zclose]').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();fechar();}));
+  zoom.addEventListener('click',e=>{ if(e.target===zoom||e.target.tagName==='IMG') fechar(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!zoom.hidden) fechar(); });
+})();
+
+/* primeiro toque no formulário */
+(function(){
+  const f=document.getElementById('form'); if(!f) return;
+  let iniciou=false;
+  f.addEventListener('focusin',()=>{ if(!iniciou){iniciou=true;track('form_iniciado');} });
+})();
+
+/* aviso de faturamento fora do critério */
+(function(){
+  const tip=document.getElementById('tipFat');
+  document.querySelectorAll('input[name="faturamento"]').forEach(r=>{
+    r.addEventListener('change',()=>tip.classList.toggle('on', r.checked && r.hasAttribute('data-low')));
+  });
+})();
+
+/* máscara de telefone */
+const wpp=document.getElementById('whatsapp');
+wpp.addEventListener('input',()=>{
+  let d=wpp.value.replace(/\D/g,'').slice(0,11), v=d;
+  if(d.length>6) v=`(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7)}`;
+  else if(d.length>2) v=`(${d.slice(0,2)}) ${d.slice(2)}`;
+  else if(d.length) v=`(${d}`;
+  wpp.value=v;
+  wpp.setCustomValidity(d.length===11 ? '' : 'Digite o WhatsApp completo com DDD — 11 dígitos, ex: (11) 91234-5678.');
+});
+
+/* envio */
+const form=document.getElementById('form'), alertBox=document.getElementById('alert'), send=document.getElementById('send');
+
+/* ===========================================================
+   DESTINO DOS LEADS — GoHighLevel
+   Cole abaixo a URL do Inbound Webhook do workflow no GHL.
+   (Automation > Workflows > novo workflow > trigger "Inbound Webhook" > copiar URL)
+   =========================================================== */
+const GHL_WEBHOOK_URL='https://services.leadconnectorhq.com/hooks/GLjolhPSNO3cLXCtZAee/webhook-trigger/9c9426da-b055-456b-87c1-64d414f4028c';
+
+/* telefone no formato que o GHL entende: +55DDDNUMERO */
+function telefoneE164(v){
+  const d=(v||'').replace(/\D/g,'');
+  if(!d) return '';
+  return d.startsWith('55') ? '+'+d : '+55'+d;
+}
+
+/* envio tolerante a CORS: tenta o POST normal, cai para no-cors e por fim sendBeacon */
+async function enviarGHL(dados){
+  const corpo=JSON.stringify(dados);
+  try{
+    const r=await fetch(GHL_WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:corpo});
+    if(r.ok||r.type==='opaque') return true;
+  }catch(e){}
+  try{
+    await fetch(GHL_WEBHOOK_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:corpo});
+    return true;
+  }catch(e){}
+  if(navigator.sendBeacon) return navigator.sendBeacon(GHL_WEBHOOK_URL,new Blob([corpo],{type:'application/json'}));
+  return false;
+}
+
+form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(!form.checkValidity()){
+    alertBox.classList.add('on');
+    const f=form.querySelector(':invalid');
+    if(f){f.focus();f.scrollIntoView({block:'center',behavior:reduced?'auto':'smooth'});f.reportValidity();}
+    return;
+  }
+  alertBox.classList.remove('on');
+  send.disabled=true; send.textContent='Enviando…';
+  const dados=Object.fromEntries(new FormData(form).entries());
+
+  /* classificação do perfil — o médico não vê isso, o time comercial sim */
+  const tag=n=>{ const el=form.querySelector('input[name="'+n+'"]:checked'); return el ? el.dataset.tag||'' : ''; };
+  const t={especialidade:tag('especialidade'),faturamento:tag('faturamento'),consultas:tag('consultas'),ticket:tag('ticket'),investimento:tag('investimento')};
+  const fora = t.especialidade==='fora' || t.faturamento==='fora' || t.consultas==='fora' || t.investimento==='frio';
+  const ideal = ['ideal','avancado'].includes(t.faturamento) && ['ideal','avancado'].includes(t.consultas) && t.investimento==='quente';
+  dados.perfil = fora ? 'Fora de critério' : ideal ? 'Perfil ideal' : 'Perfil intermediário';
+  dados.gargalo_tipo = tag('gargalo');
+  dados.temperatura = t.investimento || '';
+  dados.origem='LP Diagnóstico Estratégico — Déborah';
+  dados.enviado_em=new Date().toISOString();
+  dados.url=location.href;
+  Object.assign(dados, RASTREIO);
+  if(window.__calc){
+    dados.calc_faturamento=window.__calc.f;
+    dados.calc_consultas=window.__calc.c;
+    dados.calc_valor_por_consulta=window.__calc.v;
+  }
+  /* campos que o GHL reconhece sozinho no mapeamento do contato */
+  const partes=(dados.nome||'').trim().split(/\s+/);
+  dados.full_name=dados.nome||'';
+  dados.first_name=partes[0]||'';
+  dados.last_name=partes.slice(1).join(' ');
+  dados.phone=telefoneE164(dados.whatsapp);
+
+  try{
+    if(!GHL_WEBHOOK_URL.includes('SEU-WEBHOOK-AQUI')){
+      await enviarGHL(dados);
+    } else { console.log('Webhook do GHL não configurado. Dados da aplicação:',dados); }
+    track('lead_enviado',{faturamento:dados.faturamento,ticket:dados.ticket});
+    if(typeof fbq==='function') fbq('track','Lead',{content_name:'Diagnóstico Estratégico',perfil:dados.perfil,temperatura:dados.temperatura});
+    form.hidden=true;
+    document.getElementById('next').hidden=true;
+    send.hidden=true;
+    document.getElementById('back').hidden=true;
+    const sel=document.querySelector('.secure'); if(sel) sel.hidden=true;
+    const d=document.getElementById('done'); d.hidden=false;
+  }catch(err){
+    send.disabled=false; send.innerHTML='Enviar aplicação <span class="ic">→</span>';
+    alertBox.textContent='O envio falhou. Verifique a conexão e tente novamente — ou chame o time direto no WhatsApp.';
+    alertBox.classList.add('on');
+  }
+});
+</script>
+
+<style id="formonly">
+  header.hero,.kpis,section.sec,footer,.bar{display:none!important}
+  body{background:#0C0C0C}
+  #mdl .mdl-x{display:none!important}
+</style>
+<script>
+window.addEventListener('load',function(){
+  var b=document.querySelector('[data-open]');
+  if(b) b.click();
+});
+</script>
+</body>
+</html>
