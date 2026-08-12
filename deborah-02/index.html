@@ -287,18 +287,18 @@ body{padding-bottom:0}
 
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <!-- Meta Pixel Code -->
-.bar-in{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:20px}
-.bar-tx{flex:1;min-width:0;line-height:1.35}
-.bar-tx .t{display:block;font-weight:800;color:var(--white);font-size:15.5px;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bar-tx .s{display:block;font-family:var(--m);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-top:5px}
-.bar .btn{padding:16px 26px;font-size:14px;flex:none}
-.bar .btn .ic{width:28px;height:28px;font-size:14px}
-@media (max-width:660px){
-  .bar-tx{display:none}
-  .bar .btn{width:100%;justify-content:space-between;flex:1}
-}
-
-.rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1691062848788552');
+fbq('track', 'PageView');
+</script>
 <!-- End Meta Pixel Code -->
 <style id="form-embed">
 [hidden]{display:none!important}
@@ -321,7 +321,7 @@ body{padding-bottom:0}
 .btn--w{width:100%;justify-content:center}
 .under{display:block;font-family:var(--f);font-weight:700;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-top:18px}
 .fine{font-size:13px;color:var(--txt-2);margin-top:14px;line-height:1.5}
-/* ---------- form ---------- */
+
 .ahead{text-align:center;max-width:60ch;margin:0 auto clamp(32px,4vw,46px)}
 .tagline{display:inline-block;font-family:var(--m);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line);background:rgba(201,164,92,.08);padding:10px 16px;border-radius:3px;margin-bottom:24px}
 label .op{font-weight:400;color:#7A7A7A;font-size:13px}
@@ -499,6 +499,7 @@ footer a:hover{color:var(--gold)}
 .btn{color:#1E1B18}
 .btn:focus-visible{outline-color:var(--gold-dk)}
 /* ===== FIM TEMA CLARO ===== */
+
 
 </style>
 
@@ -959,57 +960,7 @@ footer a:hover{color:var(--gold)}
 </script>
 
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1691062848788552&ev=PageView&noscript=1"/></noscript>
-<!-- ============ DIAGNÓSTICO ============ -->
-<section class="sec sec--alt">
-  <div class="w nrw">
-    <span class="eyebrow">O diagnóstico estratégico</span>
-    <h2 class="rv">Você vive de diagnóstico.<br>Este é o da sua <span class="gd">operação</span>.</h2>
-    <p class="lead rv" style="margin-top:22px">Reunião individual de aproximadamente 60 minutos, por vídeo, com um estrategista sênior. Antes dela, os números enviados na aplicação são analisados — você chega com a operação já dissecada, não com uma apresentação genérica na frente.</p>
 
-    <div style="margin-top:clamp(28px,4vw,42px)">
-      <div class="stp rv"><div class="n">Etapa 01</div><div><h3>Leitura de números</h3><p>Consultas realizadas, taxa de fechamento, ticket médio, origem dos pacientes e receita. Calculamos o seu valor gerado por consulta — o número que a maioria dos cirurgiões nunca viu.</p></div></div>
-      <div class="stp rv"><div class="n">Etapa 02</div><div><h3>Identificação do gargalo dominante</h3><p>Fonte, autoridade, conversão ou equipe: um deles trava os outros três. Apontamos qual é o seu com base nos dados, não em suposição.</p></div></div>
-      <div class="stp rv"><div class="n">Etapa 03</div><div><h3>Projeção de cenário</h3><p>Reconstruímos a sua conta com ticket e conversão corrigidos, mantendo o volume atual de consultas. Você sai sabendo quanto a operação que já existe comporta hoje — sem nenhum lead novo.</p></div></div>
-      <div class="stp rv"><div class="n">Etapa 04</div><div><h3>Rota de execução</h3><p>Prioridades, ordem de implantação e prazo de cada frente. Se fizer sentido para ambos, apresentamos como conduzimos essa implantação. Se não fizer, dizemos com a mesma clareza.</p></div></div>
-    </div>
-
-    <div class="note rv"><b>O diagnóstico tem valor por si só.</b> Você sai com a análise e com a projeção, havendo continuidade ou não. O que não existe é reunião sem preparo, sem números e sem posição.</div>
-  </div>
-</section>
-
-<!-- ============ FAQ ============ -->
-<section class="sec">
-  <div class="w nrw">
-    <span class="eyebrow">Antes de aplicar</span>
-    <h2 class="rv">As perguntas que sempre aparecem</h2>
-    <div class="faq rv">
-      <details><summary>Já tentei aumentar o preço e perdi pacientes.</summary><p>Você aumentou o preço mantendo a mesma oferta e a mesma condução de consulta. O paciente comparou o mesmo item mais caro e recusou — comportamento previsível. A ordem correta é fonte, autoridade, oferta reconstruída, condução e só então preço.</p></details>
-      <details><summary>Já contratei agência e não deu resultado.</summary><p>Agência entrega peça e lead. O gargalo da maioria das clínicas de face não está na entrada: está na pré-venda, na consulta e no preço. São problemas diferentes — e é por isso que a agência não resolveu o seu.</p></details>
-      <details><summary>Na minha cidade ninguém paga alta complexidade.</summary><p>Em toda praça existe paciente pagando ticket alto — provavelmente para um colega seu. A pergunta não é se ele existe. É se ele está reconhecendo você como a opção dele.</p></details>
-      <details><summary>Não tenho tempo para mais um compromisso.</summary><p>A estrutura foi desenhada para reduzir consultas improdutivas e aumentar receita por consulta. Ela devolve horas de agenda — não consome.</p></details>
-      <details><summary>Como sei que funciona no meu caso?</summary><p>Ainda não sabemos. É exatamente para isso que existem a análise prévia e o diagnóstico. Se não fizer sentido para a sua operação, dizemos na própria reunião.</p></details>
-    </div>
-  </div>
-</section>
-
-<!-- ============ APLICAÇÃO ============ -->
-<section class="sec sec--alt" id="aplicar">
-  <div class="w">
-    <div class="ahead">
-      <span class="tagline">Agenda limitada — 6 diagnósticos por mês</span>
-      <h2>A aplicação é o primeiro filtro.</h2>
-      <p class="lead" style="margin-top:20px">Cada diagnóstico exige análise prévia da operação, feita individualmente por um estrategista sênior. Por isso o número é restrito e por isso nem toda aplicação avança.</p>
-      <p class="lead">Responda com precisão: os números informados aqui são exatamente os que serão analisados antes da reunião.</p>
-      <div style="margin-top:clamp(26px,3.4vw,38px)">
-        <button class="btn" type="button" data-open>Iniciar aplicação <span class="ic">→</span></button>
-        <span class="under">4 passos · cerca de 2 minutos</span>
-        <p class="fine">Aplicações analisadas em até 48 horas úteis. Nem todo perfil é aprovado.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ MODAL DE APLICAÇÃO ============ -->
 <div class="mdl" id="mdl" role="dialog" aria-modal="true" aria-labelledby="stpTitle" hidden>
   <div class="mdl-bg" data-close></div>
   <div class="mdl-box">
@@ -1105,9 +1056,42 @@ footer a:hover{color:var(--gold)}
           </div>
         </section>
 
-<script>
-(function(){
-        <div class="done" id="done" hidden>
+        <!-- P6 -->
+        <section class="fstep" data-g="2" data-auto>
+          <span class="stp-eyebrow">Decisão</span>
+          <h3>Se a candidatura for aprovada, você consegue começar nos próximos 7 dias?</h3>
+          <p class="stp-sub">Verba e prontidão para reestruturar o comercial. Responder “não” não elimina você — só muda o momento.</p>
+          <div class="q">
+            <div class="opts one">
+              <label class="opt"><input type="radio" name="investimento" value="Sim, tenho recursos disponíveis e quero implementar imediatamente" data-tag="quente" required><span>Sim, tenho recursos e quero implementar imediatamente</span></label>
+              <label class="opt"><input type="radio" name="investimento" value="Tenho interesse, mas preciso de análise prévia antes de decidir" data-tag="morno"><span>Tenho interesse, mas preciso analisar antes de decidir</span></label>
+              <label class="opt"><input type="radio" name="investimento" value="Não tenho verba para investir no momento" data-tag="frio"><span>Não tenho verba no momento</span></label>
+            </div>
+          </div>
+        </section>
+
+        <!-- P7 -->
+        <section class="fstep" data-g="3">
+          <span class="stp-eyebrow">Contato</span>
+          <h3>Onde falamos com você</h3>
+          <p class="stp-sub">Último passo. O retorno vem pelo WhatsApp informado aqui.</p>
+          <div class="q">
+            <div class="grid2">
+              <div><label for="nome">Nome completo</label><input id="nome" name="nome" type="text" placeholder="Dr. " autocomplete="name" required></div>
+              <div><label for="email">E-mail profissional</label><input id="email" name="email" type="email" placeholder="voce@clinica.com.br" autocomplete="email" required></div>
+              <div><label for="whatsapp">WhatsApp com DDD</label><input id="whatsapp" name="whatsapp" type="tel" inputmode="numeric" autocomplete="tel" placeholder="(00) 00000-0000" required></div>
+              <div><label for="cidade">Cidade / Estado</label><input id="cidade" name="cidade" type="text" placeholder="Salvador / BA" required></div>
+              <div><label for="instagram">Instagram profissional</label><input id="instagram" name="instagram" type="text" placeholder="@" required></div>
+            </div>
+          </div>
+        </section>
+
+        <div class="alert" id="alert">Faltam respostas neste passo. Os itens destacados precisam ser preenchidos para continuar.</div>
+      </form>
+
+      <p class="secure"><svg width="16" height="18" viewBox="0 0 13 15" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="1" y="6" width="11" height="8" rx="1.5"/><path d="M3.6 6V4a2.9 2.9 0 015.8 0v2"/></svg>Dados seguros · Análise confidencial · Sem spam</p>
+      <div class="done" id="done" hidden>
+        <div class="mk">&#10003;</div>
         <h3>Aplicação recebida</h3>
         <p>Os seus números entram na fila de análise agora. Se o perfil for aprovado, o time entra em contato pelo WhatsApp informado em até 48 horas úteis.</p>
       </div>
@@ -1122,68 +1106,32 @@ footer a:hover{color:var(--gold)}
 </div>
 
 
-<!-- ============ FECHAMENTO ============ -->
-<section class="sec end">
-  <div class="w nrw">
-    <p class="lead">Você já fez a parte mais difícil.</p>
-    <p class="mut">Anos de formação, uma técnica que entrega resultado e demanda real — coisas que a maioria dos seus colegas nunca vai ter. O que falta não é mérito. É estrutura.</p>
-  /* liga os botoes da deborah-02 para abrir o formulario embutido */
+
+<script>
+(function(){
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function track(ev, extra){
+  try{
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(Object.assign({event: ev}, extra || {}));
+    if (typeof fbq === 'function') fbq('trackCustom', ev, extra || {});
+    if (typeof gtag === 'function') gtag('event', ev, extra || {});
+  }catch(e){}
+}
+const RASTREIO = (function(){
+  const p = new URLSearchParams(location.search), o = {};
+  ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'].forEach(k=>{
+    const v = p.get(k); if(v) o[k] = v;
+  });
+  o.referrer = document.referrer || 'direto';
+  return o;
+})();
   document.querySelectorAll('[data-cta]').forEach(function(a){
     a.setAttribute('data-open','');
     a.setAttribute('href','#');
     a.removeAttribute('target');
   });
-      document.getElementById('cbMine').style.width=(v/max*100)+'%';
-    document.getElementById('cbRef').style.width=(REF/max*100)+'%';
-    document.getElementById('cbMineV').textContent=brl(v);
-    document.getElementById('cPot').textContent=brl(pot);
-    document.getElementById('cDifM').textContent=brl(dif);
-    document.getElementById('cDifA').textContent=brl(dif*12);
-    document.getElementById('cNote').textContent = v>=REF
-      ? 'A sua operação já está acima da referência. Nesse patamar o diagnóstico costuma tratar de previsibilidade e volume qualificado, não de ticket.'
-      : 'Projeção aritmética, com o mesmo volume de consultas e nenhum lead novo. Não é promessa de resultado — é o teto que a operação que você já tem comportaria.';
-    dados={f:f,c:c,v:Math.round(v)};
-    if(!usou){ usou=true; track('calculadora_usada'); }
-  }
-
-  document.getElementById('cCta').addEventListener('click',()=>{
-    if(!dados) return;
-    const marca=(campo,valor)=>{
-      const el=document.querySelector('input[name="'+campo+'"][value="'+valor+'"]');
-      if(el){ el.checked=true; el.dispatchEvent(new Event('change',{bubbles:true})); }
-    };
-    const f=dados.f, c=dados.c;
-    marca('faturamento',
-      f<20000 ? 'Até R$ 20.000 / mês'
-      : f<50000 ? 'R$ 20.000 a R$ 50.000 / mês'
-      : f<80000 ? 'R$ 50.000 a R$ 80.000 / mês'
-      : 'R$ 80.000 a R$ 150.000+ / mês');
-    marca('consultas',
-      c<10 ? 'Menos de 10 consultas'
-      : c<=15 ? '10 a 15 consultas'
-      : c<=25 ? '15 a 25 consultas'
-      : 'Mais de 25 consultas');
-    window.__calc = dados;
-    track('calc_levada_ao_form', dados);
-  });
-})();
-
-/* barra fixa: entra depois do hero e sai ao chegar no formulário */
-(function(){
-  const bar=document.getElementById('bar'), alvo=document.getElementById('aplicar');
-  if(!bar) return;
-  let t=false;
-  function atualiza(){
-    const passouHero = scrollY > innerHeight*0.8;
-    const noForm = alvo && alvo.getBoundingClientRect().top < innerHeight*0.8;
-    bar.classList.toggle('up', passouHero && !noForm);
-    t=false;
-  }
-  addEventListener('scroll',()=>{ if(!t){t=true;requestAnimationFrame(atualiza);} },{passive:true});
-  atualiza();
-})();
-
-/* ---------- aplicação em 4 passos ---------- */
+  /* ---------- aplicação em 4 passos ---------- */
 (function(){
   document.documentElement.classList.add('js');
   const mdl=document.getElementById('mdl'); if(!mdl) return;
@@ -1382,6 +1330,57 @@ form.addEventListener('submit',async e=>{
   e.preventDefault();
   if(!form.checkValidity()){
     alertBox.classList.add('on');
+    const f=form.querySelector(':invalid');
+    if(f){f.focus();f.scrollIntoView({block:'center',behavior:reduced?'auto':'smooth'});f.reportValidity();}
+    return;
+  }
+  alertBox.classList.remove('on');
+  send.disabled=true; send.textContent='Enviando…';
+  const dados=Object.fromEntries(new FormData(form).entries());
+
+  /* classificação do perfil — o médico não vê isso, o time comercial sim */
+  const tag=n=>{ const el=form.querySelector('input[name="'+n+'"]:checked'); return el ? el.dataset.tag||'' : ''; };
+  const t={especialidade:tag('especialidade'),faturamento:tag('faturamento'),consultas:tag('consultas'),ticket:tag('ticket'),investimento:tag('investimento')};
+  const fora = t.especialidade==='fora' || t.faturamento==='fora' || t.consultas==='fora' || t.investimento==='frio';
+  const ideal = ['ideal','avancado'].includes(t.faturamento) && ['ideal','avancado'].includes(t.consultas) && t.investimento==='quente';
+  dados.perfil = fora ? 'Fora de critério' : ideal ? 'Perfil ideal' : 'Perfil intermediário';
+  dados.gargalo_tipo = tag('gargalo');
+  dados.temperatura = t.investimento || '';
+  dados.origem='LP Diagnóstico Estratégico — Déborah';
+  dados.enviado_em=new Date().toISOString();
+  dados.url=location.href;
+  Object.assign(dados, RASTREIO);
+  if(window.__calc){
+    dados.calc_faturamento=window.__calc.f;
+    dados.calc_consultas=window.__calc.c;
+    dados.calc_valor_por_consulta=window.__calc.v;
+  }
+  /* campos que o GHL reconhece sozinho no mapeamento do contato */
+  const partes=(dados.nome||'').trim().split(/\s+/);
+  dados.full_name=dados.nome||'';
+  dados.first_name=partes[0]||'';
+  dados.last_name=partes.slice(1).join(' ');
+  dados.phone=telefoneE164(dados.whatsapp);
+
+  try{
+    if(!GHL_WEBHOOK_URL.includes('SEU-WEBHOOK-AQUI')){
+      await enviarGHL(dados);
+    } else { console.log('Webhook do GHL não configurado. Dados da aplicação:',dados); }
+    track('lead_enviado',{faturamento:dados.faturamento,ticket:dados.ticket});
+    if(typeof fbq==='function') fbq('track','Lead',{content_name:'Diagnóstico Estratégico',perfil:dados.perfil,temperatura:dados.temperatura});
+    form.hidden=true;
+    document.getElementById('next').hidden=true;
+    send.hidden=true;
+    document.getElementById('back').hidden=true;
+    const sel=document.querySelector('.secure'); if(sel) sel.hidden=true;
+    const d=document.getElementById('done'); d.hidden=false;
+  }catch(err){
+    send.disabled=false; send.innerHTML='Enviar aplicação <span class="ic">→</span>';
+    alertBox.textContent='O envio falhou. Verifique a conexão e tente novamente — ou chame o time direto no WhatsApp.';
+    alertBox.classList.add('on');
+  }
+});
+
 })();
 </script>
 
