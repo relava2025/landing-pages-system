@@ -221,7 +221,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   padding:0 24px;
 }
 .carousel{margin-top:36px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-.carousel-track{display:flex;gap:18px;width:max-content;animation:slide 40s linear infinite}
+.carousel-track{display:flex;gap:18px;width:max-content;animation:slide 18s linear infinite}
+.carousel:hover .carousel-track,.carousel:focus-within .carousel-track{animation-play-state:paused}
 .carousel-track figure{margin:0;width:300px;flex:none}
 .carousel-track img{width:100%;height:auto;border-radius:6px}
 @keyframes slide{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 9px))}}
