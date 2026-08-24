@@ -1184,6 +1184,36 @@ footer{flex-direction:column;gap:12px;padding:28px 24px;min-height:0}
 })();
 
 
+
+/* ============================================================
+   DESTINO DOS LEADS — GoHighLevel
+   Mesmo Inbound Webhook usado pela /deborah. O campo "origem"
+   distingue esta pagina la dentro do GHL.
+   ============================================================ */
+var GHL_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/GLjolhPSNO3cLXCtZAee/webhook-trigger/9c9426da-b055-456b-87c1-64d414f4028c';
+
+/* telefone no formato que o GHL entende: +55DDDNUMERO */
+function telefoneE164(v){
+  var d=(v||'').replace(/\D/g,'');
+  if(!d) return '';
+  return d.indexOf('55')===0 ? '+'+d : '+55'+d;
+}
+
+/* envio tolerante a CORS: POST normal -> no-cors -> sendBeacon */
+function enviarGHL(dados){
+  var corpo=JSON.stringify(dados);
+  return fetch(GHL_WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:corpo,keepalive:true})
+    .then(function(r){ if(r.ok||r.type==='opaque') return true; throw 0; })
+    .catch(function(){
+      return fetch(GHL_WEBHOOK_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:corpo,keepalive:true})
+        .then(function(){ return true; })
+        .catch(function(){
+          if(navigator.sendBeacon) return navigator.sendBeacon(GHL_WEBHOOK_URL,new Blob([corpo],{type:'application/json'}));
+          return false;
+        });
+    });
+}
+
 /* ============================================================
    GRUPO DE WHATSAPP
    Cole abaixo, entre as aspas, os 22 caracteres do codigo do
@@ -1219,6 +1249,30 @@ var GRUPO_WHATSAPP = "EDaWPnmiXEPLHjrqOVHhNO";
     return null;
   }
 
+  function dispararLead(){
+    var nome=campos.nome.value.trim();
+    var partes=nome.split(/\s+/);
+    var dados={
+      nome:nome,
+      email:campos.email.value.trim(),
+      whatsapp:campos.zap.value.trim(),
+      especialidade:campos.esp.value,
+      /* campos que o GHL mapeia sozinho no contato */
+      full_name:nome,
+      first_name:partes[0]||'',
+      last_name:partes.slice(1).join(' '),
+      phone:telefoneE164(campos.zap.value),
+      /* contexto */
+      origem:'LP PROTOCOLO 90 — Aula Deborah',
+      etapa:'completa',
+      enviado_em:new Date().toISOString(),
+      url:location.href
+    };
+    try{ enviarGHL(dados); }catch(e){}
+    if(typeof fbq==='function'){ fbq('track','Lead',{content_name:'PROTOCOLO 90'}); }
+    return dados;
+  }
+
   function entrarNoGrupo(){
     /* O link oficial chat.whatsapp.com resolve sozinho os dois casos:
        no celular abre o aplicativo, no computador abre o WhatsApp Web. */
@@ -1232,8 +1286,7 @@ var GRUPO_WHATSAPP = "EDaWPnmiXEPLHjrqOVHhNO";
     var erro = valida();
     if(erro){ aviso.textContent = erro; return; }
 
-    /* AQUI entra o envio para o CRM (webhook) e o evento do Pixel,
-       assim que voce definir o funil e me mandar o ID do Pixel. */
+    dispararLead();
 
     if(!GRUPO_WHATSAPP){
       aviso.textContent = 'Inscricao registrada. O link do grupo ainda nao foi configurado.';
