@@ -765,6 +765,17 @@ footer{flex-direction:column;gap:12px;padding:28px 24px;min-height:0}
 .btn{animation:pulsaCta 2.6s ease-out infinite}
 .btn:hover,.btn:focus-visible{animation-play-state:paused}
 @media (prefers-reduced-motion:reduce){ .btn{animation:none} }
+
+/* --- formulario: validacao e estado de envio --- */
+.modal-form .is-erro{border-color:#E5534B;box-shadow:0 0 0 3px rgba(229,83,75,.18)}
+.modal-aviso{
+  font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.45;
+  color:#E5534B;text-align:center;margin-top:-4px;min-height:0;
+}
+.modal-aviso:empty{display:none}
+.modal-aviso.is-ok{color:#7BD88F}
+.btn[disabled]{opacity:.65;cursor:default;animation:none}
+.btn[disabled]:hover{transform:none;filter:none}
 </style>
 </head>
 <body>
@@ -1092,6 +1103,7 @@ footer{flex-direction:column;gap:12px;padding:28px 24px;min-height:0}
         <option>Otorrinolaringologia</option>
         <option>Outra</option>
       </select>
+      <p class="modal-aviso" id="form-aviso" role="status" aria-live="polite"></p>
       <button class="btn" type="submit">Quero assistir a aula</button>
     </form>
     <p class="modal-safe">
@@ -1169,6 +1181,76 @@ footer{flex-direction:column;gap:12px;padding:28px 24px;min-height:0}
   });
 
   calcular();
+})();
+
+
+/* ============================================================
+   GRUPO DE WHATSAPP
+   Cole abaixo, entre as aspas, os 22 caracteres do codigo do
+   grupo (a parte final do link, depois da ultima barra).
+   Exemplo: var GRUPO_WHATSAPP = "AbCd1234EfGh5678IjKl90";
+   ============================================================ */
+var GRUPO_WHATSAPP = "EDaWPnmiXEPLHjrqOVHhNO";
+
+(function(){
+  var form = document.querySelector('.modal-form');
+  if(!form) return;
+  var aviso  = document.getElementById('form-aviso');
+  var botao  = form.querySelector('button[type="submit"]');
+  var campos = {
+    nome:   form.querySelector('input[type="text"]'),
+    email:  form.querySelector('input[type="email"]'),
+    zap:    form.querySelector('input[type="tel"]'),
+    esp:    form.querySelector('select')
+  };
+
+  function marca(el, ruim){ el.classList.toggle('is-erro', ruim); return !ruim; }
+
+  function valida(){
+    var okNome  = marca(campos.nome,  campos.nome.value.trim().length < 3);
+    var okEmail = marca(campos.email, !/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(campos.email.value.trim()));
+    var digitos = campos.zap.value.replace(/\D/g,'');
+    var okZap   = marca(campos.zap,   digitos.length < 10 || digitos.length > 13);
+    var okEsp   = marca(campos.esp,   !campos.esp.value);
+    if(!okNome)  return 'Escreva seu nome completo.';
+    if(!okEmail) return 'Confira o e-mail.';
+    if(!okZap)   return 'Confira o WhatsApp, com DDD.';
+    if(!okEsp)   return 'Selecione a especialidade.';
+    return null;
+  }
+
+  function entrarNoGrupo(){
+    /* O link oficial chat.whatsapp.com resolve sozinho os dois casos:
+       no celular abre o aplicativo, no computador abre o WhatsApp Web. */
+    window.location.href = 'https://chat.whatsapp.com/' + GRUPO_WHATSAPP;
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    aviso.classList.remove('is-ok');
+
+    var erro = valida();
+    if(erro){ aviso.textContent = erro; return; }
+
+    /* AQUI entra o envio para o CRM (webhook) e o evento do Pixel,
+       assim que voce definir o funil e me mandar o ID do Pixel. */
+
+    if(!GRUPO_WHATSAPP){
+      aviso.textContent = 'Inscricao registrada. O link do grupo ainda nao foi configurado.';
+      return;
+    }
+
+    botao.disabled = true;
+    botao.textContent = 'Abrindo o WhatsApp...';
+    aviso.classList.add('is-ok');
+    aviso.textContent = 'Tudo certo. Levando voce para o grupo.';
+    setTimeout(entrarNoGrupo, 400);
+  });
+
+  [campos.nome, campos.email, campos.zap, campos.esp].forEach(function(el){
+    el.addEventListener('input',  function(){ el.classList.remove('is-erro'); aviso.textContent=''; });
+    el.addEventListener('change', function(){ el.classList.remove('is-erro'); });
+  });
 })();
 
 /* ---- popup ---- */
