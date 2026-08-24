@@ -222,9 +222,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 .carousel{margin-top:36px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .carousel-track{display:flex;gap:18px;width:max-content;animation:slide 18s linear infinite}
-.carousel:hover .carousel-track,.carousel:focus-within .carousel-track{animation-play-state:paused}
-.carousel-track figure{margin:0;width:300px;flex:none}
-.carousel-track img{width:100%;height:auto;border-radius:6px}
+@media (hover:hover) and (pointer:fine){
+  .carousel:hover .carousel-track,.carousel:focus-within .carousel-track{animation-play-state:paused}
+}
 @keyframes slide{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 9px))}}
 
 /* ================= 4. COMPARATIVO ================= */
@@ -431,7 +431,6 @@ footer p{
 /* ================= RESPONSIVO (breakpoints da referência) ================= */
 @media (max-width:1366px){
   .hero-sub{max-width:60%}
-  .carousel-track figure{width:260px}
 }
 @media (max-width:1024px){
   .hero-card{min-height:0;padding-bottom:150px}
@@ -459,7 +458,6 @@ footer p{
     background-size:cover, 118% auto;
     background-position:center, center top;
   }
-  .carousel-track figure{width:240px}
 }
 @media (max-width:767px){
   .hero-kicker{font-size:22px}
@@ -475,7 +473,6 @@ footer p{
   .method-item{width:100%;max-width:320px}
   .method-card{padding:36px 14px 28px}
   .btn{padding:18px 34px;font-size:15px;width:100%;max-width:340px}
-  .carousel-track figure{width:210px}
   .mentor-col{padding:400px 10px 60px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -662,7 +659,8 @@ footer{flex-direction:column;gap:12px;padding:28px 24px;min-height:0}
   .calc-inputs label{min-height:0}
   .calc-out{grid-template-columns:1fr}
   .learn-item{width:100%;max-width:320px}
-  .result-card{width:250px}
+  .result-card{width:230px}
+  .carousel-track{animation-duration:13s}
   .trust ul{flex-direction:column;align-items:flex-start;gap:9px}
 }
 @media (prefers-reduced-motion:reduce){
