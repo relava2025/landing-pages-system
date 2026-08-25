@@ -1294,13 +1294,20 @@ var GRUPO_WHATSAPP = "EDaWPnmiXEPLHjrqOVHhNO";
     window.location.href = 'https://chat.whatsapp.com/' + GRUPO_WHATSAPP;
   }
 
+  /* trava de envio unico: garante que um mesmo preenchimento nao dispare
+     o Lead (nem o envio ao GHL) mais de uma vez, mesmo com duplo clique
+     ou Enter repetido antes do botao ser desabilitado. */
+  var envioConcluido = false;
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
+    if(envioConcluido) return;
     aviso.classList.remove('is-ok');
 
     var erro = valida();
     if(erro){ aviso.textContent = erro; return; }
 
+    envioConcluido = true;
     dispararLead();
 
     if(!GRUPO_WHATSAPP){
