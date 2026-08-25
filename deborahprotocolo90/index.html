@@ -1321,16 +1321,51 @@ var GRUPO_WHATSAPP = "EDaWPnmiXEPLHjrqOVHhNO";
   });
 })();
 
+
+/* ---- eventos de leitura: quem realmente desceu a pagina ----
+   Servem para montar publico de remarketing so com quem leu,
+   em vez de quem abriu e saiu. Cada um dispara uma vez por visita. */
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  var marcos = [
+    {sel:'.sd-depo',      evento:'VisualizouDepoimentos'},
+    {sel:'.method-outer .calc', evento:'VisualizouCalculadora'},
+    {sel:'.mentor-outer', evento:'VisualizouApresentadora'}
+  ];
+  marcos.forEach(function(m){
+    var el = document.querySelector(m.sel);
+    if(!el) return;
+    var io = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(en){
+        if(en.isIntersecting){
+          io.unobserve(en.target);
+          if(typeof fbq === 'function'){
+            fbq('trackCustom', m.evento, {content_name:'PROTOCOLO 90'});
+          }
+        }
+      });
+    }, {threshold:0.35});
+    io.observe(el);
+  });
+})();
+
 /* ---- popup ---- */
 (function(){
   var modal = document.getElementById('modal');
   var lastFocus = null;
 
+  var jaContouAbertura = false;
   function open(e){
     lastFocus = e.currentTarget;
     modal.classList.add('is-open');
     var f = modal.querySelector('input');
     if(f) f.focus();
+    if(!jaContouAbertura){
+      jaContouAbertura = true;
+      if(typeof fbq === 'function'){
+        fbq('track','ViewContent',{content_name:'PROTOCOLO 90 — Formulario aberto'});
+      }
+    }
   }
   function close(){
     modal.classList.remove('is-open');
