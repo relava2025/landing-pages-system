@@ -465,7 +465,7 @@ footer p{
   .section-title{font-size:26px;line-height:30px}
   .hero-card{padding-bottom:110px}
   .trust{padding-bottom:76px}
-  .card-frame{margin-top:-48px;padding:10px;border-radius:16px}
+  .card-frame{margin-top:-48px;padding:10px;border-radius:16px;backdrop-filter:none;-webkit-backdrop-filter:none}
   .white-card{padding:30px 14px 26px}
   .white-card h2,.method-card h2{font-size:22px;line-height:27px}
   .compare-head h3{font-size:18px;line-height:23px}
@@ -756,12 +756,12 @@ footer{flex-direction:column;gap:12px;padding:28px 24px;min-height:0}
 
 /* --- pulso do CTA (anima so o brilho, para nao brigar com o hover) --- */
 @keyframes pulsaCta{
-  0%   {box-shadow:0 2px 6px rgba(255,123,0,.22),0 12px 30px -10px rgba(255,183,0,.35),0 0 0 0 rgba(255,183,0,.5)}
-  70%  {box-shadow:0 2px 6px rgba(255,123,0,.22),0 12px 30px -10px rgba(255,183,0,.35),0 0 0 16px rgba(255,183,0,0)}
+  0%   {box-shadow:0 2px 6px rgba(255,123,0,.22),0 12px 30px -10px rgba(255,183,0,.35),0 0 0 0 rgba(255,183,0,.42)}
+  70%  {box-shadow:0 2px 6px rgba(255,123,0,.22),0 12px 30px -10px rgba(255,183,0,.35),0 0 0 11px rgba(255,183,0,0)}
   100% {box-shadow:0 2px 6px rgba(255,123,0,.22),0 12px 30px -10px rgba(255,183,0,.35),0 0 0 0 rgba(255,183,0,0)}
 }
-.btn{animation:pulsaCta 2.6s ease-out infinite}
-.btn:hover,.btn:focus-visible{animation-play-state:paused}
+.hero-inner .btn{animation:pulsaCta 3.2s ease-out infinite}
+.hero-inner .btn:hover,.hero-inner .btn:focus-visible{animation-play-state:paused}
 @media (prefers-reduced-motion:reduce){ .btn{animation:none} }
 
 /* --- formulario: validacao e estado de envio --- */
