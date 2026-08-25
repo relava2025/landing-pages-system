@@ -221,11 +221,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   padding:0 24px;
 }
 .carousel{margin-top:36px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-.carousel-track{display:flex;gap:18px;width:max-content;animation:slide 18s linear infinite}
+.carousel-track{display:flex;gap:18px;width:max-content;animation:slide 18s linear infinite;will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden}
 @media (hover:hover) and (pointer:fine){
   .carousel:hover .carousel-track,.carousel:focus-within .carousel-track{animation-play-state:paused}
 }
-@keyframes slide{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 9px))}}
+@keyframes slide{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-50% - 9px),0,0)}}
 
 /* ================= 4. COMPARATIVO ================= */
 .compare-outer{
@@ -661,6 +661,7 @@ footer{flex-direction:column;gap:12px;padding:28px 24px;min-height:0}
   .learn-item{width:100%;max-width:320px}
   .result-card{width:230px}
   .carousel-track{animation-duration:13s}
+  .carousel{-webkit-mask-image:none;mask-image:none}
   .trust ul{flex-direction:column;align-items:flex-start;gap:9px}
 }
 @media (prefers-reduced-motion:reduce){
