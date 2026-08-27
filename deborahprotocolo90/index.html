@@ -775,6 +775,20 @@ footer{flex-direction:column;gap:12px;padding:28px 24px;min-height:0}
 .modal-aviso.is-ok{color:#7BD88F}
 .btn[disabled]{opacity:.65;cursor:default;animation:none}
 .btn[disabled]:hover{transform:none;filter:none}
+
+/* --- tela de confirmacao apos o envio --- */
+.modal-form[hidden],.modal-ok[hidden]{display:none}
+.modal-ok{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:6px 0 2px}
+.ok-selo{
+  width:52px;height:52px;border-radius:50%;
+  background:rgba(255,183,0,.14);border:1px solid rgba(255,183,0,.5);
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;line-height:1;color:var(--amber);
+}
+.modal-ok h3{font-family:'Sora',sans-serif;font-size:21px;font-weight:700;color:#fff;letter-spacing:-.02em}
+.modal-ok p{font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.5;color:rgba(255,255,255,.72);max-width:34ch}
+.modal-ok .btn{width:100%}
+.ok-nota{font-size:13px !important;color:rgba(255,255,255,.5) !important}
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -1122,6 +1136,14 @@ src="https://www.facebook.com/tr?id=1716652843800437&ev=PageView&noscript=1"
       <p class="modal-aviso" id="form-aviso" role="status" aria-live="polite"></p>
       <button class="btn" type="submit">Quero assistir a aula</button>
     </form>
+    <div class="modal-ok" id="modal-ok" hidden>
+      <div class="ok-selo" aria-hidden="true">&#10003;</div>
+      <h3>Inscrição confirmada</h3>
+      <p>Falta um passo: entre no grupo para receber o link da aula.</p>
+      <a class="btn" id="link-grupo" href="#">Entrar no grupo</a>
+      <p class="ok-nota">Se o WhatsApp não abrir, toque no botão novamente.</p>
+    </div>
+
     <p class="modal-safe">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5Zm3 8H9V6a3 3 0 0 1 6 0Z"/></svg>
       Vagas limitadas por turma. Seus dados estão seguros.
@@ -1289,10 +1311,20 @@ var GRUPO_WHATSAPP = "DAtqW2lZESHC8MGf7NUAAy";
     return dados;
   }
 
-  function entrarNoGrupo(){
-    /* O link oficial chat.whatsapp.com resolve sozinho os dois casos:
-       no celular abre o aplicativo, no computador abre o WhatsApp Web. */
-    window.location.href = 'https://chat.whatsapp.com/' + GRUPO_WHATSAPP;
+  /* Mostra a confirmacao com um link de verdade. O toque da pessoa e um
+     gesto real do usuario, o que faz o WhatsApp abrir de forma muito mais
+     confiavel do que uma navegacao disparada por script (o iOS bloqueia). */
+  function mostrarConfirmacao(){
+    var painel = document.getElementById('modal-ok');
+    var link   = document.getElementById('link-grupo');
+    if(!painel || !link) {
+      window.location.href = 'https://chat.whatsapp.com/' + GRUPO_WHATSAPP;
+      return;
+    }
+    link.href = 'https://chat.whatsapp.com/' + GRUPO_WHATSAPP;
+    form.hidden = true;
+    painel.hidden = false;
+    link.focus();
   }
 
   /* trava de envio unico: garante que um mesmo preenchimento nao dispare
@@ -1317,10 +1349,7 @@ var GRUPO_WHATSAPP = "DAtqW2lZESHC8MGf7NUAAy";
     }
 
     botao.disabled = true;
-    botao.textContent = 'Abrindo o WhatsApp...';
-    aviso.classList.add('is-ok');
-    aviso.textContent = 'Tudo certo. Levando voce para o grupo.';
-    setTimeout(entrarNoGrupo, 400);
+    mostrarConfirmacao();
   });
 
   [campos.nome, campos.email, campos.zap, campos.esp].forEach(function(el){
