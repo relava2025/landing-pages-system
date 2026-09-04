@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Recebemos seus dados</title>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2885805905085806');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2885805905085806&ev=PageView&noscript=1"/></noscript>
+<style>
+  :root{
+    --bg:#f4f5f7;
+    --surface:#ffffff;
+    --line:#e3e6eb;
+    --text:#14181f;
+    --muted:#6b7280;
+    --accent:#e8a33d;
+    --accent-ink:#1a1205;
+    --delay:2000ms;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    display:flex;align-items:center;justify-content:center;padding:24px;
+  }
+  .card{
+    width:100%;max-width:440px;background:var(--surface);
+    border:1px solid var(--line);border-radius:16px;
+    padding:36px 30px 30px;text-align:center;
+    box-shadow:0 10px 30px rgba(16,24,40,.06);
+  }
+  .marca{
+    margin:0 0 22px;font-size:13px;letter-spacing:.10em;text-transform:uppercase;
+    color:var(--muted);font-weight:600;
+  }
+  .marca img{max-height:44px;width:auto;display:block;margin:0 auto}
+  .check{
+    width:60px;height:60px;margin:0 auto 20px;border-radius:50%;
+    background:var(--accent);display:flex;align-items:center;justify-content:center;
+  }
+  .check svg{width:30px;height:30px;stroke:var(--accent-ink);stroke-width:2.4;fill:none;
+    stroke-linecap:round;stroke-linejoin:round}
+  h1{margin:0 0 10px;font-size:23px;line-height:1.28;font-weight:700}
+  p.sub{margin:0 0 26px;font-size:15px;line-height:1.55;color:var(--muted)}
+  a.btn{
+    display:block;padding:15px 20px;border-radius:11px;
+    background:var(--accent);color:var(--accent-ink);
+    font-size:16px;font-weight:700;text-decoration:none;
+  }
+  a.btn:focus-visible{outline:3px solid var(--text);outline-offset:3px}
+  .track{margin-top:20px;height:4px;border-radius:4px;background:var(--line);overflow:hidden}
+  .track i{display:block;height:100%;width:0;background:var(--accent);
+    animation:fill var(--delay) linear forwards}
+  @keyframes fill{to{width:100%}}
+  .hint{margin:12px 0 0;font-size:12.5px;color:var(--muted)}
+  @media (prefers-reduced-motion:reduce){.track i{animation:none;width:100%}}
+</style>
+</head>
+<body>
+
+  <main class="card">
+    <div class="marca">Dra. Elane</div>
+
+    <div class="check" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+    </div>
+
+    <h1>Recebemos seus dados</h1>
+    <p class="sub">Estamos te levando para o WhatsApp para continuar o atendimento por lá.</p>
+
+    <a class="btn" id="wa" href="#" rel="noopener">Abrir o WhatsApp</a>
+
+    <div class="track" aria-hidden="true"><i></i></div>
+    <p class="hint">Se nada acontecer, toque no botão acima.</p>
+  </main>
+
+<script>
+  /* ===== configuração ===== */
+  var NUMERO   = "5593991220231";
+  var MENSAGEM = "Olá! Acabei de preencher o formulário e quero falar com a equipe.";
+  var DELAY    = 2000;
+  /* ======================== */
+
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var origem = params.get("utm_campaign") || params.get("utm_source") || "";
+    var texto  = origem ? MENSAGEM + " [" + origem + "]" : MENSAGEM;
+
+    var link = "https://wa.me/" + NUMERO + "?text=" + encodeURIComponent(texto);
+    document.getElementById("wa").href = link;
+
+    if (typeof fbq === "function") { fbq("track", "Lead"); }
+
+    setTimeout(function () { window.location.href = link; }, DELAY);
+  })();
+</script>
+
+</body>
+</html>
