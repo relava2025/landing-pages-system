@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Recebemos seus dados — Déborah Caribé</title>
+
+<style>
+  :root{
+    --bg:#f3f4f6;
+    --surface:#ffffff;
+    --line:#e3e6ea;
+    --text:#15181d;
+    --muted:#575f6b;
+    --hint:#767e8b;
+    --accent:#c98a12;
+    --accent-ink:#ffffff;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+  }
+
+  .card{
+    width:100%;
+    max-width:480px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:14px;
+    box-shadow:0 1px 2px rgba(16,24,40,.04), 0 10px 28px rgba(16,24,40,.06);
+    padding:40px 32px 32px;
+    text-align:center;
+  }
+
+  .marca{
+    margin:0 0 24px;
+    font-size:13px;
+    letter-spacing:.04em;
+    color:var(--muted);
+  }
+
+  .marca img{max-height:34px;width:auto;display:block;margin:0 auto}
+
+  .check{
+    width:52px;
+    height:52px;
+    margin:0 auto 24px;
+    border-radius:50%;
+    background:color-mix(in srgb, var(--accent) 12%, transparent);
+    border:1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .check svg{width:24px;height:24px;stroke:var(--accent);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+  h1{
+    margin:0 0 12px;
+    font-size:26px;
+    line-height:1.25;
+    font-weight:600;
+    letter-spacing:-.015em;
+  }
+
+  p{
+    margin:0 auto 28px;
+    max-width:34ch;
+    font-size:16px;
+    line-height:1.6;
+    color:var(--muted);
+  }
+
+  .btn{
+    display:block;
+    width:100%;
+    padding:16px 20px;
+    border-radius:10px;
+    background:var(--accent);
+    color:var(--accent-ink);
+    font-size:16px;
+    font-weight:600;
+    text-decoration:none;
+    transition:filter .15s ease;
+  }
+
+  .btn:hover{filter:brightness(1.08)}
+  .btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+
+  .hint{
+    margin:16px 0 0;
+    font-size:13.5px;
+    color:var(--hint);
+    max-width:none;
+  }
+
+  .bar{
+    height:2px;
+    width:100%;
+    margin-top:28px;
+    background:var(--line);
+    border-radius:2px;
+    overflow:hidden;
+  }
+
+  .bar span{
+    display:block;
+    height:100%;
+    width:0;
+    background:var(--accent);
+    animation:fill 2000ms linear forwards;
+  }
+
+  @keyframes fill{to{width:100%}}
+
+  @media (prefers-reduced-motion:reduce){ .bar{display:none} }
+
+  @media (max-width:420px){
+    .card{padding:32px 22px 26px}
+    h1{font-size:23px}
+  }
+</style>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1546113800372945');
+fbq('track', 'PageView');
+</script>
+</head>
+
+<body>
+
+  <main class="card">
+    <p class="marca">Déborah Caribé</p>
+
+    <div class="check" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+    </div>
+
+    <h1>Recebemos seus dados</h1>
+
+    <p>Estamos te levando para o WhatsApp para continuar o atendimento por lá.</p>
+
+    <a class="btn" id="wa" href="#" rel="noopener">Abrir o WhatsApp</a>
+
+    <p class="hint">Se o WhatsApp não abrir sozinho, toque no botão acima.</p>
+
+    <div class="bar" aria-hidden="true"><span></span></div>
+  </main>
+
+<script>
+  var NUMERO   = "5594984198700";
+  var MENSAGEM = "Olá! Acabei de preencher o formulário e quero falar com a equipe.";
+  var DELAY    = 2000;
+
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var origem = params.get("utm_campaign") || params.get("utm_source") || "";
+    var texto  = origem ? MENSAGEM + " [" + origem + "]" : MENSAGEM;
+
+    var link = "https://wa.me/" + NUMERO + "?text=" + encodeURIComponent(texto);
+    document.getElementById("wa").href = link;
+
+    if (typeof fbq === 'function') { fbq('track', 'Lead'); }
+
+    setTimeout(function () { window.location.href = link; }, DELAY);
+  })();
+</script>
+
+</body>
+</html>
