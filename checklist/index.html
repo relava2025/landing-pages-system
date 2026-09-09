@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Checklist da Consulta de Alta Conversão — FACE SCALE</title>
+<meta name="description" content="Os 9 passos para conduzir a consulta, construir valor antes do preço e chegar ao fechamento sem transformar tudo em uma discussão sobre desconto.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    /* Paleta derivada das outras páginas do domínio, para o conjunto parecer
+       um sistema só. O dourado é a cor de marca; tudo mais é neutro quente. */
+    --ouro:#c08a1e;
+    --ouro-claro:#e0a93a;
+    --ouro-fundo:#fdf7e9;
+    --tinta:#14161a;
+    --tinta-2:#3d4450;
+    --apagado:#6b7280;
+    --fundo:#f6f5f2;
+    --superficie:#ffffff;
+    --linha:#e6e3dc;
+    --erro:#b42318;
+
+    /* Espaçamento em degraus intencionais, não valores soltos. */
+    --e1:6px; --e2:12px; --e3:20px; --e4:32px; --e5:48px; --e6:72px;
+
+    /* Três camadas de profundidade: base, elevada, flutuante.
+       Sombras tingidas de marrom-dourado, nunca cinza chapado. */
+    --sombra-elevada:0 1px 2px rgba(60,44,10,.04), 0 10px 26px -12px rgba(60,44,10,.16);
+    --sombra-flutuante:0 1px 2px rgba(60,44,10,.05), 0 18px 44px -16px rgba(60,44,10,.22);
+
+    --raio:14px;
+  }
+
+  *{box-sizing:border-box}
+
+  body{
+    margin:0;
+    background:var(--fundo);
+    color:var(--tinta);
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.7;
+  }
+
+  /* Gradientes radiais empilhados + grão, para o fundo não ficar chapado.
+     Fica atrás de tudo e não intercepta clique. */
+  .ambiente{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(60rem 40rem at 12% -10%, rgba(224,169,58,.16), transparent 60%),
+      radial-gradient(45rem 34rem at 92% 4%, rgba(192,138,30,.10), transparent 62%),
+      radial-gradient(70rem 50rem at 50% 108%, rgba(20,22,26,.05), transparent 60%);
+  }
+  .grao{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    opacity:.05; mix-blend-mode:multiply;
+  }
+
+  .pagina{position:relative; z-index:1; max-width:1120px; margin:0 auto; padding:var(--e5) var(--e3) var(--e6)}
+
+  /* ---------- topo ---------- */
+  .marca{
+    font-size:12px; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--ouro); margin:0 0 var(--e3);
+  }
+
+  h1{
+    font-family:"Playfair Display",Georgia,serif;
+    font-weight:600;
+    font-size:clamp(30px, 6.2vw, 52px);
+    line-height:1.1;
+    letter-spacing:-.03em;
+    margin:0 0 var(--e3);
+    max-width:16ch;
+  }
+  h1 em{font-style:italic; color:var(--ouro)}
+
+  .abertura{
+    font-size:clamp(16px,2.2vw,18px);
+    color:var(--tinta-2);
+    margin:0 0 var(--e4);
+    max-width:52ch;
+  }
+
+  .selo{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:10px 16px; border-radius:999px;
+    background:var(--ouro-fundo); border:1px solid rgba(192,138,30,.28);
+    font-size:13.5px; font-weight:500; color:#6b4c07; line-height:1.4;
+  }
+  .selo svg{width:16px; height:16px; flex:0 0 16px; stroke:var(--ouro); fill:none; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round}
+
+  /* ---------- duas colunas no desktop ---------- */
+  .colunas{display:grid; gap:var(--e5); margin-top:var(--e5)}
+  @media (min-width:980px){
+    .colunas{grid-template-columns:1fr 420px; gap:var(--e6); align-items:start}
+    .coluna-form{position:sticky; top:var(--e4)}
+  }
+
+  h2{
+    font-family:"Playfair Display",Georgia,serif;
+    font-weight:600; font-size:clamp(21px,3vw,26px);
+    letter-spacing:-.02em; line-height:1.25;
+    margin:0 0 var(--e3);
+  }
+
+  /* ---------- lista dos 9 passos ---------- */
+  .passos{list-style:none; margin:0; padding:0; counter-reset:passo}
+  .passos li{
+    counter-increment:passo;
+    display:grid; grid-template-columns:34px 1fr; gap:14px;
+    padding:var(--e2) 0;
+    border-bottom:1px solid var(--linha);
+  }
+  .passos li:last-child{border-bottom:0}
+  .passos li::before{
+    content:counter(passo,decimal-leading-zero);
+    font-variant-numeric:tabular-nums;
+    font-size:12.5px; font-weight:700; letter-spacing:.04em;
+    color:var(--ouro);
+    padding-top:4px;
+  }
+  .passos li > div{min-width:0}
+  .passos b{display:block; font-weight:600; font-size:15.5px}
+  .passos span{display:block; font-size:14.5px; color:var(--apagado); line-height:1.6}
+
+  .fecho{
+    margin-top:var(--e4); padding:var(--e3);
+    background:var(--superficie); border:1px solid var(--linha);
+    border-left:3px solid var(--ouro);
+    border-radius:0 var(--raio) var(--raio) 0;
+    box-shadow:var(--sombra-elevada);
+  }
+  .fecho p{margin:0; font-size:15px; color:var(--tinta-2)}
+  .fecho strong{color:var(--tinta)}
+
+  /* ---------- cartão do formulário ---------- */
+  .cartao{
+    background:var(--superficie);
+    border:1px solid var(--linha);
+    border-radius:var(--raio);
+    box-shadow:var(--sombra-flutuante);
+    padding:var(--e4) var(--e3) var(--e3);
+  }
+  @media (min-width:520px){ .cartao{padding:var(--e4)} }
+
+  .cartao h2{margin-bottom:var(--e1)}
+  .cartao .ajuda{margin:0 0 var(--e3); font-size:14.5px; color:var(--apagado)}
+
+  .campo{margin-bottom:var(--e3)}
+  .campo label{display:block; font-size:13.5px; font-weight:600; margin-bottom:7px}
+  .campo .opcional{font-weight:400; color:var(--apagado)}
+
+  .campo input, .campo select{
+    width:100%; padding:13px 14px;
+    font:inherit; font-size:16px;   /* 16px evita o zoom automático do iOS */
+    color:var(--tinta);
+    background:#fff;
+    border:1px solid var(--linha); border-radius:10px;
+    transition:border-color .16s cubic-bezier(.2,.8,.3,1), box-shadow .16s cubic-bezier(.2,.8,.3,1);
+  }
+  .campo select{appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 12px center; background-size:18px; padding-right:40px}
+  .campo input:hover, .campo select:hover{border-color:#cfc9bb}
+  .campo input:focus-visible, .campo select:focus-visible{
+    outline:none; border-color:var(--ouro);
+    box-shadow:0 0 0 3px rgba(192,138,30,.18);
+  }
+  .campo input[aria-invalid="true"]{border-color:var(--erro)}
+  .recado{display:block; margin-top:6px; font-size:13px; color:var(--erro); min-height:0}
+
+  .botao{
+    display:block; width:100%; border:0; cursor:pointer;
+    padding:16px 20px; border-radius:11px;
+    background:var(--ouro); color:#fff;
+    font:inherit; font-size:16px; font-weight:700; letter-spacing:.01em;
+    text-align:center; text-decoration:none;
+    box-shadow:0 1px 2px rgba(60,44,10,.10), 0 8px 20px -8px rgba(192,138,30,.55);
+    transition:transform .16s cubic-bezier(.2,.9,.3,1.2), opacity .16s ease;
+  }
+  .botao:hover{transform:translateY(-1px)}
+  .botao:active{transform:translateY(1px)}
+  .botao:focus-visible{outline:3px solid var(--tinta); outline-offset:3px}
+  .botao[disabled]{opacity:.55; cursor:progress; transform:none}
+
+  /* Atalho para o formulário. Vem depois de .botao de propósito: as duas
+     regras têm a mesma especificidade, então quem está por último vence.
+     Só existe onde as colunas não cabem lado a lado; no desktop o cartão já
+     está à vista e o botão seria ruído. */
+  .atalho{margin-top:var(--e4); text-align:center; text-decoration:none}
+  @media (min-width:980px){ .atalho{display:none} }
+
+  .rodape-form{margin:var(--e2) 0 0; font-size:12.5px; color:var(--apagado); text-align:center; line-height:1.5}
+
+  /* ---------- estado de sucesso ---------- */
+  .sucesso{text-align:center}
+  .sucesso .marca-ok{
+    width:56px; height:56px; margin:0 auto var(--e3); border-radius:50%;
+    background:var(--ouro-fundo); border:1px solid rgba(192,138,30,.35);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .sucesso .marca-ok svg{width:26px; height:26px; stroke:var(--ouro); fill:none; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round}
+  .sucesso p{color:var(--apagado); font-size:15px; margin:0 0 var(--e3)}
+
+  .aparece{animation:aparece .32s cubic-bezier(.2,.9,.3,1.1) both}
+  @keyframes aparece{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
+  @media (prefers-reduced-motion:reduce){
+    .aparece{animation:none}
+    .botao{transition:none}
+    .botao:hover,.botao:active{transform:none}
+  }
+
+  .rodape{margin-top:var(--e6); padding-top:var(--e3); border-top:1px solid var(--linha); font-size:12.5px; color:var(--apagado)}
+</style>
+</head>
+
+<body>
+
+<div class="ambiente" aria-hidden="true"></div>
+<svg class="grao" aria-hidden="true"><filter id="ruido"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(#ruido)"/></svg>
+
+<div class="pagina">
+
+  <p class="marca">FACE SCALE</p>
+
+  <h1>Checklist da consulta de <em>alta conversão</em></h1>
+
+  <p class="abertura">
+    Os 9 passos para conduzir a consulta, construir valor antes de falar em preço
+    e chegar à decisão sem transformar o atendimento em uma discussão sobre desconto.
+  </p>
+
+  <p class="selo">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+    No case que originou este material, a mudança na condução levou a um fechamento
+    de blefaroplastia de R$ 12 mil à vista.
+  </p>
+
+  <a class="botao atalho" href="#cartao">Quero o checklist</a>
+
+  <div class="colunas">
+
+    <section>
+      <h2>O que tem dentro</h2>
+
+      <ol class="passos">
+        <li><div><b>A venda começa antes do preço</b><span>Por que a decisão já está formada quando o paciente pergunta quanto custa.</span></div></li>
+        <li><div><b>Descubra o motivo real</b><span>As cinco perguntas que revelam por que aquela pessoa está sentada na sua frente.</span></div></li>
+        <li><div><b>Aprofunde a dor</b><span>Deixar o paciente expressar o impacto, sem pressionar.</span></div></li>
+        <li><div><b>Prescreva, não empurre</b><span>Problema, tratamento, por que é indicado, resultado esperado.</span></div></li>
+        <li><div><b>Construa percepção de valor</b><span>Os seis pontos que precisam estar de pé antes de qualquer número.</span></div></li>
+        <li><div><b>Apresente o investimento</b><span>Como falar de preço sem justificar demais nem demonstrar insegurança.</span></div></li>
+        <li><div><b>Descubra a objeção real</b><span>A pergunta que separa objeção de preço de objeção de confiança.</span></div></li>
+        <li><div><b>Negocie sem destruir valor</b><span>Por que desconto não pode ser a primeira ferramenta de fechamento.</span></div></li>
+        <li><div><b>Conduza para uma decisão</b><span>Como não terminar a consulta com "pensa e depois me avisa".</span></div></li>
+      </ol>
+
+      <div class="fecho">
+        <p><strong>Para quem é:</strong> médicos e clínicas que já recebem pacientes na consulta
+        e querem melhorar a condução, a negociação e o fechamento. São 5 páginas, direto ao ponto,
+        com um checklist final para usar no dia seguinte.</p>
+      </div>
+    </section>
+
+    <div class="coluna-form">
+      <div class="cartao" id="cartao">
+
+        <div id="area-form">
+          <h2>Receba o checklist</h2>
+          <p class="ajuda">Preencha e o download começa na hora, nesta mesma página.</p>
+
+          <form id="form" novalidate>
+            <div class="campo">
+              <label for="nome">Nome</label>
+              <input id="nome" name="nome" type="text" autocomplete="name" required>
+              <span class="recado" id="recado-nome" role="alert"></span>
+            </div>
+
+            <div class="campo">
+              <label for="whatsapp">WhatsApp</label>
+              <input id="whatsapp" name="whatsapp" type="tel" inputmode="numeric"
+                     placeholder="(11) 99999-9999" autocomplete="tel-national" required>
+              <span class="recado" id="recado-whatsapp" role="alert"></span>
+            </div>
+
+            <div class="campo">
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+              <span class="recado" id="recado-email" role="alert"></span>
+            </div>
+
+            <div class="campo">
+              <label for="cidade">Cidade <span class="opcional">(opcional)</span></label>
+              <input id="cidade" name="cidade" type="text" autocomplete="address-level2">
+            </div>
+
+            <div class="campo">
+              <label for="especialidade">Especialidade</label>
+              <select id="especialidade" name="especialidade" required>
+                <option value="">Selecione</option>
+                <option>Cirurgia plástica</option>
+                <option>Dermatologia</option>
+                <option>Odontologia / HOF</option>
+                <option>Biomedicina estética</option>
+                <option>Outra especialidade médica</option>
+                <option>Sou da equipe da clínica</option>
+              </select>
+              <span class="recado" id="recado-especialidade" role="alert"></span>
+            </div>
+
+            <button class="botao" type="submit" id="enviar">Quero o checklist</button>
+            <p class="rodape-form">Seus dados ficam com a FACE SCALE. Sem disparo de spam.</p>
+          </form>
+        </div>
+
+        <div id="area-ok" hidden></div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <p class="rodape">FACE SCALE · Consulta de Alta Conversão</p>
+</div>
+
+<script>
+  /* ===== configuração ===== */
+
+  // URL /exec da implantação do Apps Script (veja apps-script-checklist.gs).
+  var PLANILHA_URL = '';
+
+  // O PDF fica ao lado desta página, no mesmo domínio.
+  var PDF = 'checklist-consulta-alta-conversao.pdf';
+
+  // ID do Pixel. Deixe vazio para não carregar nada.
+  var PIXEL = '';
+
+  /* ======================== */
+
+  (function () {
+    'use strict';
+
+    if (PIXEL) {
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', PIXEL);
+      fbq('track', 'PageView');
+    }
+
+    var form    = document.getElementById('form');
+    var botao   = document.getElementById('enviar');
+    var areaForm= document.getElementById('area-form');
+    var areaOk  = document.getElementById('area-ok');
+
+    var params = new URLSearchParams(location.search);
+
+    function soDigitos(s){ return String(s || '').replace(/\D/g, ''); }
+
+    /* Máscara de telefone. Formata enquanto digita, sem atrapalhar o apagar. */
+    var campoZap = document.getElementById('whatsapp');
+    campoZap.addEventListener('input', function () {
+      var d = soDigitos(this.value).slice(0, 11);
+      var saida = d;
+      if (d.length > 2)  saida = '(' + d.slice(0,2) + ') ' + d.slice(2);
+      if (d.length > 7)  saida = '(' + d.slice(0,2) + ') ' + d.slice(2, d.length > 10 ? 7 : 6) +
+                                  '-' + d.slice(d.length > 10 ? 7 : 6);
+      this.value = saida;
+    });
+
+    function recado(campo, texto) {
+      var el = document.getElementById('recado-' + campo);
+      var input = document.getElementById(campo);
+      if (el) el.textContent = texto || '';
+      if (input) {
+        if (texto) input.setAttribute('aria-invalid', 'true');
+        else input.removeAttribute('aria-invalid');
+      }
+      return !texto;
+    }
+
+    function validar() {
+      var ok = true;
+
+      var nome = document.getElementById('nome').value.trim();
+      ok = recado('nome', nome.length >= 2 ? '' : 'Escreva seu nome.') && ok;
+
+      var zap = soDigitos(campoZap.value);
+      // 10 dígitos cobre fixo com DDD; 11 é celular. Menos que isso é engano.
+      ok = recado('whatsapp', (zap.length === 10 || zap.length === 11) ? '' : 'Informe o DDD e o número.') && ok;
+
+      var email = document.getElementById('email').value.trim();
+      ok = recado('email', /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) ? '' : 'Confira o e-mail.') && ok;
+
+      var esp = document.getElementById('especialidade').value;
+      ok = recado('especialidade', esp ? '' : 'Escolha uma opção.') && ok;
+
+      return ok;
+    }
+
+    function montarDados() {
+      return {
+        nome:          document.getElementById('nome').value.trim(),
+        whatsapp:      campoZap.value.trim(),
+        email:         document.getElementById('email').value.trim(),
+        cidade:        document.getElementById('cidade').value.trim(),
+        especialidade: document.getElementById('especialidade').value,
+        origem:        'checklist-consulta-alta-conversao',
+        utm_source:    params.get('utm_source')   || '',
+        utm_medium:    params.get('utm_medium')   || '',
+        utm_campaign:  params.get('utm_campaign') || '',
+        utm_content:   params.get('utm_content')  || '',
+        fbclid:        params.get('fbclid')       || '',
+        referrer:      document.referrer || '',
+        url:           location.href
+      };
+    }
+
+    /* Envia para a planilha. text/plain de propósito: evita a requisição de
+       verificação (preflight) que o Apps Script não responde bem. O script do
+       lado de lá faz JSON.parse do corpo de qualquer jeito. */
+    function enviarPlanilha(dados) {
+      if (!PLANILHA_URL) return Promise.reject(new Error('sem PLANILHA_URL'));
+      return fetch(PLANILHA_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(dados)
+      });
+    }
+
+    /* Se a rede falhar bem na hora do envio, o lead sumiria em silêncio.
+       Fica guardado no navegador e tenta de novo quando a pessoa voltar. */
+    var GUARDADOS = 'checklist_pendentes';
+
+    function guardar(dados) {
+      try {
+        var fila = JSON.parse(localStorage.getItem(GUARDADOS) || '[]');
+        fila.push(dados);
+        localStorage.setItem(GUARDADOS, JSON.stringify(fila.slice(-20)));
+      } catch (e) {}
+    }
+
+    function reenviarPendentes() {
+      var fila;
+      try { fila = JSON.parse(localStorage.getItem(GUARDADOS) || '[]'); } catch (e) { return; }
+      if (!fila.length || !PLANILHA_URL) return;
+      try { localStorage.removeItem(GUARDADOS); } catch (e) {}
+      fila.forEach(function (d) { enviarPlanilha(d).catch(function () { guardar(d); }); });
+    }
+    reenviarPendentes();
+
+    function baixar() {
+      var a = document.createElement('a');
+      a.href = PDF;
+      a.setAttribute('download', 'Checklist da Consulta de Alta Conversao - FACE SCALE.pdf');
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
+
+    function mostrarSucesso(nome) {
+      areaOk.innerHTML =
+        '<div class="sucesso aparece">' +
+          '<div class="marca-ok" aria-hidden="true">' +
+            '<svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>' +
+          '</div>' +
+          '<h2>Pronto' + (nome ? ', ' + nome : '') + '</h2>' +
+          '<p>O download começou. Se não tiver começado, use o botão abaixo.</p>' +
+          '<a class="botao" id="baixar" href="' + PDF + '" download>Baixar o checklist</a>' +
+        '</div>';
+
+      areaForm.hidden = true;
+      areaOk.hidden = false;
+      document.getElementById('cartao').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      baixar();
+    }
+
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      if (!validar()) {
+        var primeiro = form.querySelector('[aria-invalid="true"]');
+        if (primeiro) primeiro.focus();
+        return;
+      }
+
+      var dados = montarDados();
+      botao.disabled = true;
+      botao.textContent = 'Enviando...';
+
+      if (typeof fbq === 'function') { fbq('track', 'Lead'); }
+
+      // A pessoa não pode ficar esperando a planilha responder para receber o
+      // material. Grava em paralelo e entrega o PDF de imediato.
+      enviarPlanilha(dados).catch(function () { guardar(dados); });
+      mostrarSucesso(dados.nome.split(' ')[0]);
+    });
+  })();
+</script>
+
+</body>
+</html>
