@@ -164,16 +164,70 @@ fbq('track', 'PageView');
   </main>
 
 <script>
-  var NUMERO   = "5594981213025";
+  /* ===== configuração =====
+
+     Divisão entre os números. O "peso" é proporção, não porcentagem:
+     1 e 1 divide meio a meio; 2 e 1 manda o dobro para o primeiro;
+     peso 0 tira o número do rodízio sem precisar apagar a linha.
+
+     Sem servidor não existe revezamento de verdade: cada pessoa que abre a
+     página é um navegador diferente, então o que dá para fazer é sortear a
+     cada visita. Em volume isso se aproxima da divisão configurada, mas num
+     dia de 20 leads sair 13 contra 7 é normal e não é defeito.             */
+
+  var NUMEROS = [
+    { apelido: "principal", numero: "5594981213025", peso: 1 },
+    { apelido: "jessica",   numero: "5594984198700", peso: 1 }
+  ];
+
   var MENSAGEM = "Olá! Acabei de preencher o formulário e quero falar com a equipe.";
   var DELAY    = 2000;
+  /* ======================== */
 
   (function () {
     var params = new URLSearchParams(window.location.search);
+
+    /* Sorteia respeitando os pesos. */
+    function sortear() {
+      var vivos = NUMEROS.filter(function (n) { return n.peso > 0 && n.numero; });
+      if (!vivos.length) return null;
+      var total = vivos.reduce(function (soma, n) { return soma + n.peso; }, 0);
+      var ponto = Math.random() * total;
+      for (var i = 0; i < vivos.length; i++) {
+        ponto -= vivos[i].peso;
+        if (ponto <= 0) return vivos[i];
+      }
+      return vivos[vivos.length - 1];
+    }
+
+    /* Se a pessoa recarregar ou voltar, um novo sorteio a mandaria para o
+       outro número e ela abriria conversa com os dois. A escolha fica guardada
+       enquanto a aba viver. */
+    var escolhido = null;
+    try {
+      var guardado = sessionStorage.getItem("destino_whatsapp");
+      if (guardado) escolhido = JSON.parse(guardado);
+    } catch (e) {}
+
+    if (!escolhido || !escolhido.numero) {
+      escolhido = sortear();
+      try { sessionStorage.setItem("destino_whatsapp", JSON.stringify(escolhido)); } catch (e) {}
+    }
+
+    /* Dá para forçar um número na URL (?para=jessica) para testar
+       cada destino sem ficar recarregando até o sorteio cair nele. */
+    var forcado = params.get("para");
+    if (forcado) {
+      var achado = NUMEROS.filter(function (n) { return n.apelido === forcado; })[0];
+      if (achado) escolhido = achado;
+    }
+
+    if (!escolhido) return;
+
     var origem = params.get("utm_campaign") || params.get("utm_source") || "";
     var texto  = origem ? MENSAGEM + " [" + origem + "]" : MENSAGEM;
 
-    var link = "https://wa.me/" + NUMERO + "?text=" + encodeURIComponent(texto);
+    var link = "https://wa.me/" + escolhido.numero + "?text=" + encodeURIComponent(texto);
     document.getElementById("wa").href = link;
 
     if (typeof fbq === 'function') { fbq('track', 'Lead'); }
