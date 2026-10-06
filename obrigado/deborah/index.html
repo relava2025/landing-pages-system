@@ -182,6 +182,10 @@ fbq('track', 'PageView');
 
   var MENSAGEM = "Olá! Acabei de preencher o formulário e quero falar com a equipe.";
   var DELAY    = 2000;
+
+  /* URL /exec da implantação do Apps Script (veja apps-script-registro.gs).
+     Vazio, a página funciona igual, só não registra o clique. */
+  var REGISTRO = "";
   /* ======================== */
 
   (function () {
@@ -230,9 +234,45 @@ fbq('track', 'PageView');
     var link = "https://wa.me/" + escolhido.numero + "?text=" + encodeURIComponent(texto);
     document.getElementById("wa").href = link;
 
+
+    /* Registra o clique na planilha. Vazio, não registra nada. */
+    function registrar(escolhido, pagina) {
+      if (!REGISTRO || !escolhido) return;
+      var corpo = JSON.stringify({
+        destino:      "clique",
+        atendente:    escolhido.apelido,
+        numero:       escolhido.numero,
+        pagina:       pagina,
+        utm_campaign: params.get("utm_campaign") || "",
+        utm_source:   params.get("utm_source")   || "",
+        utm_medium:   params.get("utm_medium")   || "",
+        referrer:     document.referrer || "",
+        url:          location.href
+      });
+
+      /* sendBeacon sobrevive à saída da página. Um fetch comum seria cancelado
+         no instante em que o navegador sai para o WhatsApp, e o clique se
+         perderia justamente nos casos que mais importam. */
+      try {
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon(REGISTRO, new Blob([corpo], { type: "text/plain;charset=utf-8" }));
+          return;
+        }
+      } catch (e) {}
+      try {
+        fetch(REGISTRO, { method: "POST", mode: "no-cors", keepalive: true,
+                          headers: { "Content-Type": "text/plain;charset=utf-8" }, body: corpo });
+      } catch (e) {}
+    }
+
     if (typeof fbq === 'function') { fbq('track', 'Lead'); }
 
-    setTimeout(function () { window.location.href = link; }, DELAY);
+    /* Registra junto com a saída, não na chegada: assim conta quem de fato
+       seguiu para o WhatsApp, e não quem só abriu e fechou. */
+    setTimeout(function () {
+      registrar(escolhido, "obrigado-deborah");
+      window.location.href = link;
+    }, DELAY);
   })();
 </script>
 
